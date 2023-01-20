@@ -1,2 +1,17 @@
-<h1>Countries#edit</h1>
-<p>Find me in app/views/countries/edit.html.erb</p>
+<h1>Edit country</h1>
+
+<div class="edit">
+    <div class="editdelete">
+        <%= render :partial => 'form' %>
+        <br>
+        <br>
+        <%= button_to 'Delete Country', @movie, :method => 'delete', :data => { :confirm => "Are you sure to delete this country? \n \n#{@country.sanctions.size} sanction(s) of this nationality will also be removed." } %>
+    </div>
+    <% unless @country["flag"].nil? || @country["flag"].empty? %>
+        <figure>
+            <img class="country_feature" src="<%= @country["flag"] %>" alt="<%= @country["name"] %>">
+            <figcaption><%= @country.native_name %></figcaption>
+        </figure>
+    <% end%>
+</div>
+

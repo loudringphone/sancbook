@@ -1,0 +1,21 @@
+<%= form_for @country do |f| %>
+    <%= f.label :name, :required => true %>
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :official_name %>
+    <%= f.text_field :official_name %>
+    <br>
+    <br>
+    <%= f.label :native_name %>
+    <%= f.text_field :native_name %>
+    <br>
+    <br>
+    <%= f.label :flag %>
+    <%= f.text_field :flag %>
+    <br>
+    <br>
+    <br>
+    <%= f.submit %>
+
+<% end %>

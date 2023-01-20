@@ -54,8 +54,7 @@
 
 
 <div class="control">
-    <a href="/countries/<%= @country["id"] %>/edit">Edit country</a>
-    <a class='delete' href="/countries/<%= @country["id"] %>/delete">Delete country</a>
+    <%= link_to 'Edit/Delete movie', edit_country_path(@country) %>
 </div>
 
 <script>
@@ -78,12 +77,4 @@
             }
         }))
     
-
-    a = document.querySelector('.delete')
-    a.addEventListener('click', function(event) {
-        event.preventDefault();
-            if (confirm("Are you sure to delete this country? \n \n<%= @country.sanctions.size %> sanction(s) of this nationality will also be removed.")) {
-                window.location = this.href;
-            }
-    })
     </script>
