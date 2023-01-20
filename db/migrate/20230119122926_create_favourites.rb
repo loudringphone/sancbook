@@ -3,6 +3,8 @@ class CreateFavourites < ActiveRecord::Migration[5.2]
     create_table :favourites do |t|
       t.text :title
       t.integer :user_id
+      t.integer :sanction_id
+      t.integer :dictator_id
       t.timestamps
     end
   end

@@ -67,13 +67,26 @@ srr4_arr.each do |srr|
     name = ''
     nationality = ''
     risk = ''
-        comma_index = srr.index(',') 
-        comma2_index = srr[comma_index + 2..].index(',') 
-        bracket_index = srr[comma_index + 2..].index('(')
-        unless ( srr[comma_index + 2..].include? 'a.k.a.' or srr[comma_index + 2..].include? 'f.k.a.')
-            puts srr[0..comma_index + comma2_index]
-        else
-            puts srr[0..comma_index + bracket_index]
-        end
-            
+    comma_index = srr.index(',') 
+    comma2_index = srr[comma_index + 2..].index(',') 
+    bracket_index = srr[comma_index + 2..].index('(')
+    unless ( srr[comma_index + 2..].include? 'a.k.a.' or srr[comma_index + 2..].include? 'f.k.a.')
+        name = srr[0..comma_index + comma2_index]
+    else
+        name = srr[0..comma_index + bracket_index]
+    end
+    nationality_index = srr.index('nationality') 
+    semicolon_index = srr[nationality_index+12..].index(';')
+    nationality = srr[nationality_index+12..semicolon_index +nationality_index+11 ].gsub("\n"," ")
+    # p srr[nationality_index+12..]
+    nationality = 'North Korea' if nationality == "Korea, North"
+    nationality = 'China' if nationality == "hina"
+    nationality = 'Turkey' if nationality == "urkey"
+    nationality = 'Palestine' if nationality == 'Palestinian'
+    
+    risk_index = srr.index('Secondary sanctions risk:')
+    risk = srr[risk_index + 26..].gsub("\n"," ").gsub(' /',"").gsub('/',"")[..-2]
+    if risk.nil?
+        p 'hi'
+    end
 end

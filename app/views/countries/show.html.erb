@@ -1,0 +1,89 @@
+<div class="profile">
+
+    <% unless @country["flag"].nil? || @country["flag"].empty? %>
+    <figure>
+        <img class="country_feature" src="<%= @country["flag"] %>" alt="<%= @country["name"] %>">
+        <figcaption><%= @country.native_name %></figcaption>
+    </figure>
+    <% end%>
+
+    <div class='details'>   
+        <h2><%= @country["name"] %></h2>
+        <p><%= @country["official_name"] %></p>
+        <p>Number of sanctions: <%= @country.sanctions.size %></p>
+    </div>
+</div>
+
+<button type="button" class="collapsible">▼ National anthem - <%= @country["name"] %></button>
+<div class="content">
+    <% if @video.include? 'youtube.com/embed'%>
+        <iframe width="420" height="315"src="<%= @video %>"></iframe>
+    <% else%>
+        <p><%= @video %></p>
+    <% end%>
+</div>
+<br>
+
+
+<button type="button" class="collapsible">▼ Wikipedia - <%= @country["name"] %></button>
+<div class="content">
+    <p>
+        <% if @country_info == "Not Available" %>
+            Not available. <br> 
+            Why don't you google it yourself? <br> 
+            <a href="https://www.google.com/search?q=<%= @country["name"] %>">https://www.google.com/search?q=<%= @country["name"] %></a>
+        <% else%>
+        <%= @country_info %></p>
+        <% end%>
+</div>
+<br>
+
+
+<button type="button" class="collapsible">▼ CIA World Factbook 2018 - <%= @country["name"] %></button>
+<div class="content">
+    <% if !@cia_factbook[@country["name"].gsub(' ', '-')].nil? %>
+        <% @cia_factbook[@country["name"].gsub(' ', '-')].each do |key, value| %>
+            <p>  
+            <%= key.to_s.gsub('_', ' ') %>: <%= value %>
+            </p>
+        <% end %>
+    <% else %>
+        <p>Not available</p> 
+    <% end %>
+</div>
+
+
+<div class="control">
+    <a href="/countries/<%= @country["id"] %>/edit">Edit country</a>
+    <a class='delete' href="/countries/<%= @country["id"] %>/delete">Delete country</a>
+</div>
+
+<script>
+    colls = document.querySelectorAll(".collapsible");
+    colls.forEach(target =>
+        target.addEventListener("click", function() {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+
+            if (this.classList.contains("active")) {
+                this.textContent = this.textContent.replace('▼', '▲')
+            }
+            else {
+                this.textContent = this.textContent.replace('▲', '▼')
+            }
+        }))
+    
+
+    a = document.querySelector('.delete')
+    a.addEventListener('click', function(event) {
+        event.preventDefault();
+            if (confirm("Are you sure to delete this country? \n \n<%= @country.sanctions.size %> sanction(s) of this nationality will also be removed.")) {
+                window.location = this.href;
+            }
+    })
+    </script>
