@@ -51,6 +51,12 @@ class CountriesController < ApplicationController
 
   def destroy
     country = Country.find params[:id]
+    # raise 'h'
+    # if country.sanctions.size > 0
+    #   country.sanctions.each do |sanction|
+    #     sanction.destroy
+    #   end
+    # end
     country.destroy
     redirect_to countries_path
   end

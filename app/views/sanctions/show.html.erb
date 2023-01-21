@@ -1,2 +1,44 @@
-<h1>Sanctions#show</h1>
-<p>Find me in app/views/sanctions/show.html.erb</p>
+<div class="profile">
+
+    
+
+    <div class='details'>   
+        <h2><%= @sanction["name"] %></h2>
+        <p>Title: <%= @sanction["title"] %></p>
+        <p>Nationality: <%= @sanction["nationality"] %></p>
+        <p>Risk: <%= @sanction["risk"] %></p>
+    </div>
+
+    <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
+    <img class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
+    <% end%>
+
+</div>
+
+
+
+
+
+<h3>The below information is published and provided by OFAC. <br> <span style="font-weight:normal; font-size:medium">(Please note that it may not be up-to-date.)</span></h3>
+
+<h4 class='summary'>Summary</h4>
+<p><%= @summary %></p>
+
+<h4 class='address'>Address</h4>
+<p><%= @address %></p>
+
+<div class="control">
+    <a href="/sanctions/<%= @sanction["id"] %>/edit">Edit sanction</a>
+    <a class='delete' href="/sanctions/<%= @sanction["id"] %>/delete">Delete sanction</a>
+</div>
+
+<script>
+ 
+    const a = document.querySelector('.delete')
+    a.addEventListener('click', function(event) {
+        event.preventDefault();
+            if (confirm('Are you sure to delete this profile?')) {
+                window.location = this.href;
+            }
+    })
+    </script>
