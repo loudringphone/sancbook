@@ -1,17 +1,38 @@
-<h1>Edit country</h1>
+<h1>Update / Delete country</h1>
 
-<div class="edit">
-    <div class="editdelete">
+<div class="country_container">
+    <div>
         <%= render :partial => 'form' %>
         <br>
         <br>
         <%= button_to 'Delete Country', @movie, :method => 'delete', :data => { :confirm => "Are you sure to delete this country? \n \n#{@country.sanctions.size} sanction(s) of this nationality will also be removed." } %>
     </div>
     <% unless @country["flag"].nil? || @country["flag"].empty? %>
-        <figure>
-            <img class="country_feature" src="<%= @country["flag"] %>" alt="<%= @country["name"] %>">
-            <figcaption><%= @country.native_name %></figcaption>
+        <figure class ='preview'>
+            <img class="country_feature" src="<%= @country["flag"] %>" alt="<%= @country["name"] %>">  
         </figure>
     <% end%>
 </div>
 
+<script>
+
+        figure = document.querySelector("figure");
+        flag = document.querySelector("#country_flag");
+        flag.addEventListener("input", function(){
+        
+        e = figure.lastElementChild
+        if (flag.value != '') {
+            img = document.createElement('img')
+            img.src = flag.value
+            figure.appendChild(img)
+            figure.removeChild(e);
+        } else {
+            p = document.createElement('p')
+            p.textContent = "Image would pop up here as you fill in the flag input box."
+            figure.appendChild(p)
+            figure.removeChild(e);
+
+
+        }
+    })
+</script>

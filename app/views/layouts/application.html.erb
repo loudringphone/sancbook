@@ -13,9 +13,10 @@
     <div class="container">
         <nav>
             <a href="/">Home</a>
-            <a href="/countries">Countrys List</a>
-            <a href="/sanctions">Sanctions List</a>
-            <a href="/sanctions/new">Add New Sanction</a>
+            <%= link_to "All countries", countries_path %>
+            <%= link_to "New country", new_country_path %>
+            <%= link_to "All sanctions", sanctions_path %>
+            <%= link_to "New sanction", new_sanction_path %>
         </nav>
     <br><br>
         <%= yield %>

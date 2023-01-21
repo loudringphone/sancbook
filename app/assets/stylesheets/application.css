@@ -45,16 +45,6 @@ nav > a {
     margin-bottom: 50px;
 }
 
-.country_feature, figcaption {
-    max-width: 250px;
-    padding-right: 25px;
-    margin-left: -15%;
-}
-
-figcaption {
-    text-align: center;
-}
-
 img {
     max-width: 250px;
 }
@@ -82,11 +72,6 @@ img {
 
 button {
     margin-top: 15px;
-}
-
-form {
-    width: 350px;
-    padding: 0 10px 20px 10px;
 }
 
 label {
@@ -135,7 +120,50 @@ button {
     line-height: 150%;
 }
 
-.edit {
+.country_container {
     display: inline-flex;
-    gap: 10vw;
+    gap: 8vw;
 }
+
+form {
+    width: 350px;
+    padding: 0 10px 20px 10px;
+}
+
+
+
+.country_feature, figcaption {
+    max-width: 250px;
+    padding-right: 25px;
+    margin-left: -15%;
+}
+
+figcaption {
+    text-align: center;
+}
+
+div.preview {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.preview > p {
+    line-height: 150%;
+}
+
+figure.preview {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+figure.preview > p {
+    line-height: 150%;
+}
+
+

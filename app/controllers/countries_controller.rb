@@ -7,6 +7,12 @@ class CountriesController < ApplicationController
   end
 
   def new
+    @country = Country.new
+  end
+
+  def create
+    country = Country.create country_params
+    redirect_to country
   end
 
   def edit
@@ -19,7 +25,7 @@ class CountriesController < ApplicationController
     redirect_to country
   end
 
-  def delete
+  def destroy
     country = Country.find params[:id]
     country.destroy
     redirect_to countries_path
