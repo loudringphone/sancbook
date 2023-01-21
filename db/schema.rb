@@ -55,11 +55,6 @@ ActiveRecord::Schema.define(version: 2023_01_21_054107) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "dictators_favourites", id: false, force: :cascade do |t|
-    t.integer "dictators_id"
-    t.integer "favourites_id"
-  end
-
   create_table "favourites", force: :cascade do |t|
     t.text "title"
     t.integer "user_id"
@@ -67,11 +62,6 @@ ActiveRecord::Schema.define(version: 2023_01_21_054107) do
     t.integer "dictator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "favourites_sanctions", id: false, force: :cascade do |t|
-    t.integer "favourites_id"
-    t.integer "sanctions_id"
   end
 
   create_table "favourites_users", id: false, force: :cascade do |t|

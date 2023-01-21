@@ -1,5 +1,5 @@
 <h1>Create sanction</h1>
-<p class='error'><%= @error %></p>
+<p class='error'><%= @sanction_error %></p>
 <div class="form_container">
     <%= render :partial => 'form' %>
     <div class ='preview'><p>Image from the URL will pop up here as you fill in the image input box.</p></div>
@@ -22,8 +22,6 @@
             p.textContent = "Image from the URL will pop up here as you fill in the image input box."
             preview.appendChild(p)
             preview.removeChild(e);
-
-
         }
     })
 </script>

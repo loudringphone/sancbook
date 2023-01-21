@@ -143,8 +143,8 @@ figcaption {
 }
 
 div.preview {
-    width: 350px;
-    height: 350px;
+    width: 420px;
+    height: 420px;
     display: flex;
     justify-content: center;
     align-items: center;

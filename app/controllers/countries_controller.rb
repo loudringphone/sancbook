@@ -17,18 +17,20 @@ class CountriesController < ApplicationController
     @country.name = titleize(@country.name)
     unless Country.find_by(name: @country.name).present?
       @country.save
-      @error = ''
+      @country_error = ''
       redirect_to @country
     else
-      @error = "Entry with this name already exists!"
+      @country_error = "Entry with this name already exists!"
       render new_country_path
     end
   end
 
   def edit
-    $count = $count -1 unless $count == 0
-    if $count == 0
-      $error = ''
+    unless $country_error_ticker.nil?
+      $country_error_ticker = $country_error_ticker -1 unless $country_error_ticker == 0
+    end
+    if $country_error_ticker == 0
+      $country_error = ''
     end
     @country = Country.find params[:id]
   end
@@ -40,23 +42,21 @@ class CountriesController < ApplicationController
     country.name = titleize(country.name)
     unless (country.name != previous_name && Country.find_by(name: country.name).present?)
       country.save
-      $error = ''
+      country.sanctions.each do |sanction|
+        sanction.nationality = country.name
+        sanction.save
+      end
+      $country_error = ''
       redirect_to country
     else
-      $error = "Entry with this name already exists!"
-      $count = 2
+      $country_error = "Entry with this name already exists!"
+      $country_error_ticker = 2
       redirect_to edit_country_url
     end
   end
 
   def destroy
     country = Country.find params[:id]
-    # raise 'h'
-    # if country.sanctions.size > 0
-    #   country.sanctions.each do |sanction|
-    #     sanction.destroy
-    #   end
-    # end
     country.destroy
     redirect_to countries_path
   end
@@ -77,48 +77,46 @@ class CountriesController < ApplicationController
     end
 
 
-
-    your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
-    your_cse_id = 'e3218dc0a18944649' # www.google.com
-    # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
-    wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
-    wiki_results = HTTParty.get wiki_search
-    if !wiki_results.to_s.include? 'API key not valid'
-      wiki_url = wiki_results["items"][0]["link"]
-      wiki = wiki_url[wiki_url.index("/wiki/")+6..]
-      dbpedia_url = "https://dbpedia.org/page/#{wiki}"
-      result = HTTParty.get dbpedia_url
-      result = result.to_s
-      
-      if result.include? "<span property=\"dbo:abstract\" lang=\"en\" >"
-        span_en1 = result.index("<span property=\"dbo:abstract\" lang=\"en\" >") + 41
-        span_en2 = result[span_en1..].index("</span>") - 1
-        @country_info = result[span_en1..span_en1+span_en2].gsub('&#39','').gsub('&quot;','')
+    unless @country.name == 'Unknown'
+      your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+      your_cse_id = 'e3218dc0a18944649' # www.google.com
+      # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
+      wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
+      wiki_results = HTTParty.get wiki_search
+      if !wiki_results.to_s.include? 'API key not valid'
+        wiki_url = wiki_results["items"][0]["link"]
+        wiki = wiki_url[wiki_url.index("/wiki/")+6..]
+        dbpedia_url = "https://dbpedia.org/page/#{wiki}"
+        result = HTTParty.get dbpedia_url
+        result = result.to_s
+        
+        if result.include? "<span property=\"dbo:abstract\" lang=\"en\" >"
+          span_en1 = result.index("<span property=\"dbo:abstract\" lang=\"en\" >") + 41
+          span_en2 = result[span_en1..].index("</span>") - 1
+          @country_info = result[span_en1..span_en1+span_en2].gsub('&#39','').gsub('&quot;','')
+        else
+          @country_info = "Not Available"
+        end
       else
-        @country_info = "Not Available"
+        @country_info = wiki_results
       end
-    else
-      @country_info = wiki_results
-    end
-    
-    @cia_factbook = {}
-    filename = File.dirname(File.expand_path('../..', __FILE__)) + '/data/cia_factbook.csv'
-    CSV.foreach(filename, :headers => true, :header_converters => :symbol, :converters => :all) do |row|
-        @cia_factbook[row.fields[0]] = Hash[row.headers[1..-1].zip(row.fields[1..-1])]
-    end
-
-
-
-
-    your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
-    search = "#{@country.name} anthem"
-    api_video_results = "https://www.googleapis.com/youtube/v3/search?key=#{your_api_key}&q=#{search}&type=video&part=snippet"
-    video_results = HTTParty.get api_video_results
-    if !video_results.to_s.include? 'API key not valid'
-    @video = "https://www.youtube.com/embed/" + video_results["items"][0]["id"]["videoId"]
-    else
-      @video = video_results
       
+      @cia_factbook = {}
+      filename = File.dirname(File.expand_path('../..', __FILE__)) + '/data/cia_factbook.csv'
+      CSV.foreach(filename, :headers => true, :header_converters => :symbol, :converters => :all) do |row|
+          @cia_factbook[row.fields[0]] = Hash[row.headers[1..-1].zip(row.fields[1..-1])]
+      end
+
+      your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+      search = "#{@country.name} anthem"
+      api_video_results = "https://www.googleapis.com/youtube/v3/search?key=#{your_api_key}&q=#{search}&type=video&part=snippet"
+      video_results = HTTParty.get api_video_results
+      if !video_results.to_s.include? 'API key not valid'
+      @video = "https://www.youtube.com/embed/" + video_results["items"][0]["id"]["videoId"]
+      else
+        @video = video_results
+        
+      end
     end
 
   end

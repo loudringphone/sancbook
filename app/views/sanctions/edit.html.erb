@@ -1,2 +1,35 @@
-<h1>Sanctions#edit</h1>
-<p>Find me in app/views/sanctions/edit.html.erb</p>
+<h1>Update / Delete sanction</h1>
+<p class='error'><%= $sanction_error %></p>
+<div class="form_container">
+    <div>
+        <%= render :partial => 'form' %>
+        <br>
+        <br>
+        <%= button_to 'Delete Sanction', @movie, :method => 'delete', :data => { :confirm => "Are you sure to delete this sanction?" } %>
+    </div>
+ 
+        <figure class ='preview'>
+            <img class="sanction_feature" src="<%= @sanction["image"] %>">  
+        </figure>
+  
+</div>
+
+<script>
+
+    preview = document.querySelector(".preview");
+    profile_pic = document.querySelector("#sanction_image");
+    profile_pic.addEventListener("input", function(){
+        e = preview.lastElementChild
+        if (profile_pic.value != '') {
+            img = document.createElement('img')
+            img.src = profile_pic.value
+            preview.appendChild(img)
+            preview.removeChild(e);
+        } else {
+            p = document.createElement('p')
+            p.textContent = "Image from the URL will pop up here as you fill in the image input box."
+            preview.appendChild(p)
+            preview.removeChild(e);
+        }
+    })
+</script>
