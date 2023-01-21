@@ -1,0 +1,2 @@
+module SanctionsHelper
+end

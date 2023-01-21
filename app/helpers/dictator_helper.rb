@@ -1,0 +1,2 @@
+module DictatorHelper
+end

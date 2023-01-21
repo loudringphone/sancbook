@@ -1,18 +1,18 @@
 <%= form_for @country do |f| %>
-    <%= f.label :name, :required => true %>
+    <%= f.label :name, "Name:", :required => true %>
     <%= f.text_field :name %>
     <br>
     <br>
-    <%= f.label :official_name %>
+    <%= f.label :official_name, "Official name:" %>
     <%= f.text_field :official_name %>
     <br>
     <br>
-    <%= f.label :native_name %>
+    <%= f.label :native_name, "Native official name:" %>
     <%= f.text_field :native_name %>
     <br>
     <br>
-    <%= f.label :flag %>
-    <%= f.text_field :flag %>
+    <%= f.label :flag, "Flag:" %>
+    <%= f.text_field :flag, placeholder: 'Type URL here..' %>
     <br>
     <br>
     <br>

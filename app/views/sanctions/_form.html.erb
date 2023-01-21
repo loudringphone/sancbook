@@ -1,0 +1,21 @@
+<%= form_for @sanction do |f| %>
+    <%= f.label :name, "Name:", :required => true %>
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :nationality, "Nationality:" %>
+    <%= f.text_field :nationality %>
+    <br>
+    <br>
+    <%= f.label :risk, "Secondary Sanctions Risk:" %>
+    <%= f.text_field :risk %>
+    <br>
+    <br>
+    <%= f.label :image, "Image:" %>
+    <%= f.text_field :image, placeholder: 'Type URL here..' %>
+    <br>
+    <br>
+    <br>
+    <%= f.submit %>
+
+<% end %>

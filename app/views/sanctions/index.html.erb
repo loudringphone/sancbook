@@ -1,0 +1,9 @@
+<h1>Sanction List</h1>
+<p>Currently <%= @sanctions.size %> sanctions on the list.</p>
+<% @sanctions.each do |sanction| %>
+    <p>
+        <a href="/sanctions/<%= sanction["id"] %>">
+            <%= sanction["name"] %>
+        </a>
+    </p>
+<% end%>

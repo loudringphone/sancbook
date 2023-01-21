@@ -120,7 +120,7 @@ button {
     line-height: 150%;
 }
 
-.country_container {
+.form_container {
     display: inline-flex;
     gap: 8vw;
 }
@@ -164,6 +164,11 @@ figure.preview {
 
 figure.preview > p {
     line-height: 150%;
+}
+
+p.error {
+    color: red;
+    font-size: medium;
 }
 
 

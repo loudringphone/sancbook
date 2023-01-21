@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_20_043537) do
+ActiveRecord::Schema.define(version: 2023_01_21_054107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 2023_01_20_043537) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "countries_country_names", id: false, force: :cascade do |t|
+    t.integer "countries_id"
+    t.integer "country_names_id"
+  end
+
   create_table "countries_dictators", id: false, force: :cascade do |t|
     t.integer "countries_id"
     t.integer "dictators_id"
@@ -32,6 +37,12 @@ ActiveRecord::Schema.define(version: 2023_01_20_043537) do
   create_table "countries_sanctions", id: false, force: :cascade do |t|
     t.integer "countries_id"
     t.integer "sanctions_id"
+  end
+
+  create_table "country_names", force: :cascade do |t|
+    t.string "name"
+    t.string "alt_name"
+    t.integer "country_id"
   end
 
   create_table "dictators", force: :cascade do |t|

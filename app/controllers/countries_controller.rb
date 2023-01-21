@@ -1,3 +1,5 @@
+require 'HTTParty'
+
 class CountriesController < ApplicationController
 
  
@@ -11,18 +13,40 @@ class CountriesController < ApplicationController
   end
 
   def create
-    country = Country.create country_params
-    redirect_to country
+    @country = Country.new country_params
+    @country.name = titleize(@country.name)
+    unless Country.find_by(name: @country.name).present?
+      @country.save
+      @error = ''
+      redirect_to @country
+    else
+      @error = "Entry with this name already exists!"
+      render new_country_path
+    end
   end
 
   def edit
+    $count = $count -1 unless $count == 0
+    if $count == 0
+      $error = ''
+    end
     @country = Country.find params[:id]
   end
 
   def update
     country = Country.find params[:id]
-    country.update country_params
-    redirect_to country
+    previous_name = country.name
+    country.assign_attributes country_params
+    country.name = titleize(country.name)
+    unless (country.name != previous_name && Country.find_by(name: country.name).present?)
+      country.save
+      $error = ''
+      redirect_to country
+    else
+      $error = "Entry with this name already exists!"
+      $count = 2
+      redirect_to edit_country_url
+    end
   end
 
   def destroy
@@ -94,8 +118,40 @@ class CountriesController < ApplicationController
   end
 
   private
+  def titleize(str)
+    str.split(/ |\_/).map(&:capitalize).join(" ")
+  end
+
   def country_params
     params.require(:country).permit(:name, :official_name, :native_name, :flag)
+  end
+
+  def country_info country_name
+    begin
+    country_url = "https://restcountries.com/v3.1/name/#{country_name.gsub(' ', '%20')}?fullText=true"
+    country_details = HTTParty.get country_url
+    rescue
+        country_details = [{:status => 404,:message => "Not Found"}]
+    end
+    country_info = {:official_name => "", :native_name => "", :flag => ""}
+    if !country_details[0].nil?
+        if country_details[0].key?("name")
+            if country_details[0]["name"].key?("official")
+                country_info[:official_name] = country_details[0]["name"]["official"]
+            end
+            if country_details[0]["name"].key?("nativeName")
+                native_name_list = country_details[0]["name"]["nativeName"].flatten
+                native_name_list = native_name_list.drop(2) if native_name_list[0] == "eng" && native_name_list.length > 2
+                country_info[:native_name] = native_name_list[1]["official"]
+            end
+        end
+        if country_details[0].key?("flags")
+            if country_details[0]["flags"].key?("png")
+                country_info[:flag] = country_details[0]["flags"]["png"]
+            end
+        end
+    end
+    return country_info
   end
 
 end
