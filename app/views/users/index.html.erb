@@ -1,0 +1,7 @@
+<h1>User List</h3>
+<div class='user_index'>
+    <% User.all.each do |user| %>
+        <a href="/users/<%= user.id %>/profile"><%= user.username %></a>
+    <% end %>
+</div>
+

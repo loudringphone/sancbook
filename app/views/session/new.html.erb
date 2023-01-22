@@ -1,0 +1,44 @@
+<div class="login_profile">
+    <div>
+        <h2>EXISTING USER</h2>
+        <p>
+            <%= flash[:error] %>
+        </p>
+
+        <%= form_tag login_path do %>
+            <%= label_tag :email, '*Email address' %>
+            <%= email_field_tag :email %>
+            <br><br>
+            <%= label_tag :password, '*Password' %>
+            <%= password_field_tag :password %>
+            <br><br>
+            <%= submit_tag "LOGIN TO YOUR ACCOUNT", :class=>"submit" %>
+        <% end %>
+    </div>
+
+    <div>
+        <h2>NEW USER</h2>
+
+        <%= form_tag new_user_path, :method => 'get' do %>
+            <%= submit_tag "REGISTER", :class=>"submit"%>
+        <% end %>
+
+        
+    
+    
+    
+    </div>
+
+</div>
+
+
+
+
+<script>
+
+    user = document.querySelector('.user')
+    user.style.display = "none";
+
+</script>
+
+

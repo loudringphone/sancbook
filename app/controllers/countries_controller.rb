@@ -1,8 +1,8 @@
 require 'HTTParty'
 
 class CountriesController < ApplicationController
-
- 
+  before_action :check_for_admin, :only => [:edit]
+  before_action :check_for_admin, :only => [:new]
 
   def index
     @countries = Country.all
@@ -83,19 +83,23 @@ class CountriesController < ApplicationController
       # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
       wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
       wiki_results = HTTParty.get wiki_search
-      if !wiki_results.to_s.include? 'API key not valid'
-        wiki_url = wiki_results["items"][0]["link"]
-        wiki = wiki_url[wiki_url.index("/wiki/")+6..]
-        dbpedia_url = "https://dbpedia.org/page/#{wiki}"
-        result = HTTParty.get dbpedia_url
-        result = result.to_s
-        
-        if result.include? "<span property=\"dbo:abstract\" lang=\"en\" >"
-          span_en1 = result.index("<span property=\"dbo:abstract\" lang=\"en\" >") + 41
-          span_en2 = result[span_en1..].index("</span>") - 1
-          @country_info = result[span_en1..span_en1+span_en2].gsub('&#39','').gsub('&quot;','')
+      unless wiki_results["items"].nil?
+        unless wiki_results["items"][0]["link"].include? 'wikipedia.org/wiki/'
+          @sanction_info = "Not Available"
         else
-          @country_info = "Not Available"
+          wiki_url = wiki_results["items"][0]["link"]
+          wiki = wiki_url[wiki_url.index("/wiki/")+6..]
+          dbpedia_url = "https://dbpedia.org/page/#{wiki}"
+          result = HTTParty.get dbpedia_url
+          result = result.to_s
+          
+          if result.include? "<span property=\"dbo:abstract\" lang=\"en\" >"
+            span_en1 = result.index("<span property=\"dbo:abstract\" lang=\"en\" >") + 41
+            span_en2 = result[span_en1..].index("</span>") - 1
+            @country_info = result[span_en1..span_en1+span_en2].gsub('&#39','').gsub('&quot;','')
+          else
+            @country_info = "Not Available"
+          end
         end
       else
         @country_info = wiki_results

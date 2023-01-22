@@ -1,8 +1,12 @@
-# User.destroy_all
-# u1 = User.create :username => 'Jones', :email => 'jonesy@ga.co', :password => 'chicken'
-# u2 = User.create :username => 'Craig', :email => 'craigsy@ga.co', :password => 'chicken'
-# puts "#{ User.count } users"
+User.destroy_all
+u1 = User.create :username => 'Admin', :email => 'admin@sanction.com', :password => 'admin', :admin => true
+u2 = User.create :username => 'Craig', :email => 'craigsy@ga.co', :password => 'chicken'
+puts "#{ User.count } users"
 
+
+Dictator.destroy_all
+Dictator.create :name => 'Kim Jong-un', :title => 'Supreme Leader', :nationality => 'North Koera', :dob => '1982-01-08', :image => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kim_Jong-un_April_2019_%28cropped%29.jpg/800px-Kim_Jong-un_April_2019_%28cropped%29.jpg'
+puts "#{ Dictator.count } dictators"
 
 # Sanction.destroy_all
 # filename = File.dirname(File.expand_path('..', __FILE__)) + '/data/srr4.txt'
@@ -38,12 +42,12 @@
 
 # puts "#{ Sanction.count } sanctions"
 
-s1 = Sanction.create :name => 'CHO, Yong Chol', :nationality => 'North Korea', :risk => "North Korea Sanctions Regulations,
-sections 510.201 and 510.210; Transactions Prohibited For Persons Owned or
-Controlled By U.S. Financial Institutions: North Korea Sanctions Regulations
-section 510.214; North Korea's Ministry of State Security Official (individual)
-[DPRK2]", :image => ''
-puts "#{ Sanction.count } sanctions"
+# s1 = Sanction.create :name => 'CHO, Yong Chol', :nationality => 'North Korea', :risk => "North Korea Sanctions Regulations,
+# sections 510.201 and 510.210; Transactions Prohibited For Persons Owned or
+# Controlled By U.S. Financial Institutions: North Korea Sanctions Regulations
+# section 510.214; North Korea's Ministry of State Security Official (individual)
+# [DPRK2]", :image => ''
+# puts "#{ Sanction.count } sanctions"
 
 
 

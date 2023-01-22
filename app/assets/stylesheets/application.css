@@ -125,14 +125,14 @@ button {
     gap: 8vw;
 }
 
-form {
+.form_container > form {
     width: 350px;
     padding: 0 10px 20px 10px;
 }
 
 
 
-.country_feature, figcaption {
+.country_feature, div.profile > figure > figcaption {
     max-width: 250px;
     padding-right: 25px;
     margin-left: -15%;
@@ -171,4 +171,127 @@ p.error {
     font-size: medium;
 }
 
+button.collapsible {
+    font-size: large;
+    padding:10px 10px 4px 4px;
+    margin-left: 0px;
+    font-weight: bold;
+}
 
+header {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+div.login_profile{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px
+}
+
+div.login_profile > div {
+    width: 100%;
+    height: max-content;
+    text-align: left;
+    background-color: white;
+    padding: 0 30px 40px 30px;
+    line-height: 180%;
+}
+
+div.login_profile > div > form > label {
+    padding-bottom: 1%;
+}
+
+div.login_profile > div > form > input {
+    font-size: large;
+    line-height: 150%;
+}
+
+div.login_profile > div > form > .submit {
+    margin-top: 5%;
+}
+
+div.login_profile > div > p {
+    color: red;
+}
+
+div.signup_profile{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+div.signup_profile > div {
+    width: 100%;
+    height: max-content;
+    text-align: left;
+    background-color: white;
+    padding: 30px 30px 40px 30px;
+    line-height: 180%;
+}
+
+div.signup_profile > div > form > label {
+    padding-bottom: 1%;
+}
+
+div.signup_profile > div > form > input {
+    font-size: large;
+    line-height: 150%;
+    margin-bottom: 5%;
+}
+
+div.signup_profile > div > form > div.field_with_errors > label {
+    padding-bottom: 1%;
+}
+
+div.signup_profile > div > form > div.field_with_errors > input {
+    font-size: large;
+    line-height: 150%;
+    margin-bottom: 5%;
+}   
+
+
+
+div.signup_profile > div > form > .submit {
+    margin-top: 10%;
+}
+
+ol > li {
+    color: red;
+}
+
+div.user_profile {
+    display:inline-flex
+}
+
+
+div.thumb {
+    width:140px;
+    height: 130px;
+    display: flex;
+}
+
+div.thumb > a {
+    text-align: center;
+}
+
+div.thumb > a > img {
+    width: 90px;
+    align-self: center;
+    
+}
+div.thumb > a > figcaption {
+    margin: 0 auto;
+}
+
+.country_index {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.user_index {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 25px
+}

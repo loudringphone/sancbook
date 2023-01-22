@@ -11,13 +11,32 @@
 
   <body>
     <div class="container">
+      <header>
         <nav>
             <a href="/">Home</a>
             <%= link_to "All countries", countries_path %>
-            <%= link_to "New country", new_country_path %>
+            <% if @current_user.present? %>
+              <% if @current_user.admin? %>
+                <%= link_to "New country", new_country_path %>
+              <% end %>
+            <% end %>
             <%= link_to "All sanctions", sanctions_path %>
-            <%= link_to "New sanction", new_sanction_path %>
+            <% if @current_user.present? %>
+              <%= link_to "New sanction", new_sanction_path %>
+            <% end %>
         </nav>
+        <nav class='user'>
+        <% if @current_user.present? %>
+            <% if @current_user.admin? %>
+              <%= link_to "All users", users_path %>
+            <% end %>
+            
+            <span><%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{@current_user.id}/profile" %>)</span>
+        <% else %>
+            <%= link_to "Login", login_path %>
+        <% end %>
+        </nav>
+      </header>
     <br><br>
         <%= yield %>
     </div>

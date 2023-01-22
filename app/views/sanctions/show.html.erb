@@ -4,9 +4,9 @@
 
     <div class='details'>   
         <h2><%= @sanction["name"] %></h2>
-        <p>Title: <%= @sanction["title"] %></p>
         <p>Nationality: <%= @sanction["nationality"] %></p>
         <p>Risk: <%= @sanction["risk"] %></p>
+        <p>Sanctioned by: <a href="/users/<%= @sanction.user_id %>/profile"><%= @sanctioned_by %></a></p>
     </div>
 
     <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
@@ -14,9 +14,6 @@
     <% end%>
 
 </div>
-
-
-
 
 
 <h3>The below information is published and provided by OFAC. <br> <span style="font-weight:normal; font-size:medium">(Please note that it may not be up-to-date.)</span></h3>
@@ -27,6 +24,49 @@
 <h4 class='address'>Address</h4>
 <p><%= @address %></p>
 
-<div class="control">
-    <a href="/sanctions/<%= @sanction["id"] %>/edit">Update / Delete sanction</a>
+<br>
+
+<button type="button" class="collapsible">▼ Wikipedia - <%= @sanction["name"] %></button>
+<div class="content">
+    <p>
+        <% if @sanction_info == "Not Available" %>
+            Not available. <br> 
+            Why don't you google it yourself? <br> 
+            <a href="https://www.google.com/search?q=<%= @sanction["name"] %>">https://www.google.com/search?q=<%= @sanction["name"] %></a>
+        <% else%>
+        <%= @sanction_info %>
+        <% end%></p>
 </div>
+
+<br>
+
+<% if (@current_user.admin? || @current_user.id === Sanction.find_by(id: params[:id]).user_id) %>
+    <div class="control">
+        <a href="/sanctions/<%= @sanction["id"] %>/edit">Update / Delete sanction</a>
+    </div>  
+<% end %>
+
+
+
+<script>
+    coll = document.querySelector(".collapsible");
+    coll.addEventListener("click", function() {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+
+            if (this.classList.contains("active")) {
+                this.textContent = this.textContent.replace('▼', '▲')
+            }
+            else {
+                this.textContent = this.textContent.replace('▲', '▼')
+            }
+        })
+    
+
+
+    </script>

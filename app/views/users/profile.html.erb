@@ -1,0 +1,46 @@
+<% if @current_user.id == params[:id].to_i %>
+    <h1>Hello, <%= @current_user.username %>!</h1>
+    <br>
+    <h3>Your sanctions</h3>
+<% else %>
+    <% if @current_user.admin? %>
+        <h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
+    <% else %>
+        <h1><%= User.find_by(id: params[:id]).username %>'s profile</h1>
+    <% end %>
+    <br>
+    <h3>Their sanctions</h3>
+<% end %>
+
+
+<div class='user_profile'>
+    <% count = 0 %>
+    <% Sanction.all.each do |sanction| %>
+        <% if sanction.user_id == params[:id].to_i %>
+            <nav><a href="/sanctions/<%= sanction.id %>">
+            <%= sanction.name %>
+        </a></nav>
+            <% count = count + 1 %>
+        <% end %>
+    <% end %>
+    <% if count == 0 %>
+        <% if @current_user.id == params[:id].to_i %>
+            <p>You have not created any sanciton yet. Why don't you start sanctioning some people?</p>
+        <% else %>
+            <p>No sanctions by this user yet. </p>
+        <% end %>
+    <% end %>
+</div>
+
+
+
+
+
+
+
+<br><br><br>
+<% if @current_user.id == params[:id].to_i %>
+    <h3>Your favourites</h3>
+<% else %>
+    <h3>Their favourites</h3>
+<% end %>

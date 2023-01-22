@@ -1,4 +1,6 @@
 class SanctionsController < ApplicationController
+  before_action :check_for_sanction_creator, :only => [:edit]
+
   module SDN
     @sdn_details_hash = {}
     @sdn_id_hash = {}
@@ -43,6 +45,7 @@ class SanctionsController < ApplicationController
 
   def create
     @sanction = Sanction.new sanction_params
+    @sanction.user_id = @current_user.id
     @sanction.name = titleize(@sanction.name)
     @sanction.nationality = titleize(@sanction.nationality)
     @sanction.nationality = 'Unknown' if @sanction.nationality.empty?
@@ -60,10 +63,10 @@ class SanctionsController < ApplicationController
       unless @sanction.nationality.empty?
         Country.find_by(name: @sanction.nationality).sanctions << @sanction
       end
-      @error = ''
+      @sanction_error = ''
       redirect_to @sanction
     else
-      @error = "Entry with this name already exists!"
+      @sanction_error = "Entry with this name already exists!"
       render new_sanction_path
     end
   end
@@ -125,7 +128,14 @@ class SanctionsController < ApplicationController
 
   def show
     @sanction = Sanction.find params[:id]
-
+    unless @sanction.user_id.nil?
+      @sanctioned_by = User.find_by(id: @sanction.user_id).username
+    end
+    comma_index = @sanction.name.index(',')
+    unless comma_index.nil?
+      @sanction.name = @sanction.name[0..comma_index].upcase + @sanction.name[comma_index+1..]
+      @sanction.save
+    end
     unless @sanction.image.nil?
       if @sanction.image.empty?
         begin
@@ -140,16 +150,6 @@ class SanctionsController < ApplicationController
         end
       end
     end
-
-
-
-
-
-
-
-
-
-
 
     @summary =  SDN.sdn_details(@sanction.name)
     @summary = "Not avaliable" if @summary == '-0-' || @summary == nil
@@ -177,10 +177,37 @@ class SanctionsController < ApplicationController
     @address = SDN.sdn_address(SDN.sdn_id(@sanction.name))
     @address = @address.strip if @address.instance_of? String
     @address = "Not avaliable" if @address == '-0-' || @address == nil
+
+
+    your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+    your_cse_id = 'e3218dc0a18944649' # www.google.com
+    # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
+    wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@sanction.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
+    wiki_results = HTTParty.get wiki_search
+   
+   unless wiki_results["items"].nil?
+      wiki_url = wiki_results["items"][0]["link"]
+      unless wiki_results["items"][0]["link"].include? 'wikipedia.org/wiki/'
+        @sanction_info = "Not Available"
+      else
+        wiki = wiki_url[wiki_url.index("/wiki/")+6..]
+        dbpedia_url = "https://dbpedia.org/page/#{wiki}"
+        result = HTTParty.get dbpedia_url
+        result = result.to_s
+        
+        if result.include? "<span property=\"dbo:abstract\" lang=\"en\" >"
+          span_en1 = result.index("<span property=\"dbo:abstract\" lang=\"en\" >") + 41
+          span_en2 = result[span_en1..].index("</span>") - 1
+          @sanction_info = result[span_en1..span_en1+span_en2].gsub('&#39','').gsub('&quot;','')
+        else
+          @sanction_info = "Not Available"
+        end
+      end
+    else
+      @sanction_info = "Not Available"
+    end
   end
   
-
-
 
 end
 

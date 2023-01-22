@@ -1,5 +1,4 @@
 <div class="profile">
-
     <% unless @country["flag"].nil? || @country["flag"].empty? %>
     <figure>
         <img class="country_feature" src="<%= @country["flag"] %>" alt="<%= @country["name"] %>">
@@ -16,8 +15,6 @@
 
 
 
-
-
 <button type="button" class="collapsible">▼ National anthem - <%= @country["name"] %></button>
 <div class="content">
     <% unless @video.nil?%>
@@ -28,8 +25,6 @@
         <% end%>
     <% end%>
 </div>
-<br>
-
 
 <button type="button" class="collapsible">▼ Wikipedia - <%= @country["name"] %></button>
 <div class="content">
@@ -60,10 +55,11 @@
     <% end %>
 </div>
 
-
-<div class="control">
-    <%= link_to 'Update / Delete country', edit_country_path(@country) %>
-</div>
+<% if @current_user.admin? %>
+    <div class="control">
+        <%= link_to 'Update / Delete country', edit_country_path(@country) %>
+    </div>
+<% end %>
 
 <script>
     colls = document.querySelectorAll(".collapsible");
@@ -95,18 +91,6 @@
         contents.forEach(target =>
             container.removeChild(target)
         )
-
-
-
-
-
-
-
-
-
-
     }
-
-
 
     </script>
