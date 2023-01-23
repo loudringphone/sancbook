@@ -29,8 +29,8 @@
         <% if @current_user.present? %>
             <% unless @current_user.admin? %>
                 <% if @fav == true%>
-                    <%= link_to "Remove from favourite", "#{params[:id]}/remove_favourite", method: :delete , style: "font-size:small;margin-top:-5%" %>
-                    <p>My favourite ❤️</p>
+                    <%= link_to "Remove from favourite", "#{params[:id]}/remove_favourite", method: :delete , style: "font-size:small;margin-top:-5%", class: "remove" %>
+                    <p class="favourite">My favourite ❤️</p>
                     
                 <% else %>
                     <%= link_to "Add to favourite", "#{params[:id]}/add_favourite", method: :post , class: "favourite" %>
@@ -95,7 +95,7 @@
     
     div_feature = document.querySelector(".div_feature")
     favourite = document.querySelector(".favourite")
-    // h2 = document.querySelector("h2")
+    h2 = document.querySelector("h2")
     favored = document.querySelector(".favored")
     if (favourite != null) {
         favourite.addEventListener("click", function() {
@@ -126,79 +126,130 @@
             
             
        
-        idArray.push(parseInt("<%= @id %>"))
-        usernameArray.push("<%= User.find_by(id: @id).username %>")
+            idArray.push(parseInt("<%= @id %>"))
+            usernameArray.push("<%= User.find_by(id: @id).username %>")
 
 
 
-        if (idArray.length <= 4) {
-            if (idArray[0] === "") {
-                a = document.createElement('a')
-                link = document.createTextNode(usernameArray[1])
-                a.appendChild(link)
-                a.href = `/users/${idArray[1]}/profile`
-                favored.appendChild(a)
-            }
-            else {
-                for (let i=0;i<idArray.length;i++) {
-
-                    a = document.createElement('a')
-                    link = document.createTextNode(usernameArray[i])
-                    a.appendChild(link)
-                    a.href = `/users/${idArray[i]}/profile`
-                    favored.appendChild(a)
-                    if (i == idArray.length - 2) {
-                        span = document.createElement("span");
-                        txt = document.createTextNode(" and ");
-                        span.appendChild(txt);
-                        favored.appendChild(span)
-                        continue
-                    }
-                    if (i < idArray.length - 1) {
-                        span = document.createElement("span");
-                        txt = document.createTextNode(", ");
-                        span.appendChild(txt);
-                        favored.appendChild(span)
+            if (idArray.length <= 4) {
+                if (idArray[0] === "") {
+                    createAtag(usernameArray[1],`/users/${idArray[1]}/profile`)
+                }
+                else {
+                    for (let i=0;i<idArray.length;i++) {
+                        createAtag(usernameArray[i],`/users/${idArray[i]}/profile`)
+                        if (i == idArray.length - 2) {
+                            createSpantag(" and ")
+                            continue
+                        }
+                        if (i < idArray.length - 1) {
+                            createSpantag(", ")
+                        }
                     }
                 }
             }
-        }
-        if (idArray.length > 4) {
-            for (let i=0;i<2;i++) {
-                a = document.createElement('a')
-                link = document.createTextNode(usernameArray[i])
-                a.appendChild(link)
-                a.href = `/users/${idArray[i]}/profile`
-                favored.appendChild(a)
-                span = document.createElement("span");
-                txt = document.createTextNode(", ");
-                span.appendChild(txt);
-                favored.appendChild(span)
+            if (idArray.length > 4) {
+                for (let i=0;i<2;i++) {
+                    createAtag(usernameArray[i],`/users/${idArray[i]}/profile`)
+                    createSpantag(", ")
+                }
+                favored.removeChild(favored.lastChild)
+                createSpantag(" and ")
+                createAtag(idArray.length - 2,`/sanctions/<%= params[:id] %>/favourites`)
+                createSpantag(" others")
+
             }
-            favored.removeChild(favored.lastChild)
-            span = document.createElement("span");
-            txt = document.createTextNode(" and ");
-            span.appendChild(txt);
-            favored.appendChild(span)
-            a = document.createElement('a')
-            link = document.createTextNode(idArray.length - 2)
-            a.appendChild(link)
-            a.href = `/sanctions/<%= params[:id] %>/favourites`
-            favored.appendChild(a)
-            span = document.createElement("span");
-            txt = document.createTextNode(" others");
-            span.appendChild(txt);
-            favored.appendChild(span)
+        })
+    }
+
+    
+    remove = document.querySelector(".remove")
+    if (remove != null) {
+        remove.addEventListener("click", function() {
+            setTimeout(function() {
+                if (<%= @fav %> === true ) {
+                    p = document.createElement('p')
+                    p.textContent = "Favourite removed!"
+                    div_feature.appendChild(p)
+                    div_feature.removeChild(remove)
+                    div_feature.removeChild(favourite)
+                }
+            },300)
+
+            max = favored.childElementCount
+            count = 0
+            while (favored.firstChild && count != max * 2) {
+                favored.removeChild(favored.lastChild);
+                count++
+            }
+            
+            idArray = "<%= @favoured_by_id %>".replace('[','')
+            idArray = idArray.replace(']','')
+            idArray = idArray.split(', ')   
+            usernameArray = "<%= @favoured_by_username %>"
+            usernameArray = usernameArray.replace(/&quot;/g,'')
+            usernameArray = usernameArray.replace('[','')
+            usernameArray = usernameArray.replace(']','')
+            usernameArray = usernameArray.split(', ')
+
+            newidArray = []
+            for (let i=0;i<idArray.length;i++) {
+                if (idArray[i] == parseInt("<%= @id %>")) {
+                    continue
+                }
+                else {
+                    newidArray.push(idArray[i])
+                }
+            }
+
+            newusernameArray = []
+            for (let i=0;i<usernameArray.length;i++) {
+                if (usernameArray[i] == "<%= User.find_by(id: @id).username %>") {
+                    continue
+                }
+                else {
+                    newusernameArray.push(usernameArray[i])
+                }
+            }
+        
+            if (newidArray.length <= 4) {
+                if (newidArray[0] === "") {
+                    createAtag(newusernameArray[1],`/users/${newidArray[1]}/profile`)
+                }
+                else {
+                    for (let i=0;i<newidArray.length;i++) {
+                        createAtag(newusernameArray[i],`/users/${newidArray[i]}/profile`)
+                        if (i == newidArray.length - 2) {
+                            createSpantag(" and ")
+                            continue
+                        }
+                        if (i < newidArray.length - 1) {
+                            createSpantag(", ")
+                        }
+                    }
+                }
+            }
+            if (newidArray.length > 4) {
+                for (let i=0;i<2;i++) {
+                    createAtag(newusernameArray[i],`/users/${newidArray[i]}/profile`)
+                    createSpantag(", ")
+                }
+                favored.removeChild(favored.lastChild)
+                createSpantag(" and ")
+                createAtag(newidArray.length - 2,`/sanctions/<%= params[:id] %>/favourites`)
+                createSpantag(" others")
+
+            }
 
 
-        }
-        
-        
+
+
+
+
+
 
 
         })
     }
-
-
 
 </script>

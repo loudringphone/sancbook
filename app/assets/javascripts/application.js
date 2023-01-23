@@ -13,3 +13,20 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+const createAtag = function(text, link) {
+    a = document.createElement('a')
+    b = document.createTextNode(text)
+    a.appendChild(b)
+    a.href = link
+    favored.appendChild(a)
+    
+}
+
+const createSpantag = function(txt) {
+    span = document.createElement("span");
+    txt = document.createTextNode(txt);
+    span.appendChild(txt);
+    favored.appendChild(span)
+}
+                    
