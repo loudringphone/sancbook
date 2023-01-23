@@ -7,12 +7,37 @@
         <p>Nationality: <%= @sanction["nationality"] %></p>
         <p>Risk: <%= @sanction["risk"] %></p>
         <p>Sanctioned by: <a href="/users/<%= @sanction.user_id %>/profile"><%= @sanctioned_by %></a></p>
+        <p class='favored'>Favoured by: 
+        <% if @favoured_by_id.size <= 4%>
+            <% count = 1 %>
+            <% @favoured_by_id.each do |user_id| %>
+                <a href="/users/<%= user_id %>/profile"><%= User.find_by(id: user_id).username %></a><%if (count < @favoured_by_id.size-1)%>, 
+                <% elsif count == @favoured_by_id.size-1 %> and <% end %>
+                <% count += 1 %>
+            <% end %>
+        <% else %>
+            <a href="/users/<%= @favoured_by_id[0] %>/profile"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>/profile"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
+        <% end %>
+         </p>
+        
     </div>
 
+    <div class="div_feature">
     <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
     <img class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
     <% end%>
-
+        <% if @current_user.present? %>
+            <% unless @current_user.admin? %>
+                <% if @fav == true%>
+                    <%= link_to "Remove from favourite", "#{params[:id]}/remove_favourite", method: :delete , style: "font-size:small;margin-top:-5%" %>
+                    <p>My favourite ❤️</p>
+                    
+                <% else %>
+                    <%= link_to "Add to favourite", "#{params[:id]}/add_favourite", method: :post , class: "favourite" %>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
 </div>
 
 
@@ -39,11 +64,12 @@
 </div>
 
 <br>
-
-<% if (@current_user.admin? || @current_user.id === Sanction.find_by(id: params[:id]).user_id) %>
-    <div class="control">
-        <a href="/sanctions/<%= @sanction["id"] %>/edit">Update / Delete sanction</a>
-    </div>  
+<% if @current_user.present? %>
+    <% if (@current_user.admin? || @current_user.id === Sanction.find_by(id: params[:id]).user_id) %>
+        <div class="control">
+            <a href="/sanctions/<%= @sanction["id"] %>/edit">Update / Delete sanction</a>
+        </div>  
+    <% end %>
 <% end %>
 
 
@@ -67,6 +93,112 @@
             }
         })
     
+    div_feature = document.querySelector(".div_feature")
+    favourite = document.querySelector(".favourite")
+    // h2 = document.querySelector("h2")
+    favored = document.querySelector(".favored")
+    if (favourite != null) {
+        favourite.addEventListener("click", function() {
+            setTimeout(function() {
+                if (<%= @fav %> === false ) {
+                    p = document.createElement('p')
+                    p.textContent = "Added to my favourite ❤️"
+                    div_feature.appendChild(p)
+                    div_feature.removeChild(favourite)
+                }
+            },500)
+
+            max = favored.childElementCount
+            count = 0
+            while (favored.firstChild && count != max * 2) {
+                favored.removeChild(favored.lastChild);
+                count++
+            }
+
+            idArray = "<%= @favoured_by_id %>".replace('[','')
+            idArray = idArray.replace(']','')
+            idArray = idArray.split(', ')
+            usernameArray = "<%= @favoured_by_username %>"
+            usernameArray = usernameArray.replace(/&quot;/g,'')
+            usernameArray = usernameArray.replace('[','')
+            usernameArray = usernameArray.replace(']','')
+            usernameArray = usernameArray.split(', ')
+            
+            
+       
+        idArray.push(parseInt("<%= @id %>"))
+        usernameArray.push("<%= User.find_by(id: @id).username %>")
 
 
-    </script>
+
+        if (idArray.length <= 4) {
+            if (idArray[0] === "") {
+                a = document.createElement('a')
+                link = document.createTextNode(usernameArray[1])
+                a.appendChild(link)
+                a.href = `/users/${idArray[1]}/profile`
+                favored.appendChild(a)
+            }
+            else {
+                for (let i=0;i<idArray.length;i++) {
+
+                    a = document.createElement('a')
+                    link = document.createTextNode(usernameArray[i])
+                    a.appendChild(link)
+                    a.href = `/users/${idArray[i]}/profile`
+                    favored.appendChild(a)
+                    if (i == idArray.length - 2) {
+                        span = document.createElement("span");
+                        txt = document.createTextNode(" and ");
+                        span.appendChild(txt);
+                        favored.appendChild(span)
+                        continue
+                    }
+                    if (i < idArray.length - 1) {
+                        span = document.createElement("span");
+                        txt = document.createTextNode(", ");
+                        span.appendChild(txt);
+                        favored.appendChild(span)
+                    }
+                }
+            }
+        }
+        if (idArray.length > 4) {
+            for (let i=0;i<2;i++) {
+                a = document.createElement('a')
+                link = document.createTextNode(usernameArray[i])
+                a.appendChild(link)
+                a.href = `/users/${idArray[i]}/profile`
+                favored.appendChild(a)
+                span = document.createElement("span");
+                txt = document.createTextNode(", ");
+                span.appendChild(txt);
+                favored.appendChild(span)
+            }
+            favored.removeChild(favored.lastChild)
+            span = document.createElement("span");
+            txt = document.createTextNode(" and ");
+            span.appendChild(txt);
+            favored.appendChild(span)
+            a = document.createElement('a')
+            link = document.createTextNode(idArray.length - 2)
+            a.appendChild(link)
+            a.href = `/sanctions/<%= params[:id] %>/favourites`
+            favored.appendChild(a)
+            span = document.createElement("span");
+            txt = document.createTextNode(" others");
+            span.appendChild(txt);
+            favored.appendChild(span)
+
+
+        }
+        
+        
+
+
+        })
+    }
+
+
+
+</script>

@@ -3,6 +3,7 @@
         <h2>EXISTING USER</h2>
         <p>
             <%= flash[:error] %>
+            <%= flash[:login] %>
         </p>
 
         <%= form_tag login_path do %>
@@ -13,6 +14,7 @@
             <%= password_field_tag :password %>
             <br><br>
             <%= submit_tag "LOGIN TO YOUR ACCOUNT", :class=>"submit" %>
+
         <% end %>
     </div>
 

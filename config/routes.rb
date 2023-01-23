@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   delete 'sanctions/:id/edit' => 'sanctions#destroy'
   get 'users/index' => 'users#index'
   get 'users/:id/profile' => 'users#profile'
-
+  get 'countries/:id/sanctions' => 'countries#sanctions'
+  get 'sanctions/:id/favourites' => 'sanctions#favourites'
+  post 'sanctions/:id/add_favourite' => 'sanctions#add_favourite'
+  delete 'sanctions/:id/remove_favourite' => 'sanctions#remove_favourite'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

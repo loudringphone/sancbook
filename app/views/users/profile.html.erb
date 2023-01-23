@@ -1,7 +1,7 @@
 <% if @current_user.id == params[:id].to_i %>
     <h1>Hello, <%= @current_user.username %>!</h1>
     <br>
-    <h3>Your sanctions</h3>
+    <h3>My sanctions</h3>
 <% else %>
     <% if @current_user.admin? %>
         <h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
@@ -25,7 +25,7 @@
     <% end %>
     <% if count == 0 %>
         <% if @current_user.id == params[:id].to_i %>
-            <p>You have not created any sanciton yet. Why don't you start sanctioning some people?</p>
+            <p>Why don't you start sanctioning some people?</p>
         <% else %>
             <p>No sanctions by this user yet. </p>
         <% end %>
@@ -40,7 +40,24 @@
 
 <br><br><br>
 <% if @current_user.id == params[:id].to_i %>
-    <h3>Your favourites</h3>
+    <h3>My favourites</h3>
 <% else %>
     <h3>Their favourites</h3>
 <% end %>
+
+<div class='user_profile'>
+    <% if @favourites.size > 0 %>
+        <% @favourites.each do |favourite| %>
+            <nav><a href="/sanctions/<%= favourite %>">
+                <%= (Sanction.find favourite).name %>
+            </a></nav>
+        <% end %>
+    <% else %>
+        <% if @current_user.id == params[:id].to_i %>
+            <p>Go favour some sanctions! </p>
+        <% else %>
+            <p>No favourites by this user yet. </p>
+        <% end %>
+    <% end %>
+
+</div>

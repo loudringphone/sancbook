@@ -21,6 +21,16 @@ class UsersController < ApplicationController
   end
 
   def profile
+    sanctions = Sanction.all
+    @favourites = []
+    sanctions.each do |sanction|
+      sanction.favourites.each do |favourite|
+        if favourite.user_id == params[:id].to_i
+          @favourites.push sanction.id
+        end
+      end
+    end
+    @favourites
   end
 
   private

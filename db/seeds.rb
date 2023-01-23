@@ -42,14 +42,6 @@ puts "#{ Dictator.count } dictators"
 
 # puts "#{ Sanction.count } sanctions"
 
-# s1 = Sanction.create :name => 'CHO, Yong Chol', :nationality => 'North Korea', :risk => "North Korea Sanctions Regulations,
-# sections 510.201 and 510.210; Transactions Prohibited For Persons Owned or
-# Controlled By U.S. Financial Institutions: North Korea Sanctions Regulations
-# section 510.214; North Korea's Ministry of State Security Official (individual)
-# [DPRK2]", :image => ''
-# puts "#{ Sanction.count } sanctions"
-
-
 
 
 # Country.destroy_all

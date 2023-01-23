@@ -9,7 +9,7 @@
     <div class='details'>   
         <h2><%= @country["name"] %></h2>
         <p><%= @country["official_name"] %></p>
-        <p>Number of sanctions: <%= @country.sanctions.size %></p>
+        <p>Number of sanctions: <%= link_to "#{@country.sanctions.size}", "#{params[:id]}/sanctions" %></p>
     </div>
 </div>
 
@@ -38,7 +38,7 @@
         <% end%></p>
 </div>
 
-
+    
 
 <button type="button" class="collapsible">▼ CIA World Factbook 2018 - <%= @country["name"] %></button>
 <div class="content">
@@ -55,10 +55,12 @@
     <% end %>
 </div>
 
-<% if @current_user.admin? %>
-    <div class="control">
-        <%= link_to 'Update / Delete country', edit_country_path(@country) %>
-    </div>
+<% if @current_user.present? %>
+    <% if @current_user.admin? %>
+        <div class="control">
+            <%= link_to 'Update / Delete country', edit_country_path(@country) %>
+        </div>
+    <% end %>
 <% end %>
 
 <script>

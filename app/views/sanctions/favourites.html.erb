@@ -1,0 +1,12 @@
+<h2>Sanction of <%= @sanction.name %></h2>
+<p>Currently <%= @favoured_by_id.size %> users favour this sanction.</p>
+
+<% @favoured_by_id.each do |user_id| %>
+               
+
+    <p>
+        <a href="/users/<%= user_id %>/profile">
+            <%= (User.find user_id).username %>
+        </a>
+    </p>
+<% end %>

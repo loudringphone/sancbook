@@ -128,6 +128,14 @@ class SanctionsController < ApplicationController
 
   def show
     @sanction = Sanction.find params[:id]
+    @fav = false
+    if @current_user.present? 
+      @sanction.favourites.each do |favourite|
+        if favourite.user_id == @current_user.id
+          @fav = true
+        end
+      end
+    end
     unless @sanction.user_id.nil?
       @sanctioned_by = User.find_by(id: @sanction.user_id).username
     end
@@ -139,7 +147,8 @@ class SanctionsController < ApplicationController
     unless @sanction.image.nil?
       if @sanction.image.empty?
         begin
-            your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+            # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+            your_api_key = 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
             # your_cse_id = 'a4f896ad0ae3a429b' # www.google.com
             your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
             images_url = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@sanction.name.gsub(' ', '%20').gsub(',', '%20')}%20#{@sanction.nationality.gsub(' ', '%20')}&searchType=image&fileType=jpg"
@@ -179,7 +188,8 @@ class SanctionsController < ApplicationController
     @address = "Not avaliable" if @address == '-0-' || @address == nil
 
 
-    your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+    # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+    your_api_key = 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
     your_cse_id = 'e3218dc0a18944649' # www.google.com
     # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
     wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@sanction.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
@@ -204,10 +214,70 @@ class SanctionsController < ApplicationController
         end
       end
     else
-      @sanction_info = "Not Available"
+      @sanction_info = wiki_results
     end
+
+
+    
+    users = User.all
+    @favoured_by_id = []
+    @favoured_by_username = []
+    
+    @sanction.favourites.each do |favourite|
+      @favoured_by_id.push users.find_by(id: favourite.user_id).id
+      @favoured_by_username.push users.find_by(id: favourite.user_id).username
+    end
+    
+    @id = 1 # for add and remove favourite only
+    if @current_user.present?
+      @id = @current_user.id
+    end
+
+    # @duplicates = @favoured_by_id.group_by{ |e| e }.select { |k, v| v.size > 1 }.map(&:first)
+
+    # @duplicates.each do |duplicate|
+    #   @sanction.favourites.find_by(user_id: duplicate).destroy
+    # end
+
+    
   end
   
+  def add_favourite
+    @sanction = Sanction.find params[:id]
+    @favoured_by_id = []
+    if @current_user.present? 
+      unless @current_user.admin?
+        unless @current_user.favourites.find_by(title: 'temp').present?
+          temp_fav = Favourite.new
+          temp_fav.title = 'temp'
+          @current_user.favourites << temp_fav
+          temp_fav.save
+          @current_user.save
+        end
+        @sanction.favourites << @current_user.favourites.find_by(title: 'temp')
+        @sanction.save
+        @fav = true
+      end
+    end 
+  end
+
+  def remove_favourite
+    @sanction = Sanction.find params[:id]
+    if @sanction.favourites.find_by(user_id: @current_user.id).present?
+      @sanction.favourites.find_by(user_id: @current_user.id).destroy
+    end
+  end
+
+  def favourites
+    @sanction = Sanction.find params[:id]
+    @favoured_by_id = []
+      @sanction.favourites.each do |favourite|
+        @favoured_by_id.push User.find_by(id: favourite.user_id).id
+      end
+  end
+
+
+
 
 end
 

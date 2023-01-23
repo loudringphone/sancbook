@@ -78,7 +78,8 @@ class CountriesController < ApplicationController
 
 
     unless @country.name == 'Unknown'
-      your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+      # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+      your_api_key = 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
       your_cse_id = 'e3218dc0a18944649' # www.google.com
       # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
       wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
@@ -111,11 +112,12 @@ class CountriesController < ApplicationController
           @cia_factbook[row.fields[0]] = Hash[row.headers[1..-1].zip(row.fields[1..-1])]
       end
 
-      your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+      # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
+      your_api_key = 'AIzaSyAwxpAsaXqY3uxRpLsZADAwzjvQFC7WK9Q'
       search = "#{@country.name} anthem"
       api_video_results = "https://www.googleapis.com/youtube/v3/search?key=#{your_api_key}&q=#{search}&type=video&part=snippet"
       video_results = HTTParty.get api_video_results
-      if !video_results.to_s.include? 'API key not valid'
+      if (!video_results.to_s.include?("\"code\": 400") && !video_results.to_s.include?("\"code\": 403"))
       @video = "https://www.youtube.com/embed/" + video_results["items"][0]["id"]["videoId"]
       else
         @video = video_results
@@ -161,6 +163,12 @@ class CountriesController < ApplicationController
     end
     return country_info
   end
+
+  
+
+
+
+
 
 end
 
