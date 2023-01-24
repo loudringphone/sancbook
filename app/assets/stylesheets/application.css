@@ -360,4 +360,8 @@ div.commentSection > form > button {
 input[type="submit"] {
     width:auto;
     font-size: medium;
+    border-style: solid;
+    box-shadow: none;
+    padding: 3px 3px 3px 3px;
+    border-radius: 3px;
 }
