@@ -77,22 +77,9 @@
 
     <div class="commentSection">
         <div class="commentHeader"><h3>💬 Comments</h3></div>
-        <div></div>
-        <form action="<%= params[:id] %>/comment" method="post">
-                <label for="comment">
-                <textarea id="comment" type="text" name="comment" placeholder="Enter comment..." required></textarea>
-                </label>
-                <button>Post</button>
-            </form>
-
+        <div><p><%= @comment %></p></div>
+   
         <%= render partial: 'comments/form' %>
-
-
-
-
-
-
-
 
     </div>
 </div>
