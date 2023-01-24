@@ -364,4 +364,9 @@ input[type="submit"] {
     box-shadow: none;
     padding: 3px 3px 3px 3px;
     border-radius: 3px;
+    border-width: thin;
+    height: 30px;
+    margin: initial;
+    margin-left: 245px;
+    margin-top: 5px;
 }
