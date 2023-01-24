@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  before_action :check_for_session, :only => [:new]
   def new
     unless @current_user.present?
       $location = request.headers["HTTP_REFERER"]
@@ -9,15 +10,12 @@ class SessionController < ApplicationController
     user = User.find_by :email => params[:email]
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      if (!user.favourites.find_by(title: 'temp').present? && !user.admin?)
-        temp_fav = Favourite.new
-        temp_fav.title = 'temp'
-        user.favourites << temp_fav
-        temp_fav.save
-        user.save
+      unless $locaiton.nil?
+        redirect_to $location
+        $location = ""
+      else
+        redirect_to root_path
       end
-      redirect_to $location
-      $location = ""
     else
       flash[:error] = "Invalid email or password"
       redirect_to login_path

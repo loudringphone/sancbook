@@ -1,3 +1,30 @@
 // Place all the styles related to the Sanctions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.nation {
+    line-height: 10px;
+    margin-top: 40px;
+}
+
+.nation > a {
+    // text-decoration: none;
+    color:black;
+
+}
+
+.nation > a > img {
+    width: 50px;
+}
+
+.sanction_index {
+    margin-top:-10px;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.sanction_index > p {
+    margin-right: 60px;
+}
+

@@ -36,7 +36,16 @@ class SanctionsController < ApplicationController
   end
   
   def index
-    @sanctions = Sanction.all
+    @nations = Sanction.distinct.pluck(:nationality).sort!
+    @sanctions = Sanction.order(:name)
+
+
+    
+
+
+
+
+
   end
 
   def new
@@ -233,11 +242,13 @@ class SanctionsController < ApplicationController
       @id = @current_user.id
     end
 
-    # @duplicates = @favoured_by_id.group_by{ |e| e }.select { |k, v| v.size > 1 }.map(&:first)
-
-    # @duplicates.each do |duplicate|
-    #   @sanction.favourites.find_by(user_id: duplicate).destroy
-    # end
+    comments = Comment.all
+    @sanction_comments = []
+    comments.each do |comment|
+      if comment.sanction_id == @sanction.id
+        @sanction_comments.push comment
+      end
+    end
 
     
   end
@@ -247,14 +258,8 @@ class SanctionsController < ApplicationController
     @favoured_by_id = []
     if @current_user.present? 
       unless @current_user.admin?
-        unless @current_user.favourites.find_by(title: 'temp').present?
-          temp_fav = Favourite.new
-          temp_fav.title = 'temp'
-          @current_user.favourites << temp_fav
-          temp_fav.save
-          @current_user.save
-        end
-        @sanction.favourites << @current_user.favourites.find_by(title: 'temp')
+        favourite = Favourite.create(:sanction_id => params[:id], :user_id => @current_user.id)
+        @sanction.favourites << favourite
         @sanction.save
         @fav = true
       end

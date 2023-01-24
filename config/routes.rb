@@ -19,10 +19,11 @@ Rails.application.routes.draw do
   get 'countries/:id/sanctions' => 'countries#sanctions'
   get 'sanctions/:id/favourites' => 'sanctions#favourites'
   post 'sanctions/:id/add_favourite' => 'sanctions#add_favourite'
-  delete 'sanctions/:id/remove_favourite' => 'sanctions#remove_favourite'
+  delete 'sanctions/:id/favourite' => 'sanctions#remove_favourite'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   post 'sanctions/:id/comment' => 'comments#create'
+  delete 'comments/:id' => 'comments#destroy'
   
 end

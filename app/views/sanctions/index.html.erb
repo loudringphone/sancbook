@@ -1,9 +1,22 @@
 <h1>Sanction List</h1>
 <p>Currently <%= @sanctions.size %> sanctions on the list.</p>
-<% @sanctions.each do |sanction| %>
-    <p>
-        <a href="/sanctions/<%= sanction["id"] %>">
-            <%= sanction["name"] %>
-        </a>
-    </p>
-<% end%>
+
+
+
+    <% @nations.each do |nation| %>
+        <h3 class="nation"><% unless Country.find_by(name: nation).nil?%>
+    <a href="countries/<%= Country.find_by(name: nation).id %>"><img src="<%= Country.find_by(name: nation).flag %>" alt=""><%= nation %></a>
+    <% else %><%= nation %><% end %></h3>
+      <% sanctions = Sanction.where(nationality: nation) %>
+      <div class="sanction_index">
+      <% sanctions.each do |sanction| %>
+            <p>
+                <a href="/sanctions/<%= sanction["id"] %>">
+                    <%= sanction["name"] %>
+                </a>
+             </p>
+      <% end %>
+      </div>
+    <% end %>
+
+

@@ -4,13 +4,15 @@
 
 
 div.thumb {
-    width:160px;
+    width:180px;
     height: 130px;
     display: flex;
     justify-content: center;
 }
 
-
+div.thumb > a {
+    text-align: center;
+}
 
 div.thumb > a > img {
     width: 90px;

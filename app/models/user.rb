@@ -5,4 +5,5 @@ class User < ApplicationRecord
     has_many :dictators, dependent: :delete_all
     has_many :favourites, dependent: :delete_all
     has_many :sanctions, dependent: :delete_all
+    has_many :comments
 end

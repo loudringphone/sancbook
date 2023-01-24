@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
     end
 
     def check_for_login
-        flash[:login] = "Please login to continue"
         redirect_to login_path unless @current_user.present?
+    end
+
+    def check_for_session
+        redirect_back fallback_location: root_path if @current_user.present?
     end
 
     def check_for_admin

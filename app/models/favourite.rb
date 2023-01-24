@@ -1,7 +1,6 @@
 class Favourite < ApplicationRecord
-    validates :title, :presence => true, uniqueness: { scope: :user_id }
-    has_many :dictators
-    has_many :sanctions
-    validates :sanction_id, uniqueness: { scope: :user_id }
-    belongs_to :user
+    # belongs_to :sanction
+    validates :sanction_id, presence: true, uniqueness: { scope: :user_id }
+    validates :user_id, presence: true, uniqueness: { scope: :sanction_id }
+    # belongs_to :user
 end

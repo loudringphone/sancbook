@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2023_01_24_020238) do
     t.string "title"
     t.string "nationality"
     t.integer "country_id"
+    t.integer "user_id"
     t.date "dob"
     t.text "image"
     t.datetime "created_at", null: false
@@ -86,9 +87,8 @@ ActiveRecord::Schema.define(version: 2023_01_24_020238) do
   end
 
   create_table "favourites", force: :cascade do |t|
-    t.text "title"
-    t.integer "user_id"
     t.integer "sanction_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,11 +102,11 @@ ActiveRecord::Schema.define(version: 2023_01_24_020238) do
     t.string "name"
     t.string "nationality"
     t.integer "country_id"
+    t.integer "user_id"
     t.text "risk"
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "sanctions_users", id: false, force: :cascade do |t|

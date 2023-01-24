@@ -6,20 +6,22 @@ class CommentsController < ApplicationController
         comment.user_id = @current_user.id
 
         location = request.headers["HTTP_REFERER"]
-        uri    = URI.parse(location)
-        params = CGI.parse(uri.query)
-
-
-
-
-        comment.sanction_id = params[:id]
+        sanction_id = location[location.index('sanctions/')+10..].to_i
+        comment.sanction_id = sanction_id
         comment.sent = Time.now.strftime("%d/%m/%Y %H:%M")
-        raise 's'
         comment.save
-
-        @comment
         location = request.headers["HTTP_REFERER"]
         redirect_to location
     end
 
+    def destroy
+        if @current_user.present?
+            if @current_user.admin?
+                Comment.find_by(id: params[:id]).destroy
+                location = request.headers["HTTP_REFERER"]
+                redirect_to location
+            end
+        end
+        
+    end
 end

@@ -39,7 +39,7 @@ body {
 
 .container {
     position: relative;
-    max-width: 960px;
+    width: 65vw;
     margin:0 auto;
 }
 
@@ -86,7 +86,6 @@ div.div_feature > p {
 .details {
     text-align: left;
     width: 400px;
-    margin-top: -2%;
     font-weight: bold;
 }
 
@@ -211,6 +210,7 @@ header {
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 20px;
 }
 div.login_profile{
     display: inline-flex;
@@ -304,13 +304,13 @@ div.user_profile {
 div.showContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 10vw;
 }
 
 div.commentSection {
     display: flex;
     align-items: flex-start;
-    height: 650px;
+    height: 90vh;
     border-style: solid;
     border-width: 2px;
     margin-bottom: 5px;
@@ -323,10 +323,16 @@ div.commentSection {
 }
 
 div.commentHeader {
-    margin-right: auto;
+    margin: auto;
+    border-bottom:solid;
+    border-color: skyblue;
+    margin-bottom: 10px;
+    width:100%;
 }
 
-
+div.commentHeader > h3 {
+    line-height: 5%;
+}
 
 div.commentSection > form {
     width:100%;
@@ -341,17 +347,11 @@ form#new_comment {
 }
 #comment_text {
     width:100%;
-    height: 120px;
+    height: 15vh;
     font-size: large;
 }
 
 
-div.commentSection > form > button {
-    height: 30px;
-    margin: initial;
-    margin-left: 245px;
-    margin-top: 5px;
-}
 
 input[type="submit"] {
     width:auto;
@@ -363,6 +363,38 @@ input[type="submit"] {
     border-width: thin;
     height: 30px;
     margin: initial;
-    margin-left: 245px;
+    margin-left: auto;
     margin-top: 5px;
+}
+
+div.commentArea {
+    overflow-y: auto;
+    height: 60vh;
+    width: 100%;
+}
+div.comment {
+    padding-top:5px;
+    padding-left:10px;
+    padding-bottom:1px;
+    border-radius: 10px;
+}
+
+div.comment:hover {
+    background-color: rgb(203, 203, 203);
+}
+
+div.comment > div > span > .user, .user:visited {
+    text-decoration: none;
+    color:black;
+}
+
+div.comment > div {
+    margin-bottom:-10px;
+}
+
+.removeComment{
+    margin-left:10px;
+    text-decoration: none;
+    text-align: left;
+    color:black;
 }
