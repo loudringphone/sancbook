@@ -1,5 +1,3 @@
-require 'HTTParty'
-
 class CountriesController < ApplicationController
   before_action :check_for_admin, :only => [:edit]
   before_action :check_for_admin, :only => [:new]
