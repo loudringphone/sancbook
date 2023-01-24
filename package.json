@@ -1,5 +1,15 @@
+// {
+//   "name": "primaverii",
+//   "private": true,
+//   "dependencies": {}
+// }
+
+
 {
   "name": "primaverii",
-  "private": true,
-  "dependencies": {}
-}
+  "description": "a list of countries and sanctions",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.11.1"
+    }
+ }
