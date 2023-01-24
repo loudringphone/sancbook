@@ -30,3 +30,16 @@ const createSpantag = function(txt) {
     favored.appendChild(span)
 }
                     
+
+const featureWidth = function(){
+    featurePlaceholder = document.querySelector(".featurePlaceholder")
+    feature = document.querySelector(".feature")
+    if (featurePlaceholder != null) {
+        if (feature != null) {
+            featurePlaceholder.style.width = parseInt(feature.width)+10 + "px"
+        }
+        else {
+            featurePlaceholder.style.width = "200px"
+        }
+    }
+}

@@ -4,9 +4,9 @@ u2 = User.create :username => 'Craig', :email => 'craigsy@ga.co', :password => '
 puts "#{ User.count } users"
 
 
-Dictator.destroy_all
-Dictator.create :name => 'Kim Jong-un', :title => 'Supreme Leader', :nationality => 'North Koera', :dob => '1982-01-08', :image => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kim_Jong-un_April_2019_%28cropped%29.jpg/800px-Kim_Jong-un_April_2019_%28cropped%29.jpg'
-puts "#{ Dictator.count } dictators"
+# Dictator.destroy_all
+# Dictator.create :name => 'Kim Jong-un', :title => 'Supreme Leader', :nationality => 'North Koera', :dob => '1982-01-08', :image => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kim_Jong-un_April_2019_%28cropped%29.jpg/800px-Kim_Jong-un_April_2019_%28cropped%29.jpg'
+# puts "#{ Dictator.count } dictators"
 
 # Sanction.destroy_all
 # filename = File.dirname(File.expand_path('..', __FILE__)) + '/data/srr4.txt'

@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_23_142418) do
+ActiveRecord::Schema.define(version: 2023_01_24_020238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sanction_id"
+    t.text "text"
+    t.datetime "sent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments_sanctions", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "sanction_id"
+  end
+
+  create_table "comments_users", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -69,11 +88,12 @@ ActiveRecord::Schema.define(version: 2023_01_23_142418) do
   create_table "favourites", force: :cascade do |t|
     t.text "title"
     t.integer "user_id"
+    t.integer "sanction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "favourites_sanctions", id: false, force: :cascade do |t|
+  create_table "favourites_sanctions", force: :cascade do |t|
     t.integer "favourite_id"
     t.integer "sanction_id"
   end

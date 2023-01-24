@@ -1,0 +1,12 @@
+<h1>Sanctions on <%= @country.name %></h1>
+<p>Currently <%= @country.sanctions.size %> sanctions on this country.</p>
+<br>
+<div class="sanction_index">
+    <% @country.sanctions.each do |sanction| %>
+        <p>
+            <a href="/sanctions/<%= sanction["id"] %>">
+                <%= sanction["name"] %>
+            </a>
+        </p>
+    <% end%>
+</div>

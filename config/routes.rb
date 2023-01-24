@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :sanctions
   resources :dictators
   resources :countries
+  resources :comments
   resources :country_names
   resources :favourites, :only => [:new, :create]
   resources :users, :only => [:index, :new, :create]
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
+  post 'sanctions/:id/comment' => 'comments#create'
   
 end

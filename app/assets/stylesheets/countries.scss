@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 div.thumb {
     width:160px;
     height: 130px;
@@ -20,3 +21,20 @@ div.thumb > a > img {
     display: inline-flex;
     flex-wrap: wrap;
 }
+
+div.featurePlaceholder {
+    display: flex;
+    align-items: center; justify-content:center;
+    height: 300px;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 5px;
+    border-color: skyblue;
+    width: 200px;
+    
+}
+img.feature {
+    height: 290px;
+    width: auto;
+}
+

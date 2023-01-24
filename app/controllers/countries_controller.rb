@@ -117,7 +117,7 @@ class CountriesController < ApplicationController
       search = "#{@country.name} anthem"
       api_video_results = "https://www.googleapis.com/youtube/v3/search?key=#{your_api_key}&q=#{search}&type=video&part=snippet"
       video_results = HTTParty.get api_video_results
-      if (!video_results.to_s.include?("\"code\": 400") && !video_results.to_s.include?("\"code\": 403"))
+      if !video_results.to_s.include?("error")
       @video = "https://www.youtube.com/embed/" + video_results["items"][0]["id"]["videoId"]
       else
         @video = video_results
@@ -126,6 +126,18 @@ class CountriesController < ApplicationController
     end
 
   end
+
+
+  def sanctions
+    @country = Country.find params[:id]
+  end
+
+
+
+
+
+
+
 
   private
   def titleize(str)
@@ -164,8 +176,7 @@ class CountriesController < ApplicationController
     return country_info
   end
 
-  
-
+ 
 
 
 

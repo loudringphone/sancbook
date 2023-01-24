@@ -3,4 +3,5 @@ class Sanction < ApplicationRecord
     has_and_belongs_to_many :favourites
     validates :name, :presence => true, :uniqueness => true
     belongs_to :user, :optional => true
+    has_many :comments
 end

@@ -1,77 +1,101 @@
-<div class="profile">
 
-    
-
-    <div class='details'>   
-        <h2><%= @sanction["name"] %></h2>
-        <p>Nationality: <%= @sanction["nationality"] %></p>
-        <p>Risk: <%= @sanction["risk"] %></p>
-        <p>Sanctioned by: <a href="/users/<%= @sanction.user_id %>/profile"><%= @sanctioned_by %></a></p>
-        <p class='favored'>Favoured by: 
-        <% if @favoured_by_id.size <= 4%>
-            <% count = 1 %>
-            <% @favoured_by_id.each do |user_id| %>
-                <a href="/users/<%= user_id %>/profile"><%= User.find_by(id: user_id).username %></a><%if (count < @favoured_by_id.size-1)%>, 
-                <% elsif count == @favoured_by_id.size-1 %> and <% end %>
-                <% count += 1 %>
-            <% end %>
-        <% else %>
-            <a href="/users/<%= @favoured_by_id[0] %>/profile"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>/profile"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
-        <% end %>
-         </p>
-        
-    </div>
-
-    <div class="div_feature">
-    <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
-    <img class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
-    <% end%>
-        <% if @current_user.present? %>
-            <% unless @current_user.admin? %>
-                <% if @fav == true%>
-                    <%= link_to "Remove from favourite", "#{params[:id]}/remove_favourite", method: :delete , style: "font-size:small;margin-top:-5%", class: "remove" %>
-                    <p class="favourite">My favourite ❤️</p>
-                    
+<div class="showContainer">
+    <div>
+        <div class="profile">
+            <div class='details'>   
+                <h2><%= @sanction["name"] %></h2>
+                <p>Nationality: <%= @sanction["nationality"] %></p>
+                <p>Risk: <%= @sanction["risk"] %></p>
+                <p>Sanctioned by: <a href="/users/<%= @sanction.user_id %>/profile"><%= @sanctioned_by %></a></p>
+                <p class='favored'>Favoured by: 
+                <% if @favoured_by_id.size <= 4%>
+                    <% count = 1 %>
+                    <% @favoured_by_id.each do |user_id| %>
+                        <a href="/users/<%= user_id %>/profile"><%= User.find_by(id: user_id).username %></a><%if (count < @favoured_by_id.size-1)%>, 
+                        <% elsif count == @favoured_by_id.size-1 %> and <% end %>
+                        <% count += 1 %>
+                    <% end %>
                 <% else %>
-                    <%= link_to "Add to favourite", "#{params[:id]}/add_favourite", method: :post , class: "favourite" %>
+                    <a href="/users/<%= @favoured_by_id[0] %>/profile"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>/profile"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
                 <% end %>
+                </p>
+                
+            </div>
+
+            <div class="div_feature">
+            <div class="featurePlaceholder">
+                <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
+                <img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
+                <% end%>
+            </div>
+                <% if @current_user.present? %>
+                    <% unless @current_user.admin? %>
+                        <% if @fav == true%>
+                            <%= link_to "Remove from favourite", "#{params[:id]}/remove_favourite", method: :delete , style: "font-size:small;margin-top:-5%", class: "remove" %>
+                            <p class="favourite">My favourite ❤️</p>
+                            
+                        <% else %>
+                            <%= link_to "Add to favourite", "#{params[:id]}/add_favourite", method: :post , class: "favourite" %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+
+
+        <h3>The below information is published and provided by OFAC. <br> <span style="font-weight:normal; font-size:medium">(Please note that it may not be up-to-date.)</span></h3>
+
+        <h4 class='summary'>Summary</h4>
+        <p><%= @summary %></p>
+
+        <h4 class='address'>Address</h4>
+        <p><%= @address %></p>
+
+        <br>
+
+        <button type="button" class="collapsible">▼ Wikipedia - <%= @sanction["name"] %></button>
+        <div class="content">
+            <p>
+                <% if @sanction_info == "Not Available" %>
+                    Not available. <br> 
+                    Why don't you google it yourself? <br> 
+                    <a href="https://www.google.com/search?q=<%= @sanction["name"] %>">https://www.google.com/search?q=<%= @sanction["name"] %></a>
+                <% else%>
+                <%= @sanction_info %>
+                <% end%></p>
+        </div>
+
+        <br>
+        <% if @current_user.present? %>
+            <% if (@current_user.admin? || @current_user.id === Sanction.find_by(id: params[:id]).user_id) %>
+                <div class="control">
+                    <a href="/sanctions/<%= @sanction["id"] %>/edit">Update / Delete sanction</a>
+                </div>  
             <% end %>
         <% end %>
     </div>
+
+    <div class="commentSection">
+        <div class="commentHeader"><h3>💬 Comments</h3></div>
+        <div></div>
+        <form action="<%= params[:id] %>/comment" method="post">
+                <label for="comment">
+                <textarea id="comment" type="text" name="comment" placeholder="Enter comment..." required></textarea>
+                </label>
+                <button>Post</button>
+            </form>
+
+        <%= render partial: 'comments/form' %>
+
+
+
+
+
+
+
+
+    </div>
 </div>
-
-
-<h3>The below information is published and provided by OFAC. <br> <span style="font-weight:normal; font-size:medium">(Please note that it may not be up-to-date.)</span></h3>
-
-<h4 class='summary'>Summary</h4>
-<p><%= @summary %></p>
-
-<h4 class='address'>Address</h4>
-<p><%= @address %></p>
-
-<br>
-
-<button type="button" class="collapsible">▼ Wikipedia - <%= @sanction["name"] %></button>
-<div class="content">
-    <p>
-        <% if @sanction_info == "Not Available" %>
-            Not available. <br> 
-            Why don't you google it yourself? <br> 
-            <a href="https://www.google.com/search?q=<%= @sanction["name"] %>">https://www.google.com/search?q=<%= @sanction["name"] %></a>
-        <% else%>
-        <%= @sanction_info %>
-        <% end%></p>
-</div>
-
-<br>
-<% if @current_user.present? %>
-    <% if (@current_user.admin? || @current_user.id === Sanction.find_by(id: params[:id]).user_id) %>
-        <div class="control">
-            <a href="/sanctions/<%= @sanction["id"] %>/edit">Update / Delete sanction</a>
-        </div>  
-    <% end %>
-<% end %>
-
 
 
 <script>
@@ -97,16 +121,15 @@
     favourite = document.querySelector(".favourite")
     h2 = document.querySelector("h2")
     favored = document.querySelector(".favored")
+  
     if (favourite != null) {
         favourite.addEventListener("click", function() {
-            setTimeout(function() {
-                if (<%= @fav %> === false ) {
-                    p = document.createElement('p')
-                    p.textContent = "Added to my favourite ❤️"
-                    div_feature.appendChild(p)
-                    div_feature.removeChild(favourite)
-                }
-            },500)
+            if (<%= @fav %> === false ) {
+                p = document.createElement('p')
+                p.textContent = "Added to my favourite ❤️"
+                div_feature.appendChild(p)
+                div_feature.removeChild(favourite)
+            }
 
             max = favored.childElementCount
             count = 0
@@ -159,22 +182,21 @@
                 createSpantag(" others")
 
             }
-        })
+        }, {once : true})
     }
 
     
     remove = document.querySelector(".remove")
     if (remove != null) {
         remove.addEventListener("click", function() {
-            setTimeout(function() {
-                if (<%= @fav %> === true ) {
-                    p = document.createElement('p')
-                    p.textContent = "Favourite removed!"
-                    div_feature.appendChild(p)
-                    div_feature.removeChild(remove)
-                    div_feature.removeChild(favourite)
-                }
-            },300)
+            if (<%= @fav %> === true ) {
+                p = document.createElement('p')
+                p.textContent = "Favourite removed!"
+                div_feature.appendChild(p)
+                div_feature.removeChild(remove)
+                div_feature.removeChild(favourite)
+            }
+           
 
             max = favored.childElementCount
             count = 0
@@ -240,16 +262,12 @@
                 createSpantag(" others")
 
             }
-
-
-
-
-
-
-
-
-
-        })
+        }, {once : true})
     }
+
+    
+
+
+
 
 </script>

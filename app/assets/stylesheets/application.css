@@ -68,13 +68,11 @@ img {
 div.div_feature {
     max-width: 250px;
     display: block;
-    padding-left: 50px;
+    padding-left: 30px;
     text-align: center;
     
 }
-img.feature {
-    max-width: 250px;
-}
+
 
 div.div_feature > a {
     padding-top: 1px;
@@ -87,7 +85,7 @@ div.div_feature > p {
 
 .details {
     text-align: left;
-    width: 550px;
+    width: 400px;
     margin-top: -2%;
     font-weight: bold;
 }
@@ -300,4 +298,66 @@ div.user_profile {
     display: inline-flex;
     flex-wrap: wrap;
     gap: 25px
+}
+
+
+div.showContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+div.commentSection {
+    display: flex;
+    align-items: flex-start;
+    height: 650px;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 5px;
+    border-color: skyblue;
+    width: 300px;
+    padding: 0 5px 5px 5px;
+    flex-wrap: wrap;
+    justify-content: left;
+    
+}
+
+div.commentHeader {
+    margin-right: auto;
+}
+
+
+
+div.commentSection > form {
+    width:100%;
+    display: inline-flex;
+    align-self: flex-end;
+    flex-wrap: wrap;
+}
+div.commentSection > form > label {
+    width:100%;
+    height: 200px;
+    display: inline-flex;
+    /* align-self: flex-end; */
+}
+
+div.commentSection > form > label > textarea {
+    width:100%;
+}
+
+#comment_text {
+    width:100%;
+}
+
+
+div.commentSection > form > button {
+    height: 30px;
+    margin: initial;
+    margin-left: 245px;
+    margin-top: 5px;
+}
+
+input[type="submit"] {
+    width:auto;
+    font-size: medium;
 }
