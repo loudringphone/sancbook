@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
     before_action :check_for_login
     def create
         @comment = params[:comment]["text"]
-        raise 's'
-        redirect_to '/sanctions/15'
+        redirect_to sanction_path
     end
 end
