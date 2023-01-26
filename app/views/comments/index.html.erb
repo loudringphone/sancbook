@@ -1,0 +1,55 @@
+<title><%= User.find_by(id: params[:id]).username %> | Sancbook</title>
+
+<h1><%= link_to "#{User.find_by(id: params[:id]).username}", user_path %>'s comment history</h1>
+
+<br>
+
+
+
+
+
+
+
+
+<table class="commentHistory">
+	<tr>
+		<td style="font-weight:bold">No.</td><td style="font-weight:bold">Sanction</td><td style="font-weight:bold">Comment</td><td style="font-weight:bold">Send time</td><td></td>
+	</tr>
+
+    <% count = 0 %>
+<% @comments.each do |comment| %>
+<tr class='comments'>
+<td><%= count += 1 %></td>
+<td><%= link_to "#{Sanction.find_by(id: comment.sanction_id).name}", "/sanctions/#{comment.sanction_id}" %></td>
+<td><%= comment.text %></td>
+<td><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></td>
+<td class='remove'><a class='\' data-method="delete" href="/comments/<%= comment.id %>">Delete</a></td>
+</tr>
+
+<% end %>
+	
+</table>
+
+
+<script>
+
+comments = document.querySelectorAll('.comments')
+
+
+comments.forEach(target =>
+        target.addEventListener("mouseleave", function() {
+            remove = target.querySelector('.remove')
+            remove.style.visibility = "hidden"
+        })
+    )
+comments.forEach(target =>
+        target.addEventListener("mouseenter", function() {
+            remove = target.querySelector('.remove')
+            remove.style.visibility = "visible"
+        })
+    )
+
+
+
+
+</script>

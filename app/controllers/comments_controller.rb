@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
     before_action :check_for_login
+    before_action :check_for_comment_creator, :only => [:destroy]
+
     def create
         comment = Comment.new
         comment.text = params[:comment]["text"]
@@ -16,12 +18,24 @@ class CommentsController < ApplicationController
 
     def destroy
         if @current_user.present?
-            if @current_user.admin?
+            if (@current_user.admin? || Comment.find_by(id: params[:id]).user_id == @current_user.id)
                 Comment.find_by(id: params[:id]).destroy
                 location = request.headers["HTTP_REFERER"]
                 redirect_to location
             end
-        end
-        
+        end    
     end
+
+
+    def remove_all_comments
+        Comment.where(user_id: params[:id]).destroy_all
+    end
+
+
+
+    def index
+        @comments = Comment.where(user_id: params[:id])
+
+    end
+
 end

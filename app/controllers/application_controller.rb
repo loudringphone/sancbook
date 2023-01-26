@@ -22,5 +22,13 @@ class ApplicationController < ActionController::Base
     def check_for_sanction_creator
         redirect_to :root unless (@current_user.id === Sanction.find_by(id: params[:id]).user_id || @current_user.admin?)
     end
+
+    def check_for_sanction_creator
+        redirect_to :root unless (@current_user.id === Sanction.find_by(id: params[:id]).user_id || @current_user.admin?)
+    end
+
+    def check_for_comment_creator
+        redirect_to :root unless (@current_user.id === Comment.find_by(id: params[:id]).user_id || @current_user.admin?)
+    end
 end
 

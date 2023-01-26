@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Primaverii</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   
@@ -13,7 +12,7 @@
     <div class="container">
       <header>
         <nav>
-            <a href="/">Home</a>
+            <a href="/" data-turbolinks="false" style="font-weight:bold;font-size:x-large">Sancbook</a>
             <%= link_to "All countries", countries_path %>
             <% if @current_user.present? %>
               <% if @current_user.admin? %>
@@ -25,15 +24,17 @@
               <%= link_to "New sanction", new_sanction_path %>
             <% end %>
         </nav>
-        <nav class='user'>
+        <nav>
         <% if @current_user.present? %>
             <% if @current_user.admin? %>
-              <%= link_to "All users", users_path %>
+              <%= link_to "All users", "/users/#{@current_user.id}/profile", {:style=>'display: inline-flex;
+    align-self: flex-end;'} %>
             <% end %>
             
             <span><%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{@current_user.id}/profile" %>)</span>
         <% else %>
-            <%= link_to "Login", login_path %>
+            <%= link_to "Login", login_path, {:style=>'display: inline-flex;
+    align-self: flex-end;'} %>
         <% end %>
         </nav>
       </header>
@@ -42,6 +43,7 @@
     </div>
   </body>
 
+  <footer> <%= link_to "About us", about_path %><div>© 2023 Sancbook</div></footer>
   
 </html>
 

@@ -21,16 +21,45 @@ class UsersController < ApplicationController
   end
 
   def profile
-    sanctions = Sanction.all
-    @favourites = []
-    sanctions.each do |sanction|
-      sanction.favourites.each do |favourite|
-        if favourite.user_id == params[:id].to_i
-          @favourites.push sanction.id
+    user = User.find_by(id: params[:id])
+    @user_sanctions = user.sanctions.order(:name)
+    @user_sanction_nations = @user_sanctions.select(:nationality).map(&:nationality).uniq.sort!
+    # raise 's'
+    user_favourites_by_id = user.favourites
+    @user_favourites = []
+    user_favourites_by_id.each do |id|
+      @user_favourites.push Sanction.find_by(id: id.sanction_id)
+    end
+
+    @user_favourite_nations = []
+    @user_favourites.each do |favourite|
+      unless @user_favourite_nations.include? favourite.nationality
+        @user_favourite_nations.push favourite.nationality
+      end
+    end
+
+    @user_favourites = @user_favourites.sort_by { |f| [f.name] }
+    @user_favourite_nations.sort!
+
+
+    if @current_user.present?
+      if @current_user.admin?
+        countries = Country.order(:name)
+        @country_codes = []
+        @country_ids = []
+        @country_sanctions_lengths = []
+        countries.each do |country|
+          @country_codes.push country.country_code
+          @country_ids.push  country.id
+          @country_sanctions_lengths.push country.sanctions.length
         end
       end
     end
-    @favourites
+
+
+
+
+
   end
 
   private

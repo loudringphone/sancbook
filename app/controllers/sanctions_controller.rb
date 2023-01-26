@@ -1,5 +1,6 @@
 class SanctionsController < ApplicationController
   before_action :check_for_sanction_creator, :only => [:edit]
+  before_action :check_for_admin, :only => [:destroy]
 
   module SDN
     @sdn_details_hash = {}
@@ -177,6 +178,8 @@ class SanctionsController < ApplicationController
       country.name = @sanction.nationality
       country.save
     end
+    @country = Country.find_by(name: @sanction.nationality)
+
     unless @sanction.nationality.empty?
       unless Country.find_by(name: @sanction.nationality).sanction_ids.include? @sanction.id
         Country.find_by(name: @sanction.nationality).sanctions << @sanction

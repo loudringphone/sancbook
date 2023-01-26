@@ -1,3 +1,5 @@
+<title><%= @country.name %> | Sancbook</title>
+
 <div class="profile">
     <% unless @country["flag"].nil? || @country["flag"].empty? %>
     <figure>
@@ -7,7 +9,7 @@
     <% end%>
 
     <div class='details'>   
-        <h2><%= @country["name"] %></h2>
+        <h2><%= @country.name %> <span><%= @country.country_code %></span></h2>
         <p><%= @country["official_name"] %></p>
         <p>Number of sanctions: <%= link_to "#{@country.sanctions.size}", "#{params[:id]}/sanctions" %></p>
     </div>

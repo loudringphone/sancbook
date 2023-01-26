@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about'
   delete 'countries/:id/edit' => 'countries#destroy'
   delete 'sanctions/:id/edit' => 'sanctions#destroy'
-  get 'users/index' => 'users#index'
-  get 'users/:id/profile' => 'users#profile'
+  get 'users/:id/profile' => 'users#profile', :as => :user
   get 'countries/:id/sanctions' => 'countries#sanctions'
   get 'sanctions/:id/favourites' => 'sanctions#favourites'
   post 'sanctions/:id/add_favourite' => 'sanctions#add_favourite'
@@ -24,6 +23,8 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   post 'sanctions/:id/comment' => 'comments#create'
-  delete 'comments/:id' => 'comments#destroy'
-  
+  delete 'users/:id/comments' => 'comments#remove_all_comments'
+  get 'users/:id/history' => 'comments#index'
+
+
 end

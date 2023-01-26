@@ -1,35 +1,61 @@
+<title><%= User.find_by(id: params[:id]).username %> | Sancbook</title>
+
+<% unless @current_user.admin? && @current_user.id == params[:id].to_i%>
+<div class="userProfile">
 <% if @current_user.id == params[:id].to_i %>
     <h1>Hello, <%= @current_user.username %>!</h1>
     <br>
-    <h3>My sanctions</h3>
+    <h2 style='text-decoration: underline'>My sanctions</h2>
 <% else %>
     <% if @current_user.admin? %>
-        <h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
+        <div class='adminView'><h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
+        <%= link_to 'View comment history', 'history' %>
+        <%= form_tag("comments", method: :delete) do %>
+            <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%>
+            <% end %>
+        
+        
+        
+        
+        
+        
+        </div>
     <% else %>
         <h1><%= User.find_by(id: params[:id]).username %>'s profile</h1>
     <% end %>
     <br>
-    <h3>Their sanctions</h3>
+    <h2 style='text-decoration: underline'>Their sanctions</h2>
 <% end %>
+</div>
 
 
-<div class='user_profile'>
-    <% count = 0 %>
-    <% Sanction.all.each do |sanction| %>
-        <% if sanction.user_id == params[:id].to_i %>
-            <nav><a href="/sanctions/<%= sanction.id %>">
-            <%= sanction.name %>
-        </a></nav>
-            <% count = count + 1 %>
-        <% end %>
+
+<div class="personal_index">
+
+    <% @user_sanction_nations.each do |nation| %>
+        <h4 class="nation"><% unless Country.find_by(name: nation).nil?%>
+    <a href="/countries/<%= Country.find_by(name: nation).id %>"><%= nation %></a>
+    <% else %><%= nation %><% end %></h4>
+      <% sanctions = @user_sanctions.where(nationality: nation) %>
+      <div class="sanction_index">
+      <% sanctions.each do |sanction| %>
+            <p>
+                <a href="/sanctions/<%= sanction["id"] %>">
+                    <%= sanction["name"] %>
+                </a>
+             </p>
+      <% end %>
+      </div>
     <% end %>
-    <% if count == 0 %>
+
+    <% if @user_sanctions.size == 0 %>
         <% if @current_user.id == params[:id].to_i %>
             <p>Why don't you start sanctioning some people?</p>
         <% else %>
             <p>No sanctions by this user yet. </p>
         <% end %>
     <% end %>
+    
 </div>
 
 
@@ -40,18 +66,34 @@
 
 <br><br><br>
 <% if @current_user.id == params[:id].to_i %>
-    <h3>My favourites</h3>
+    <h2 style='text-decoration: underline'>My favourites</h2>
 <% else %>
-    <h3>Their favourites</h3>
+    <h2 style='text-decoration: underline'>Their favourites</h2>
 <% end %>
 
-<div class='user_profile'>
-    <% if @favourites.size > 0 %>
-        <% @favourites.each do |favourite| %>
-            <nav><a href="/sanctions/<%= favourite %>">
-                <%= (Sanction.find favourite).name %>
-            </a></nav>
-        <% end %>
+<div class='personal_index'>
+
+    <% if @user_favourites.size > 0 %>
+       
+        <% @user_favourite_nations.each do |nation| %>
+            <h4 class="nation"><% unless Country.find_by(name: nation).nil?%>
+                <a href="/countries/<%= Country.find_by(name: nation).id %>"><%= nation %></a>
+            <% else %><%= nation %><% end %></h4>
+            <% favourites = @user_favourites.select { |f| f.nationality == nation } %>
+      <div class="sanction_index">
+      <% favourites.each do |favourite| %>
+            <p>
+                <a href="/sanctions/<%= favourite.id %>">
+                    <%= favourite.name %>
+                </a>
+             </p>
+      <% end %>
+      </div>
+    <% end %>
+
+
+
+
     <% else %>
         <% if @current_user.id == params[:id].to_i %>
             <p>Go favour some sanctions! </p>
@@ -60,4 +102,35 @@
         <% end %>
     <% end %>
 
+
 </div>
+
+<% else %>
+
+<div class="adminView">
+<h1>Hello, <%= @current_user.username %>!</h1>
+<%= link_to 'View comment history', 'history' %>
+        <%= form_tag("comments", method: :delete) do %>
+            <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><% end %>
+<br>
+<div class="personal_index">
+
+    <h2 style='text-decoration: underline'>All users</h2>
+    <% User.all.each do |user| %>
+        <a href="/users/<%= user.id %>/profile"><%= user.username %></a>
+    <% end %>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class=matadatajs>
+<p style='visibility:visible;font-size:small'>for matadata.js setup:</p>
+<p class="countryCodes" style='visibility:visible;font-size:x-small'>sanctionedCountryCodes = <%= @country_codes %></p>
+<p class="countryIds" style='display:visible;font-size:x-small'>sanctionedCountryIds = <%= @country_ids %></p>
+<p class="countrySanctions" style='display:visible;font-size:x-small'>countrySanctionsLengths = <%= @country_sanctions_lengths %></p>
+
+
+
+
+</div>
+</div>
+<% end %>

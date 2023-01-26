@@ -1,9 +1,9 @@
 class CountriesController < ApplicationController
   before_action :check_for_admin, :only => [:edit]
   before_action :check_for_admin, :only => [:new]
-
+  before_action :check_for_admin, :only => [:destroy]
   def index
-    @countries = Country.all
+    @countries = Country.order(:name)
   end
 
   def new
@@ -15,10 +15,11 @@ class CountriesController < ApplicationController
     @country.name = titleize(@country.name)
     unless Country.find_by(name: @country.name).present?
       @country.save
-      @country_error = ''
+      # @country_error = ''
       redirect_to @country
     else
-      @country_error = "Entry with this name already exists!"
+      # @country_error = "Entry with this name already exists!"
+      flash.now[:error] = "Entry with this name already exists!"
       render new_country_path
     end
   end
@@ -61,6 +62,14 @@ class CountriesController < ApplicationController
 
   def show
     @country = Country.find params[:id]
+    sanctions = Sanction.where(nationality: @country.name)
+    if @country.sanctions.size != sanctions.size
+      sanctions.each do |sanction|
+        @country.sanctions << sanction
+      end
+    end
+
+
     if @country.official_name == "" || @country.official_name.nil?
         @country.official_name = (country_info @country.name)[:official_name]
         @country.save
@@ -74,10 +83,13 @@ class CountriesController < ApplicationController
         @country.save
     end
 
+    if @country.country_code == "" || @country.country_code.nil?
+      @country.country_code = (country_info @country.name)[:country_code]
+      @country.save
+  end
+
 
     unless @country.name == 'Unknown'
-      # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
-      your_api_key = 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
       your_cse_id = 'e3218dc0a18944649' # www.google.com
       # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
       wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
@@ -109,9 +121,6 @@ class CountriesController < ApplicationController
       CSV.foreach(filename, :headers => true, :header_converters => :symbol, :converters => :all) do |row|
           @cia_factbook[row.fields[0]] = Hash[row.headers[1..-1].zip(row.fields[1..-1])]
       end
-
-      # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
-      your_api_key = 'AIzaSyAwxpAsaXqY3uxRpLsZADAwzjvQFC7WK9Q'
       search = "#{@country.name} anthem"
       api_video_results = "https://www.googleapis.com/youtube/v3/search?key=#{your_api_key}&q=#{search}&type=video&part=snippet"
       video_results = HTTParty.get api_video_results
@@ -128,6 +137,7 @@ class CountriesController < ApplicationController
 
   def sanctions
     @country = Country.find params[:id]
+    @sanctions = @country.sanctions.order(:name)
   end
 
 
@@ -138,12 +148,22 @@ class CountriesController < ApplicationController
 
 
   private
+  def your_api_key
+    # return 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'    
+    # return 'AIzaSyAwxpAsaXqY3uxRpLsZADAwzjvQFC7WK9Q' # No custom search
+    # return 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
+    return ''
+  end
+
+
+
+
   def titleize(str)
     str.split(/ |\_/).map(&:capitalize).join(" ")
   end
 
   def country_params
-    params.require(:country).permit(:name, :official_name, :native_name, :flag)
+    params.require(:country).permit(:name, :official_name, :native_name, :country_code, :flag)
   end
 
   def country_info country_name
@@ -153,7 +173,7 @@ class CountriesController < ApplicationController
     rescue
         country_details = [{:status => 404,:message => "Not Found"}]
     end
-    country_info = {:official_name => "", :native_name => "", :flag => ""}
+    country_info = {:official_name => "", :native_name => "", :country_code => "", :flag => ""}
     if !country_details[0].nil?
         if country_details[0].key?("name")
             if country_details[0]["name"].key?("official")
@@ -165,6 +185,13 @@ class CountriesController < ApplicationController
                 country_info[:native_name] = native_name_list[1]["official"]
             end
         end
+
+        if country_details[0].key?("cca2")
+          country_info[:country_code] = country_details[0]["cca2"]
+        end
+
+
+
         if country_details[0].key?("flags")
             if country_details[0]["flags"].key?("png")
                 country_info[:flag] = country_details[0]["flags"]["png"]

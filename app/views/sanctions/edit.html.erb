@@ -1,3 +1,5 @@
+<title><%= @sanction.name %> | Sancbook</title>
+
 <h1>Update / Delete sanction</h1>
 <p class='error'><%= $sanction_error %></p>
 <div class="form_container">
@@ -5,7 +7,7 @@
         <%= render :partial => 'form' %>
         <br>
         <br>
-        <%= button_to 'Delete Sanction', @movie, :method => 'delete', :data => { :confirm => "Are you sure to delete this sanction?" } %>
+        <%= button_to 'Delete Sanction', @sanction, :method => 'delete', :data => { :confirm => "Are you sure to delete this sanction?" } %>
     </div>
  
         <figure class ='preview'>

@@ -1,10 +1,22 @@
+<title><%= @sanction.name %> | Sancbook</title>
 
 <div class="showContainer">
     <div>
         <div class="profile">
             <div class='details'>   
                 <h2><%= @sanction["name"] %></h2>
-                <p>Nationality: <%= @sanction["nationality"] %></p>
+                <p>Nationality: 
+                <% unless Country.find_by(name: @sanction.nationality).nil?%>
+                
+                <%= link_to @sanction["nationality"], "/countries/#{@country.id}" %>
+                
+                
+                
+                
+                <% else %>
+                <% @sanction["nationality"] %>
+                <% end %></p>
+
                 <p>Risk: <%= @sanction["risk"] %></p>
                 <p>Sanctioned by: <a href="/users/<%= @sanction.user_id %>/profile"><%= @sanctioned_by %></a></p>
                 <p class='favored'>Favoured by: 
@@ -26,6 +38,8 @@
             <div class="featurePlaceholder">
                 <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
                 <img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
+                <% else %>
+                <p class="featureText">Image coming soon..</p>
                 <% end%>
             </div>
                 <% if @current_user.present? %>
@@ -84,21 +98,14 @@
                         <div class="comment">
                         <div>
                         <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>/profile"><%= User.find_by(id: comment.user_id).username %></a></span> <span style="font-size:small"><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
-                        <% if @current_user.present? %><% if @current_user.admin? %><a class='removeComment' data-method="delete" href="/comments/<%= comment.id %>">x</a><% end %><% end %></div>
+                        <% if @current_user.present? %><% if (@current_user.admin? || comment.user_id ==  @current_user.id ) %><a class='removeComment' data-method="delete" href="/comments/<%= comment.id %>">Delete</a><% end %><% end %></div>
                         <p style="line-height:22px"><%= comment.text %></p>
                         </div>
-                    
-                    
+                              
                 <% end%>
             <% else %>
-                <p>Please <a href="/login">login</a> to view the comments</p>
+                <p>Please <a data-method='get' href="/login">login</a> to view the comments</p>
             <% end%>
-        
-        
-        
-        
-        
-        
         
         </div>
    
@@ -276,4 +283,19 @@
     }
 
 
+    comments = document.querySelectorAll('.comment')
+    comments.forEach(target =>
+   
+        target.addEventListener("mouseleave", function() {
+            removeComment = target.querySelector('.removeComment')
+            removeComment.style.display = "none"
+        })
+    )
+    comments.forEach(target =>
+        target.addEventListener("mouseenter", function() {
+            removeComment = target.querySelector('.removeComment')
+            removeComment.style.display = "initial"
+        })
+    )
+    
 </script>

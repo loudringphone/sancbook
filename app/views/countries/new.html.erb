@@ -1,5 +1,7 @@
+<title>New Country | Sancbook</title>
+
 <h1>New country</h1>
-<p class='error'><%= @country_error %></p>
+<p class='error'><%= flash.now[:error] %></p>
 <div class="form_container">
     <%= render :partial => 'form' %>
     <div class ='preview'><p>Image from the URL will pop up here as you fill in the flag input box.</p></div>

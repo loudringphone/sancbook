@@ -6,25 +6,58 @@
 .nation {
     line-height: 10px;
     margin-top: 40px;
+    a {
+        text-decoration: underline;
+        color:navy;
+        img {
+            width: 50px;
+            padding-right: 5px;
+        }
+    }
 }
 
-.nation > a {
-    // text-decoration: none;
-    color:black;
 
+
+h3.nation {
+    text-decoration: underline;
+    color:navy;
 }
 
-.nation > a > img {
-    width: 50px;
-}
 
 .sanction_index {
     margin-top:-10px;
     display: inline-flex;
     flex-wrap: wrap;
+    p {
+        margin-right: 60px;
+    }
 }
 
-.sanction_index > p {
-    margin-right: 60px;
+
+div.featurePlaceholder {
+    display: flex;
+    align-items: center; justify-content:center;
+    height: 300px;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 5px;
+    border-color: skyblue;
+    width: 200px; 
+}
+img.feature {
+    height: 290px;
+    width: auto;
+}
+
+p.featureText {
+    color:lightgray;
+    width:80px;
+    font-size: x-large;
+    line-height: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: navy;
 }
 

@@ -24,19 +24,7 @@ div.thumb > a > img {
     flex-wrap: wrap;
 }
 
-div.featurePlaceholder {
-    display: flex;
-    align-items: center; justify-content:center;
-    height: 300px;
-    border-style: solid;
-    border-width: 2px;
-    margin-bottom: 5px;
-    border-color: skyblue;
-    width: 200px;
-    
+div.details >h2 > span {
+    font-weight: lighter;
+    font-size: small;
 }
-img.feature {
-    height: 290px;
-    width: auto;
-}
-

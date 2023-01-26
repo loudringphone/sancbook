@@ -1,0 +1,1 @@
+["Afghanistan", "Australia", "Canada", "China", "Djibouti", "Ethiopia", "France", "Hong Kong", "Iran", "Iraq", "Japan", "North Korea", "Pakistan", "Romania", "Russia", "Singapore", "Somalia", "South Korea", "Taiwan", "Turkey", "United Kingdom", "United States", "Unknown", "Wakanda"]
