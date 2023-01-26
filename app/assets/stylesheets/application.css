@@ -44,7 +44,7 @@ body {
 
 .container {
     position: relative;
-    width: 65vw;
+    width: 75vw;
     margin:0 auto;
 }
 
@@ -384,4 +384,37 @@ input[type="submit"] {
     font-size: large;
     border-radius: 0.3em;
     padding: 5px 10px 25px 10px;
+}
+
+
+@media (max-width: 1300px) {
+    div.showContainer {
+        gap: 4vw;
+    }
+    .details {
+        width: 300px;
+    }
+}
+
+
+@media (max-width: 1110px) {
+    .container {
+        width: 90vw;
+    }
+
+
+    div.showContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .details {
+        width: 300px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .details {
+        width: 300px;
+    }
 }

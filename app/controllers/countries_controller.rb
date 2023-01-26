@@ -77,7 +77,7 @@ class CountriesController < ApplicationController
   def show
     unless (params[:id].to_i > 0)
       if Country.find_by(country_code: params[:id].upcase).nil?
-        redirect_to countries_path
+        redirect_to countries_path, notice: 'Seems that country is not on the list yet, why not start sanctioning people* from there now?'
         return
       else
         params[:id] = Country.find_by(country_code: params[:id].upcase).id
