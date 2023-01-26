@@ -1,9 +1,8 @@
-sanctionedCountryCodes = ["AF", "CN", "DJ", "ET", "FR", "HK", "IR", "IQ", "KP", "PK", "RU", "SO", "TW", "TR", "GB", "US", ""]
+sanctionedCountryCodes = ["AF", "CN", "DJ", "EG", "ET", "FI", "FR", "GR", "HK", "IN", "ID", "IR", "IQ", "JO", "KE", "LV", "LB", "NG", "KP", "PK", "PS", "RU", "KN", "SO", "ZA", "SE", "CH", "TW", "TR", "UA", "US", "YE"]
 
-sanctionedCountryIds = [40, 34, 41, 38, 19, 31, 16, 17, 1, 10, 36, 37, 39, 20, 42, 44, 43]
+sanctionedCountryIds = [48, 49, 52, 53, 54, 55, 56, 57, 47, 58, 59, 60, 61, 62, 63, 64, 65, 51, 45, 66, 67, 46, 68, 69, 70, 71, 72, 73, 74, 75, 50, 76]
 
-countrySanctionsLengths = [2, 16, 1, 1, 1, 6, 4, 3, 64, 8, 124, 17, 3, 11, 0, 5, 0]
-
+countrySanctionsLengths = [2, 16, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 3, 64, 1, 1, 124, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1]
 
 
 

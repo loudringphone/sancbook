@@ -176,6 +176,24 @@ class SanctionsController < ApplicationController
     if Country.find_by(name: @sanction.nationality).nil?
       country = Country.new
       country.name = @sanction.nationality
+      country.official_name = (country_info country.name)[:official_name]
+      country.native_name = (country_info country.name)[:native_name]
+      country.flag = (country_info country.name)[:flag]
+      country.country_code = (country_info country.name)[:country_code]
+      country.save
+
+
+
+
+
+
+
+
+
+
+
+
+
       country.save
     end
     @country = Country.find_by(name: @sanction.nationality)
@@ -240,7 +258,7 @@ class SanctionsController < ApplicationController
       @favoured_by_username.push users.find_by(id: favourite.user_id).username
     end
     
-    @id = 1 # for add and remove favourite only
+    @id = users.find_by(username: "Admin") # for add and remove favourite only
     if @current_user.present?
       @id = @current_user.id
     end
@@ -296,6 +314,42 @@ private
 
   def sanction_params
     params.require(:sanction).permit(:name, :nationality, :risk, :image)
+  end
+
+
+  def country_info country_name
+    begin
+    country_url = "https://restcountries.com/v3.1/name/#{country_name.gsub(' ', '%20')}?fullText=true"
+    country_details = HTTParty.get country_url
+    rescue
+        country_details = [{:status => 404,:message => "Not Found"}]
+    end
+    country_info = {:official_name => "", :native_name => "", :country_code => "", :flag => ""}
+    if !country_details[0].nil?
+        if country_details[0].key?("name")
+            if country_details[0]["name"].key?("official")
+                country_info[:official_name] = country_details[0]["name"]["official"]
+            end
+            if country_details[0]["name"].key?("nativeName")
+                native_name_list = country_details[0]["name"]["nativeName"].flatten
+                native_name_list = native_name_list.drop(2) if native_name_list[0] == "eng" && native_name_list.length > 2
+                country_info[:native_name] = native_name_list[1]["official"]
+            end
+        end
+
+        if country_details[0].key?("cca2")
+          country_info[:country_code] = country_details[0]["cca2"]
+        end
+
+
+
+        if country_details[0].key?("flags")
+            if country_details[0]["flags"].key?("png")
+                country_info[:flag] = country_details[0]["flags"]["png"]
+            end
+        end
+    end
+    return country_info
   end
 
   

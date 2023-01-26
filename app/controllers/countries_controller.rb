@@ -71,22 +71,22 @@ class CountriesController < ApplicationController
 
 
     if @country.official_name == "" || @country.official_name.nil?
-        @country.official_name = (country_info @country.name)[:official_name]
-        @country.save
+      @country.official_name = (country_info @country.name)[:official_name]
+       @country.save
     end
     if @country.native_name == "" || @country.native_name.nil?
-        @country.native_name = (country_info @country.name)[:native_name]
-        @country.save
+      @country.native_name = (country_info @country.name)[:native_name]
+      @country.save
     end
     if @country.flag == "" || @country.flag.nil?
-        @country.flag = (country_info @country.name)[:flag]
-        @country.save
+      @country.flag = (country_info @country.name)[:flag]
+      @country.save
     end
 
     if @country.country_code == "" || @country.country_code.nil?
       @country.country_code = (country_info @country.name)[:country_code]
       @country.save
-  end
+    end
 
 
     unless @country.name == 'Unknown'

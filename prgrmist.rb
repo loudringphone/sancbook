@@ -62,7 +62,7 @@
 
 filename = __dir__ + '/data/srr4.txt'
 srr4_arr = File.read(filename).split("\n\n")
-
+srrs = ""
 srr4_arr.each do |srr|
     name = ''
     nationality = ''
@@ -96,6 +96,10 @@ srr4_arr.each do |srr|
     risk = "Ukraine-Russia- Related Sanctions Regulations, 31 CFR 589.201 andor 589.209" if risk.include? "31 CFR 589.201 andor 589.209"
     risk = "pursuant to the Hong Kong Autonomy Act of 2020 - Public Law 116-149" if risk.include? "2020 - Public Law 116-149"
 
-
-    p risk
+    seed = "s = Sanction.create :name => \"#{name}\", :nationality => \"#{nationality}\", :risk => \"#{risk}\", :image => ''"
+    add = "u2.sanctions << s"
+    srrs = srrs + seed + "\n\n" + add + "\n\n"
+    
 end
+
+File.open("seeds.txt", 'w+') {|f| f.write(srrs) }
