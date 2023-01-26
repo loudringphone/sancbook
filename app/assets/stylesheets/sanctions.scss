@@ -44,10 +44,23 @@ div.featurePlaceholder {
     border-color: skyblue;
     width: 200px; 
 }
-img.feature {
-    height: 290px;
-    width: auto;
+
+figure.preview > div.featurePlaceholder {
+
+    height: 400px;
+    width: 270px;
+
+    img {
+        height: 380px;
+        width: auto;
+    }
+
+    p {
+      padding-left: 20px;
+    }
+
 }
+
 
 p.featureText {
     color:lightgray;

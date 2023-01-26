@@ -14,11 +14,16 @@ class CountriesController < ApplicationController
     @country = Country.new country_params
     @country.name = titleize(@country.name)
     unless Country.find_by(name: @country.name).present?
+      if @country.flag.present?
+        unless @country.flag.include? "cloudinary"
+        req = Cloudinary::Uploader.upload(@country.flag)
+        @country.flag = req["secure_url"]
+        @country.save
+        end
+      end
       @country.save
-      # @country_error = ''
       redirect_to @country
     else
-      # @country_error = "Entry with this name already exists!"
       flash.now[:error] = "Entry with this name already exists!"
       render new_country_path
     end
@@ -32,6 +37,8 @@ class CountriesController < ApplicationController
       $country_error = ''
     end
     @country = Country.find params[:id]
+
+
   end
 
   def update
@@ -39,6 +46,13 @@ class CountriesController < ApplicationController
     previous_name = country.name
     country.assign_attributes country_params
     country.name = titleize(country.name)
+    if country.flag.present?
+      unless country.flag.include? "cloudinary"
+      req = Cloudinary::Uploader.upload(country.flag)
+      country.flag = req["secure_url"]
+      country.save
+      end
+    end
     unless (country.name != previous_name && Country.find_by(name: country.name).present?)
       country.save
       country.sanctions.each do |sanction|
@@ -71,7 +85,6 @@ class CountriesController < ApplicationController
     end
     
     @country = Country.find params[:id]
-
     sanctions = Sanction.where(nationality: @country.name)
     if @country.sanctions.size != sanctions.size
       sanctions.each do |sanction|

@@ -4,26 +4,27 @@
 <p class='error'><%= @sanction_error %></p>
 <div class="form_container">
     <%= render :partial => 'form' %>
-    <div class ='preview'><p>Image from the URL will pop up here as you fill in the image input box.</p></div>
+    <figure class ='preview'><div class="featurePlaceholder"><img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>"></div></figure>
 </div>
+    
 
 <script>
 
     preview = document.querySelector(".preview");
     profile_pic = document.querySelector("#sanction_image");
+    featurePlaceholder = document.querySelector(".featurePlaceholder");
     profile_pic.addEventListener("input", function(){
-        
-        e = preview.lastElementChild
+        e = featurePlaceholder.lastElementChild
         if (profile_pic.value != '') {
             img = document.createElement('img')
             img.src = profile_pic.value
-            preview.appendChild(img)
-            preview.removeChild(e);
+            featurePlaceholder.appendChild(img)
+            featurePlaceholder.removeChild(e);
         } else {
             p = document.createElement('p')
             p.textContent = "Image from the URL will pop up here as you fill in the image input box."
-            preview.appendChild(p)
-            preview.removeChild(e);
+            featurePlaceholder.appendChild(p)
+            featurePlaceholder.removeChild(e);
         }
     })
 </script>

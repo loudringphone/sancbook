@@ -11,7 +11,9 @@
     </div>
  
         <figure class ='preview'>
-            <img class="sanction_feature" src="<%= @sanction["image"] %>">  
+            <div class="featurePlaceholder">
+            <img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>">  
+            </div>
         </figure>
   
 </div>
@@ -20,18 +22,19 @@
 
     preview = document.querySelector(".preview");
     profile_pic = document.querySelector("#sanction_image");
+    featurePlaceholder = document.querySelector(".featurePlaceholder");
     profile_pic.addEventListener("input", function(){
-        e = preview.lastElementChild
+        e = featurePlaceholder.lastElementChild
         if (profile_pic.value != '') {
             img = document.createElement('img')
             img.src = profile_pic.value
-            preview.appendChild(img)
-            preview.removeChild(e);
+            featurePlaceholder.appendChild(img)
+            featurePlaceholder.removeChild(e);
         } else {
             p = document.createElement('p')
             p.textContent = "Image from the URL will pop up here as you fill in the image input box."
-            preview.appendChild(p)
-            preview.removeChild(e);
+            featurePlaceholder.appendChild(p)
+            featurePlaceholder.removeChild(e);
         }
     })
 </script>

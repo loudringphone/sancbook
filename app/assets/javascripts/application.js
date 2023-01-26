@@ -39,7 +39,6 @@ const featureWidth = function(){
             featurePlaceholder.style.width = parseInt(feature.width)+10 + "px"
         }
         else {
-            featurePlaceholder.style.width = "200px"
         }
     }
 }
