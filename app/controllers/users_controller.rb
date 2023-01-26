@@ -45,10 +45,12 @@ class UsersController < ApplicationController
     if @current_user.present?
       if @current_user.admin?
         countries = Country.order(:name)
+        @countries = []
         @country_codes = []
         @country_ids = []
         @country_sanctions_lengths = []
         countries.each do |country|
+          @countries.push country
           @country_codes.push country.country_code
           @country_ids.push  country.id
           @country_sanctions_lengths.push country.sanctions.length

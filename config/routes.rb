@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'sanction/edit'
   resources :sanctions
-  resources :dictators
   resources :countries
   resources :comments
-  resources :country_names
   resources :favourites, :only => [:new, :create]
   resources :users, :only => [:index, :new, :create]
   root :to => 'pages#home'

@@ -4,7 +4,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -33,12 +33,12 @@
             
             <span><%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{@current_user.id}/profile" %>)</span>
         <% else %>
-            <%= link_to "Login", login_path, {:style=>'display: inline-flex;
+            <%= link_to "Login / Signup", login_path, {:style=>'display: inline-flex;
     align-self: flex-end;'} %>
         <% end %>
         </nav>
       </header>
-    <br><br>
+    <br>
         <%= yield %>
     </div>
   </body>

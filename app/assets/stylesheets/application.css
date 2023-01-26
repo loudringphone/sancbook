@@ -129,20 +129,28 @@ button {
 .collapsible {
     cursor: pointer;
     text-decoration: underline;
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 2px;
     text-underline-position: under;
     border: none;
     margin-left: 0;
-    background-color: lightgray;
     margin-left: -1%;
+    font-weight: bold;
+    background-color: transparent;
 
   }
 
+.collapsible.active {
+    text-decoration-thickness: 3px;
+}
 .collapsible:hover {
-    background-color: #777;;
-    color: white;
+    text-decoration-thickness: 3px;
 }
 
+button.collapsible {
+    font-size: large;
+    padding:10px 10px 4px 4px;
+
+}
 
 .content {
     display: none;
@@ -204,12 +212,7 @@ p.error {
     font-size: medium;
 }
 
-button.collapsible {
-    font-size: large;
-    padding:10px 10px 4px 4px;
-    margin-left: 0px;
-    font-weight: bold;
-}
+
 
 header {
     display: flex;
@@ -225,9 +228,9 @@ header > nav {
 }
 
 div.signup_profile{
-    display: inline-flex;
     justify-content: space-between;
-    width: 50%;
+    width: 400px;
+    display:block;
 }
 
 div.signup_profile > div {
@@ -272,7 +275,7 @@ ol > li {
 div.showContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10vw;
+    gap: 8vw;
 }
 
 div.commentSection {
@@ -283,7 +286,7 @@ div.commentSection {
     border-width: 2px;
     margin-bottom: 5px;
     border-color: skyblue;
-    width: 300px;
+    width: 325px;
     padding: 0 5px 5px 5px;
     flex-wrap: wrap;
     justify-content: left;
@@ -335,6 +338,11 @@ input[type="submit"] {
     margin: initial;
     margin-left: auto;
     margin-top: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: lightgray;
 }
 
 div.commentArea {

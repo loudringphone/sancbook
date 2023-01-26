@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
     before_action :check_for_login
     before_action :check_for_comment_creator, :only => [:destroy]
-
+    before_action :check_for_profile_owner, :only => [:index]
+    
     def create
         comment = Comment.new
         comment.text = params[:comment]["text"]
@@ -34,8 +35,12 @@ class CommentsController < ApplicationController
 
 
     def index
-        @comments = Comment.where(user_id: params[:id])
-
+        if @current_user.present?
+            if @current_user.admin? || @current_user.id == params[:id].to_i
+                @comments = Comment.where(user_id: params[:id])
+            end
+        end
+       
     end
 
 end

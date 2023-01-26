@@ -4,6 +4,7 @@
 <div class="userProfile">
 <% if @current_user.id == params[:id].to_i %>
     <h1>Hello, <%= @current_user.username %>!</h1>
+    <%= link_to 'View comment history', 'history' %>
     <br>
     <h2 style='text-decoration: underline'>My sanctions</h2>
 <% else %>
@@ -122,6 +123,8 @@
 
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
 <div class=matadatajs>
 <p style='visibility:visible;font-size:small'>for matadata.js setup:</p>
 <p class="countryCodes" style='visibility:visible;font-size:x-small'>sanctionedCountryCodes = <%= @country_codes %></p>
