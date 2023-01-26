@@ -61,7 +61,7 @@ class CountriesController < ApplicationController
   end
 
   def show
-    unless (params[:id].to_i > 0 && params[:id] > 2)
+    unless (params[:id].to_i > 0)
       if Country.find_by(country_code: params[:id].upcase).nil?
         redirect_to countries_path
         return
