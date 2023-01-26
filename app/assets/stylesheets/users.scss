@@ -16,12 +16,26 @@ div.personal_index > nav {
     gap: 25px
 }
 
-.personal_index > .nation > a {
+.personal_index > .nation {
     text-decoration: none;
+}
+
+.personal_index > .nation:hover {
+    text-decoration: underline;
+    text-decoration-thickness:3px;
+    text-underline-offset: 3px
 }
 
 .personal_index > a {
     margin-right: 45px;
+    text-decoration: none;
+    text-decoration-thickness:0;
+}
+
+.personal_index > a:hover {
+    text-decoration: underline;
+        text-decoration-thickness:2px;
+        text-underline-offset: 3px
 }
 
 .personal_index > .sanction_index {
@@ -43,13 +57,15 @@ div.adminView {
         // display: block;
         // margin: auto;
     }
-    a {
+    .viewHistory {
         border-bottom: 0.1em solid;
         font-size: medium;
         position: relative;
         top:-20px
     }
 }
+
+
 
 
 

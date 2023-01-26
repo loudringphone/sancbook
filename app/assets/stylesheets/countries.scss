@@ -18,6 +18,11 @@ div.thumb > a > img {
     width: 90px;
 }
 
+div.thumb :hover {
+    text-decoration: underline;
+    text-decoration-thickness:2px;
+    text-underline-offset: 3px
+}
 
 .country_index {
     display: inline-flex;

@@ -6,7 +6,7 @@
     <h1>Hello, <%= @current_user.username %>!</h1>
     <%= link_to 'View comment history', 'history' %>
     <br>
-    <h2 style='text-decoration: underline'>My sanctions</h2>
+    <h2>My sanctions</h2>
 <% else %>
     <% if @current_user.admin? %>
         <div class='adminView'><h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
@@ -25,7 +25,7 @@
         <h1><%= User.find_by(id: params[:id]).username %>'s profile</h1>
     <% end %>
     <br>
-    <h2 style='text-decoration: underline'>Their sanctions</h2>
+    <h2>Their sanctions</h2>
 <% end %>
 </div>
 
@@ -67,9 +67,9 @@
 
 <br><br><br>
 <% if @current_user.id == params[:id].to_i %>
-    <h2 style='text-decoration: underline'>My favourites</h2>
+    <h2>My favourites</h2>
 <% else %>
-    <h2 style='text-decoration: underline'>Their favourites</h2>
+    <h2>Their favourites</h2>
 <% end %>
 
 <div class='personal_index'>
@@ -110,13 +110,13 @@
 
 <div class="adminView">
 <h1>Hello, <%= @current_user.username %>!</h1>
-<%= link_to 'View comment history', 'history' %>
+<%= link_to 'View comment history', 'history' , :class => "viewHistory"%>
         <%= form_tag("comments", method: :delete) do %>
             <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><% end %>
 <br>
 <div class="personal_index">
 
-    <h2 style='text-decoration: underline'>All users</h2>
+    <h2>All users</h2>
     <% User.all.each do |user| %>
         <a href="/users/<%= user.id %>/profile"><%= user.username %></a>
     <% end %>
@@ -126,10 +126,10 @@
 
 
 <div class=matadatajs>
-<p style='visibility:visible;font-size:small'>for matadata.js setup:</p>
-<p class="countryCodes" style='visibility:visible;font-size:x-small'>sanctionedCountryCodes = <%= @country_codes %></p>
-<p class="countryIds" style='display:visible;font-size:x-small'>sanctionedCountryIds = <%= @country_ids %></p>
-<p class="countrySanctions" style='display:visible;font-size:x-small'>countrySanctionsLengths = <%= @country_sanctions_lengths %></p>
+<p style='visibility:hidden;font-size:small'>for matadata.js setup:</p>
+<p class="countryCodes" style='visibility:hidden;font-size:x-small'>sanctionedCountryCodes = <%= @country_codes %></p>
+<p class="countryIds" style='visibility:hidden;font-size:x-small'>sanctionedCountryIds = <%= @country_ids %></p>
+<p class="countrySanctions" style='visibility:hidden;font-size:x-small'>countrySanctionsLengths = <%= @country_sanctions_lengths %></p>
 
 
 

@@ -52,9 +52,7 @@ body {
     font-size: medium;
 }
 
-nav > a {
-    margin-right: 20px;
-}
+
 
 .control > a {
     margin-right: 20px;
@@ -218,13 +216,40 @@ header {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    
     margin-bottom: 20px;
     font-size: medium;
     padding-bottom: 5px;
     border-bottom: 2px solid lightskyblue;
 }
-header > nav {
+nav {
     align-self: flex-end;
+}
+
+nav > a {
+    padding-right: 20px;
+}
+
+header > nav > a:hover {
+    text-decoration: underline;
+    text-decoration-thickness:2px;
+    text-underline-offset: 3px
+}
+
+
+header > nav > div > a:hover {
+    text-decoration: underline;
+    text-decoration-thickness:2px;
+    text-underline-offset: 3px
+}
+
+header > nav > div > span {
+    padding-left: 20px;
+}
+header > nav > div > span > a:hover {
+    text-decoration: underline;
+    text-decoration-thickness:2px;
+    text-underline-offset: 3px
 }
 
 div.signup_profile{
