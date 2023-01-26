@@ -21,6 +21,21 @@ class UsersController < ApplicationController
   end
 
   def profile
+
+    unless (params[:id].to_i > 0)
+      if User.find_by(username: params[:id]).nil?
+        redirect_to root_path
+        return
+      else
+        params[:id] = User.find_by(username: params[:id]).id
+      end
+    end
+
+
+
+
+
+
     user = User.find_by(id: params[:id])
     @user_sanctions = user.sanctions.order(:name)
     @user_sanction_nations = @user_sanctions.select(:nationality).map(&:nationality).uniq.sort!

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about'
   delete 'countries/:id/edit' => 'countries#destroy'
   delete 'sanctions/:id/edit' => 'sanctions#destroy'
+  get 'users/:id' => 'users#profile'
   get 'users/:id/profile' => 'users#profile', :as => :user
   get 'countries/:id/sanctions' => 'countries#sanctions'
   get 'sanctions/:id/favourites' => 'sanctions#favourites'

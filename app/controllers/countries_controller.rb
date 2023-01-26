@@ -61,7 +61,17 @@ class CountriesController < ApplicationController
   end
 
   def show
+    unless (params[:id].to_i > 0 && params[:id] > 2)
+      if Country.find_by(country_code: params[:id].upcase).nil?
+        redirect_to countries_path
+        return
+      else
+        params[:id] = Country.find_by(country_code: params[:id].upcase).id
+      end
+    end
+    
     @country = Country.find params[:id]
+
     sanctions = Sanction.where(nationality: @country.name)
     if @country.sanctions.size != sanctions.size
       sanctions.each do |sanction|
