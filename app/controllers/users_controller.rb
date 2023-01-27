@@ -66,14 +66,20 @@ class UsersController < ApplicationController
         @country_sanctions_lengths = []
         countries.each do |country|
           @countries.push country
-          @country_codes.push country.country_code
+          if country.country_code.present?
+            @country_codes.push country.country_code
+          else
+            @country_codes.push country.name
+          end
           @country_ids.push  country.id
           @country_sanctions_lengths.push country.sanctions.length
         end
       end
     end
 
-
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
 
 
 

@@ -57,15 +57,22 @@ div.adminView {
         // display: block;
         // margin: auto;
     }
-    .viewHistory {
-        border-bottom: 0.1em solid;
-        font-size: medium;
-        position: relative;
-        top:-20px
-    }
+    
 }
 
+.viewHistory {
+    border-bottom: 0.1em solid;
+    font-size: medium;
+    position: relative;
+    top:-20px;
+    margin-right:5px;
+}
 
+.viewHistory:hover {
+    text-decoration: underline;
+    text-decoration-thickness:2px;
+    text-underline-offset: 3px
+}
 
 
 

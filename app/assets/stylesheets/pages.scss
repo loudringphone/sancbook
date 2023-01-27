@@ -10,8 +10,21 @@
 }
 
 div.about {
+    display:flex;
+    align-content: center;
+    flex-direction: column
+    
+}
+
+h1.aboutGreeting {
+    -webkit-padding-start: 10vw;
+    padding-top: 10vh;
+}
+
+div.aboutText {
     line-height: 220%;
     width: 40vw;
-    font-size:large;
-    margin-top: 5vh;
+    font-size:larger;
+    letter-spacing: 0.01em;
+    margin: 0 auto
 }

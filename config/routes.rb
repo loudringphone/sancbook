@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :countries
   resources :comments
   resources :favourites, :only => [:new, :create]
-  resources :users, :only => [:index, :new, :create]
+  resources :users, :only => [:index, :new, :create, :edit]
   root :to => 'pages#home'
   get '/home' => 'pages#home'
   get '/about' => 'pages#about'

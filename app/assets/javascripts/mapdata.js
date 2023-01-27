@@ -1,7 +1,5 @@
 sanctionedCountryCodes = ["AF", "CN", "DJ", "EG", "ET", "FI", "FR", "GR", "HK", "IN", "ID", "IR", "IQ", "JO", "KE", "LV", "LB", "NG", "KP", "PK", "PS", "RU", "KN", "SO", "ZA", "SE", "CH", "TW", "TR", "UA", "YE"]
 
-sanctionedCountryIds = [48, 49, 52, 53, 54, 55, 56, 57, 47, 58, 59, 60, 61, 62, 63, 64, 65, 51, 45, 66, 67, 46, 68, 69, 70, 71, 72, 73, 74, 75, 76]
-
 countrySanctionsLengths = [2, 16, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 3, 64, 1, 1, 124, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 
@@ -1697,7 +1695,6 @@ for (let i = 0; i < keys.length; i++) {
       // simplemaps_worldmap_mapdata["state_specific"][key].inactive = 'no'
       simplemaps_worldmap_mapdata["state_specific"][key].color = '#bc8888'
       simplemaps_worldmap_mapdata["state_specific"][key].hover_color = '#a30f0f'
-      // simplemaps_worldmap_mapdata["state_specific"][key].url = `countries/${sanctionedCountryIds[j]}`
       // simplemaps_worldmap_mapdata["state_specific"][key].description   = `Sanctions: ${countrySanctionsLengths[j]}`
       continue
     }   
