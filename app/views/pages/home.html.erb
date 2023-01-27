@@ -6,14 +6,20 @@
 <h3 class='mapHeader'>Below countries shown in red are countries where some of the individuals have been sanctioned by some countries in the world or have been requested to get sancitoned from our users . You can also add new sanctions and hopefully some government* in the world would notice your request. Click on the map NOW! Check out whom have been sanctioned, show your support*, and make friends around the world!</h3>
 <div id="map"></div>
 <div style="font-size:small;inline-height:50%;font-style:italic;">
-<p>*or disapproval</p> <p>*Not exclusive to western democratic countries. Russia and North Korea, for instance, may also listen to your request.</p>
+<p>*or disapproval</p> <p class = "pScreen">*Not exclusive to western democratic countries. Russia and North Korea, for instance, may also listen to your request.</p>
 </div>
 
 
 
-
-
-
-
-
 <%= javascript_include_tag "mapdata" %>
+
+<script>
+
+mapHeader = document.querySelector(".mapHeader")
+pScreen = document.querySelector(".pScreen")
+if (window.innerWidth < 900) {
+   mapHeader.textContent = "Click on the map NOW! Check out whom have been sanctioned, show your support*, and make friends around the world!"
+   mapHeader.style.marginBottom = "30px";
+   pScreen.style.display = "none"
+   }
+</script>
