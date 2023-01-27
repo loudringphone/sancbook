@@ -1,9 +1,10 @@
 class SessionController < ApplicationController
   before_action :check_for_session, :only => [:new]
+  before_action :last_controller, :only => [:new]
   def new
     unless @current_user.present?
       $location = request.headers["HTTP_REFERER"]
-      if params[:controller] == "session"
+      if last_controller == "session"
         $location = root_path
       end
     end
@@ -15,7 +16,7 @@ class SessionController < ApplicationController
       session[:user_id] = user.id   
       begin
         redirect_to $location
-        $location = ""
+        $location = root_path
       rescue
         redirect_to root_path
       end
@@ -32,3 +33,9 @@ class SessionController < ApplicationController
   end
 
 end
+
+private
+  def last_controller
+    url = Rails.application.routes.recognize_path(request.referrer)
+    last_controller = url[:controller]
+  end

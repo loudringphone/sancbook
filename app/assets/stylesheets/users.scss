@@ -74,7 +74,11 @@ div.adminView {
     text-underline-offset: 3px
 }
 
-
+.no_comments[disabled]:hover {
+    background-color: transparent;
+    cursor: default;
+    
+}
 
 .commentHistory {
     width:100%; 

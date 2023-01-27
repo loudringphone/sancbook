@@ -12,14 +12,13 @@
     <% if @current_user.admin? %>
         <div class='adminView'><h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
         <%= link_to 'View comment history', "#{params[:id]}/history", :class => "viewHistory" %>
-        <%= form_tag("comments", method: :delete) do %>
-            <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%>
+         <%= form_tag("#{params[:id]}/comments", method: :delete) do %>
+            <% unless User.find_by(id: params[:id]).comments.size == 0 %>
+                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
+            <% else %>
+                <%= submit_tag "No comments from this user", class: "no_comments", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
             <% end %>
-        
-        
-        
-        
-        
+            <% end %>
         
         </div>
     <% else %>
@@ -114,7 +113,12 @@
 <%= link_to 'View comment history', 'history' , :class => "viewHistory"%>
 <%= link_to 'Update password', edit_user_path, :class => "viewHistory" %>
         <%= form_tag("comments", method: :delete) do %>
-            <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><% end %>
+            <% unless @current_user.comments.size == 0 %>
+                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
+            <% else %>
+                <%= submit_tag "No comments from this user", class: "no_comments", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
+            <% end %>
+            <% end %>
 <br>
 <div class="personal_index">
 
@@ -135,3 +139,20 @@
 <br>
 </div>
 <% end %>
+
+
+
+<script>
+
+no_comments = document.querySelector(".no_comments")
+if (typeof no_comments == 'object') {
+    no_comments.disabled = true;
+
+
+}
+
+
+
+
+
+</script>

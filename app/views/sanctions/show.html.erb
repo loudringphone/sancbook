@@ -7,9 +7,11 @@
                 <h2><%= @sanction["name"] %></h2>
                 <p>Nationality: 
                 <% unless Country.find_by(name: @sanction.nationality).nil?%>
-                
-                <%= link_to @sanction["nationality"], "/countries/#{Country.find_by(id: @country.id).country_code}" %>
-                
+                <% if Country.find_by(id: @country.id).country_code.present? %>
+                    <%= link_to @sanction["nationality"], "/countries/#{Country.find_by(id: @country.id).country_code}" %>
+                <% else %>
+                    <%= link_to @sanction["nationality"], "/countries/#{Country.find_by(id: @country.id).id}" %>
+                <% end %>
                 
                 
                 

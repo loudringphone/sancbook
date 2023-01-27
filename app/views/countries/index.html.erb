@@ -10,7 +10,11 @@
 <div class="country_index">
     <% @countries.each do |country| %>
         <div class='thumb'>
+        <% if country.country_code.present? %>
             <a href="/countries/<%= country.country_code %>">
+        <% else %>
+            <a href="/countries/<%= country.id %>">
+        <% end %>
                 <img src="<%= country.flag %>" alt="<%= country["name"] %>">
                 <figcaption><%= country["name"] %></figcaption>
             </a>
