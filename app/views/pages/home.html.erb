@@ -17,9 +17,15 @@
 
 mapHeader = document.querySelector(".mapHeader")
 pScreen = document.querySelector(".pScreen")
-if (window.innerWidth < 900) {
-   mapHeader.textContent = "Click on the map NOW! Check out whom have been sanctioned, show your support*, and make friends around the world!"
+
+
+isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
+
+if(isMobile) {
+    mapHeader.textContent = "Click on the map NOW! Check out whom have been sanctioned, show your support*, and make friends around the world!"
    mapHeader.style.marginBottom = "30px";
    pScreen.style.display = "none"
-   }
+}
+
+
 </script>
