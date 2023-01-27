@@ -8,7 +8,7 @@
                 <p>Nationality: 
                 <% unless Country.find_by(name: @sanction.nationality).nil?%>
                 
-                <%= link_to @sanction["nationality"], "/countries/#{@country.id}" %>
+                <%= link_to @sanction["nationality"], "/countries/#{Country.find_by(id: @country.id).country_code}" %>
                 
                 
                 
@@ -18,17 +18,17 @@
                 <% end %></p>
 
                 <p>Risk: <%= @sanction["risk"] %></p>
-                <p>Sanctioned by: <a href="/users/<%= @sanction.user_id %>/profile"><%= @sanctioned_by %></a></p>
+                <p>Sanctioned by: <a href="/users/<%= User.find_by(id: @sanction.user_id).username %>"><%= @sanctioned_by %></a></p>
                 <p class='favored'>Favoured by: 
                 <% if @favoured_by_id.size <= 4%>
                     <% count = 1 %>
                     <% @favoured_by_id.each do |user_id| %>
-                        <a href="/users/<%= user_id %>/profile"><%= User.find_by(id: user_id).username %></a><%if (count < @favoured_by_id.size-1)%>, 
+                        <a href="/users/<%= User.find_by(id: user_id).username %>"><%= User.find_by(id: user_id).username %></a><%if (count < @favoured_by_id.size-1)%>, 
                         <% elsif count == @favoured_by_id.size-1 %> and <% end %>
                         <% count += 1 %>
                     <% end %>
                 <% else %>
-                    <a href="/users/<%= @favoured_by_id[0] %>/profile"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>/profile"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
+                    <a href="/users/<%= User.find_by(id: @favoured_by_id[0]).username %>"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>/profile"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
                 <% end %>
                 </p>
                 
@@ -173,11 +173,11 @@
 
             if (idArray.length <= 4) {
                 if (idArray[0] === "") {
-                    createAtag(usernameArray[1],`/users/${idArray[1]}/profile`)
+                    createAtag(usernameArray[1],`/users/${usernameArray[1]}`)
                 }
                 else {
                     for (let i=0;i<idArray.length;i++) {
-                        createAtag(usernameArray[i],`/users/${idArray[i]}/profile`)
+                        createAtag(usernameArray[i],`/users/${usernameArray[i]}`)
                         if (i == idArray.length - 2) {
                             createSpantag(" and ")
                             continue
@@ -190,7 +190,7 @@
             }
             if (idArray.length > 4) {
                 for (let i=0;i<2;i++) {
-                    createAtag(usernameArray[i],`/users/${idArray[i]}/profile`)
+                    createAtag(usernameArray[i],`/users/${usernameArray[i]}`)
                     createSpantag(", ")
                 }
                 favored.removeChild(favored.lastChild)
@@ -253,11 +253,11 @@
         
             if (newidArray.length <= 4) {
                 if (newidArray[0] === "") {
-                    createAtag(newusernameArray[1],`/users/${newidArray[1]}/profile`)
+                    createAtag(newusernameArray[1],`/users/${newusernameArray[1]}/`)
                 }
                 else {
                     for (let i=0;i<newidArray.length;i++) {
-                        createAtag(newusernameArray[i],`/users/${newidArray[i]}/profile`)
+                        createAtag(newusernameArray[i],`/users/${newusernameArray[i]}/profile`)
                         if (i == newidArray.length - 2) {
                             createSpantag(" and ")
                             continue
@@ -270,7 +270,7 @@
             }
             if (newidArray.length > 4) {
                 for (let i=0;i<2;i++) {
-                    createAtag(newusernameArray[i],`/users/${newidArray[i]}/profile`)
+                    createAtag(newusernameArray[i],`/users/${newusernameArray[i]}`)
                     createSpantag(", ")
                 }
                 favored.removeChild(favored.lastChild)

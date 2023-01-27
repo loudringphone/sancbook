@@ -118,7 +118,7 @@
 
     <h2>All users</h2>
     <% User.all.each do |user| %>
-        <a href="/users/<%= user.id %>/profile"><%= user.username %></a>
+        <a href="/users/<%= user.username %>"><%= user.username %></a>
     <% end %>
 
 </div>
@@ -126,10 +126,10 @@
 
 
 <div class=matadatajs>
-<p style='visibility:hidden;font-size:small'>for matadata.js setup:</p>
-<p class="countryCodes" style='visibility:hidden;font-size:x-small'>sanctionedCountryCodes = <%= @country_codes %></p>
-<p class="countryIds" style='visibility:hidden;font-size:x-small'>sanctionedCountryIds = <%= @country_ids %></p>
-<p class="countrySanctions" style='visibility:hidden;font-size:x-small'>countrySanctionsLengths = <%= @country_sanctions_lengths %></p>
+<p style='visibility:visible;font-size:small'>for matadata.js setup:</p>
+<p class="countryCodes" style='visibility:visible;font-size:x-small'>sanctionedCountryCodes = <%= @country_codes %></p>
+<p class="countryIds" style='visibility:visible;font-size:x-small'>sanctionedCountryIds = <%= @country_ids %></p>
+<p class="countrySanctions" style='visibility:visible;font-size:x-small'>countrySanctionsLengths = <%= @country_sanctions_lengths %></p>
 
 
 

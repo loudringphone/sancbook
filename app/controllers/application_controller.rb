@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
     before_action :fetch_user
 
     private
+
+    def your_api_key
+        # return 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'    
+        # return 'AIzaSyAwxpAsaXqY3uxRpLsZADAwzjvQFC7WK9Q' # No custom search
+        # return 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
+        return 'AIzaSyBV1ZXF-FGbS8LNptoGgo6jsjRqDwIf0bU'
+        # return ''
+      end
+
     def fetch_user
         @current_user = User.find_by :id => session[:user_id] if session[:user_id].present?
         session[:user_id] = nil unless @current_user.present? # Log out non-existent users.

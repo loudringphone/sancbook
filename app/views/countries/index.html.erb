@@ -3,14 +3,14 @@
 
 <h1>Countries index</h1>
 <p>Currently <%= @countries.size %> countries on the list.</p>
-<div style="font-size:medium;inline-height:50%;font-style:italic;">
+<div class='notice1' style="font-size:medium;inline-height:50%;font-style:italic;">
     <%= notice %>
 </div>
 <br><br>
 <div class="country_index">
     <% @countries.each do |country| %>
         <div class='thumb'>
-            <a href="/countries/<%= country["id"] %>">
+            <a href="/countries/<%= country.country_code %>">
                 <img src="<%= country.flag %>" alt="<%= country["name"] %>">
                 <figcaption><%= country["name"] %></figcaption>
             </a>
@@ -18,6 +18,21 @@
         </div>
     <% end%>
 </div>
-<br><br>
+<br>
 
-<p style="font-size:small;inline-height:50%;font-style:italic;">*who have commited serious violations or serious abuses of human rights</p>
+<p class='notice2' style="font-size:small;inline-height:50%;font-style:italic;">*who have commited serious violations or serious abuses of human rights</p>
+
+
+
+<script>
+
+    notice1 = document.querySelector('.notice1')
+    notice2 = document.querySelector('.notice2')
+    if (notice1.textContent.length == 6) {
+        notice2.remove(notice2)
+    }
+
+
+
+</script>
+

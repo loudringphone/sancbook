@@ -173,8 +173,6 @@ class SanctionsController < ApplicationController
     unless @sanction.image.nil?
       if @sanction.image.empty?
         begin
-            # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
-            your_api_key = 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
             # your_cse_id = 'a4f896ad0ae3a429b' # www.google.com
             your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
             images_url = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@sanction.name.gsub(' ', '%20').gsub(',', '%20')}%20#{@sanction.nationality.gsub(' ', '%20')}&searchType=image&fileType=jpg"
@@ -233,9 +231,6 @@ class SanctionsController < ApplicationController
     @address = @address.strip if @address.instance_of? String
     @address = "Not avaliable" if @address == '-0-' || @address == nil
 
-
-    # your_api_key = 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'
-    your_api_key = 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
     your_cse_id = 'e3218dc0a18944649' # www.google.com
     # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
     wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@sanction.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
@@ -324,6 +319,7 @@ class SanctionsController < ApplicationController
 end
 
 private
+
   def titleize(str)
     str.split(/ |\_/).map(&:capitalize).join(" ")
   end
