@@ -11,7 +11,7 @@ div.login_profile{
     div.new_user {
         width: 20%;
     }
-    
+
     div {
         width: 30%;
         height: max-content;
@@ -46,6 +46,12 @@ div.login_profile > div > form {
     }
 
 } 
+
+p.error {
+    color:red;
+    font-size: medium;
+    font-style: italic;
+}
 
 
 

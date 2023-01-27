@@ -213,6 +213,7 @@ figure.preview > p {
 p.error {
     color: red;
     font-size: medium;
+    font-style: italic;
 }
 
 

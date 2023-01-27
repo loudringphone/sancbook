@@ -94,6 +94,8 @@ class UsersController < ApplicationController
     user = User.find_by(id: params[:id])
     user.assign_attributes user_params
     user.save
+    flash[:notice] = "Your password has been successfully changed."
+
     redirect_to "/users/#{user.username}"
   end
 
