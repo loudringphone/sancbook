@@ -1,6 +1,12 @@
 
 
-
+<% if @user.errors.any? %>
+            <ol>
+                <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ol>
+    <% end %>
 <div class="edit_profile">
     <div>
         <h2>Update password</h2>

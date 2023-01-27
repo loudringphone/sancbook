@@ -31,3 +31,5 @@ module Primaverii
     config.generators.system_tests = nil
   end
 end
+
+config.time_zone = 'Sydney'

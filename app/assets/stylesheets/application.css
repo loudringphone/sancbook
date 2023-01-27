@@ -329,6 +329,7 @@ div.commentSection {
     flex-wrap: wrap;
     justify-content: left;
     border-radius: 0.5em;
+    overflow: hidden;
     
 }
 
@@ -387,6 +388,8 @@ div.commentArea {
     overflow-y: auto;
     height: 60vh;
     width: 100%;
+    word-wrap: break-word;
+    
 }
 div.comment {
     padding-top:5px;
@@ -443,6 +446,8 @@ input[type="submit"] {
 
     div.showContainer {
         grid-template-columns: 1fr;
+
+        grid-auto-rows: auto;
     }
 
     .details {
@@ -451,8 +456,19 @@ input[type="submit"] {
 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
     .details {
         width: 300px;
+    }
+    
+   
+}
+
+@media only screen and (max-width: 900px) {
+    div.commentArea {
+        height: 40vh;
+    }
+    div.commentSection {
+        height: 60vh;
     }
 }

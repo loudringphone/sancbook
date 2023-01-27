@@ -126,7 +126,7 @@
 <div class="personal_index">
 
     <h2>All users</h2>
-    <% User.all.each do |user| %>
+    <% User.order(:id).each do |user| %>
         <a href="/users/<%= user.username %>"><%= user.username %></a>
     <% end %>
 

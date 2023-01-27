@@ -29,7 +29,7 @@
         <div>
         <% if @current_user.present? %>
             <% if @current_user.admin? %>
-              <%= link_to "All users", "/users/#{@current_user.id}" %>
+              <%= link_to "Messages", "/users/#{@current_user.id}" %>
             <% end %>
             <span>
             <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</span>
