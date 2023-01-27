@@ -104,3 +104,10 @@ p.notice {
     position: absolute;
     top: 10%;
 }
+
+p.alert {
+    color:red;
+    font-style: italic;
+    font-size: medium;
+    line-height: 50%;
+}

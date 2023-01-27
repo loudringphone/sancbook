@@ -92,11 +92,18 @@ class UsersController < ApplicationController
 
   def update
     user = User.find_by(id: params[:id])
+    if user.nil?
+      user = User.find_by(username: params[:id])
+    end
     user.assign_attributes user_params
-    user.save
-    flash[:notice] = "Your password has been successfully changed."
-
-    redirect_to "/users/#{user.username}"
+    # if
+      # user.save
+      # flash[:notice] = "Your password has been successfully changed."
+      # redirect_to "/users/#{user.username}"
+    # else
+      flash[:alert] = "Passwords do not match"
+      redirect_back(fallback_location: root_path)
+    # end
   end
 
 

@@ -16,6 +16,8 @@
 
             <%= f.label :password_confirmation %>
             <%= f.password_field :password_confirmation %>
+            
+            <p class='alert'><%= flash[:alert] %></p>
 
             <%= f.submit 'Update password', :class=>"submit" %>
         <% end %>
