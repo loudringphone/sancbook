@@ -36,6 +36,9 @@ class CommentsController < ApplicationController
 
     def index
         if @current_user.present?
+            unless params[:id].to_i > 0
+                params[:id] = User.find_by(username: params[:id]).id
+            end
             if @current_user.admin? || @current_user.id == params[:id].to_i
                 @comments = Comment.where(user_id: params[:id])
             end

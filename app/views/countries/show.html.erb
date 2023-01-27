@@ -11,7 +11,7 @@
     <div class='details'>   
         <h2><%= @country.name %> <span><%= @country.country_code %></span></h2>
         <p><%= @country["official_name"] %></p>
-        <p>Number of sanctions: <%= link_to "#{@country.sanctions.size}", "#{params[:id]}/sanctions" %></p>
+        <p>Number of sanctions: <%= link_to "#{@country.sanctions.size}", "#{Country.find_by(id: params[:id]).country_code}/sanctions" %></p>
     </div>
 </div>
 

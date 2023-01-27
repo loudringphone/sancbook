@@ -15,9 +15,12 @@ p.postscript {
     font-style:italic;
 }
 
+footer {
+    width: 20px;
+}
 div.about {
     display:flex;
-    align-content: center;
+    align-content: right;
     flex-direction: column
     
 }

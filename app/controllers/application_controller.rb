@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
         # return 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'    
         # return 'AIzaSyAwxpAsaXqY3uxRpLsZADAwzjvQFC7WK9Q' # No custom search
         # return 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
-        return 'AIzaSyBV1ZXF-FGbS8LNptoGgo6jsjRqDwIf0bU'
-        # return ''
+        # return 'AIzaSyBV1ZXF-FGbS8LNptoGgo6jsjRqDwIf0bU'
+        return ''
       end
 
     def fetch_user
@@ -33,11 +33,21 @@ class ApplicationController < ActionController::Base
     end
 
     def check_for_profile_owner
-        redirect_to :root unless (@current_user.id === User.find_by(id: params[:id]).id || @current_user.admin?)
+        if params[:id].to_i > 0
+            redirect_to :root unless (@current_user.id === User.find_by(id: params[:id]).id || @current_user.admin?)
+        else
+            redirect_to :root unless (@current_user.username === User.find_by(username: params[:id]).username || @current_user.admin?)
+        end
     end
 
     def check_for_comment_creator
         redirect_to :root unless (@current_user.id === Comment.find_by(id: params[:id]).user_id || @current_user.admin?)
     end
+
+    def last_controller
+        url = Rails.application.routes.recognize_path(request.referrer)
+        last_controller = url[:controller]
+    end
+
 end
 

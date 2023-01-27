@@ -33,9 +33,3 @@ class SessionController < ApplicationController
   end
 
 end
-
-private
-  def last_controller
-    url = Rails.application.routes.recognize_path(request.referrer)
-    last_controller = url[:controller]
-  end

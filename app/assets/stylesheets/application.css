@@ -17,17 +17,22 @@
 
 footer {
     display: inline-flex;
-    width: 100vw;
-    justify-content: center;
+    width: auto;
     position: fixed;
-    bottom: 0px;
+    right: 0px;
+    bottom: 50%;
     color: lightgray;
-    gap: 1.5vw;
 }
 
-footer > a {
+footer > div > a {
     text-decoration: none;
     color: lightgray;
+    margin-bottom: 1.5vh;
+}
+
+footer > div {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
 
 
@@ -252,13 +257,15 @@ header > nav > div > span > a:hover {
     text-underline-offset: 3px
 }
 
-div.signup_profile{
+div.signup_profile, 
+div.edit_profile{
     justify-content: space-between;
     width: 400px;
     display:block;
 }
 
-div.signup_profile > div {
+div.signup_profile > div, 
+div.edit_profile > div {
     width: 100%;
     height: max-content;
     text-align: left;
@@ -267,31 +274,36 @@ div.signup_profile > div {
     line-height: 180%;
 }
 
-div.signup_profile > div > form > label {
+div.signup_profile > div > form > label, 
+div.edit_profile > div > form > label {
     padding-bottom: 1%;
 }
 
-div.signup_profile > div > form > input {
+div.signup_profile > div > form > input, 
+div.edit_profile > div > form > input {
     font-size: large;
     line-height: 150%;
     margin-bottom: 5%;
 }
 
-div.signup_profile > div > form > div.field_with_errors > label {
+div.signup_profile > div > form > div.field_with_errors > label,
+div.edit_profile > div > form > div.field_with_errors > label {
     padding-bottom: 1%;
 }
 
-div.signup_profile > div > form > div.field_with_errors > input {
+div.signup_profile > div > form > div.field_with_errors > input,
+div.edit_profile > div > form > div.field_with_errors > input {
     font-size: large;
     line-height: 150%;
     margin-bottom: 5%;
-}   
+}  
 
-
-
+div.signup_profile > div > form > .submit,
 div.signup_profile > div > form > .submit {
     margin-top: 10%;
 }
+
+
 
 ol > li {
     color: red;

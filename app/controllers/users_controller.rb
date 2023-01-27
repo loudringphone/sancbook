@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :check_for_admin, :only => [:index]
-  before_action :check_for_login, :only => [:profile]
+  before_action :check_for_login, :only => [:show]
+  before_action :last_controller, :only => [:new]
 
   def index
     @users = User.all
@@ -8,27 +9,31 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    $location = request.headers["HTTP_REFERER"]
+    if last_controller == "session"
+      $location = root_path
+    end
+   
   end
 
   def create
     @user = User.new user_params
     if @user.save
-      session[:user_id] = @user.id # log in the newly created user
-      redirect_to root_path # TODO: send the user to a better page
+      session[:user_id] = @user.id
+      begin
+        redirect_to $location
+        $location = root_path
+      rescue
+        redirect_to root_path
+      end
     else
       render :new
     end
   end
 
-  def profile
-
-    unless (params[:id].to_i > 0)
-      if User.find_by(username: params[:id]).nil?
-        redirect_to root_path
-        return
-      else
-        params[:id] = User.find_by(username: params[:id]).id
-      end
+  def show
+    if User.find_by(id: params[:id]).nil?
+      params[:id] = User.find_by(username: params[:id]).id
     end
 
 
@@ -79,7 +84,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
+    if @user.nil?
+      @user = User.find_by(username: params[:id])
+    end
+    flash[:error] = "Invalid password"
   end
+
+  def update
+    user = User.find_by(id: params[:id])
+    user.assign_attributes user_params
+    user.save
+    redirect_to "/users/#{user.username}"
+  end
+
 
 
 

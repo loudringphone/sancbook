@@ -3,7 +3,7 @@
 <% if @current_user.id == User.find_by(id: params[:id]).id %>
     <h1>My comment history</h1>
 <% else%>
-    <h1><%= link_to "#{User.find_by(id: params[:id]).username}", user_path %>'s comment history</h1>
+    <h1><%= link_to "#{User.find_by(id: params[:id]).username}", "/users/#{User.find_by(id: params[:id]).username}" %>'s comment history</h1>
 <% end %>
 <br>
 

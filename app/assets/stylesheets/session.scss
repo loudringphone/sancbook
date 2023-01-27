@@ -4,12 +4,16 @@
 
 div.login_profile{
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    gap: 50px;
+    gap: 5vw;
 
+    div.new_user {
+        width: 20%;
+    }
+    
     div {
-        width: 100%;
+        width: 30%;
         height: max-content;
         text-align: left;
         background-color: white;

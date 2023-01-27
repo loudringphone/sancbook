@@ -159,6 +159,9 @@ class CountriesController < ApplicationController
 
 
   def sanctions
+    unless params[:id].to_i > 0
+      params[:id] = Country.find_by(country_code: params[:id]).id
+    end
     @country = Country.find params[:id]
     @sanctions = @country.sanctions.order(:name)
   end

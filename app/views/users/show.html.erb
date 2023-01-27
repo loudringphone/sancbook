@@ -4,14 +4,15 @@
 <div class="userProfile">
 <% if @current_user.id == params[:id].to_i %>
     <h1>Hello, <%= @current_user.username %>!</h1>
-    <%= link_to 'View comment history', 'history', :class => "viewHistory" %>
+    <%= link_to 'View comment history', "#{User.find_by(id: params[:id]).username}/history", :class => "userOptions" %>
+    <%= link_to 'Update password', edit_user_path, :class => "userOptions" %>
     
     <br>
     <h2>My sanctions</h2>
 <% else %>
     <% if @current_user.admin? %>
         <div class='adminView'><h1><%= User.find_by(id: params[:id]).username %>'s profile  <span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
-        <%= link_to 'View comment history', "#{params[:id]}/history", :class => "viewHistory" %>
+        <%= link_to 'View comment history', "#{User.find_by(id: params[:id]).username}/history", :class => "userOptions" %>
          <%= form_tag("#{params[:id]}/comments", method: :delete) do %>
             <% unless User.find_by(id: params[:id]).comments.size == 0 %>
                 <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
@@ -110,8 +111,8 @@
 
 <div class="adminView">
 <h1>Hello, <%= @current_user.username %>!</h1>
-<%= link_to 'View comment history', 'history' , :class => "viewHistory"%>
-<%= link_to 'Update password', edit_user_path, :class => "viewHistory" %>
+<%= link_to 'View comment history', "#{User.find_by(id: params[:id]).username}/history" , :class => "userOptions"%>
+<%= link_to 'Update password', edit_user_path, :class => "userOptions" %>
         <%= form_tag("comments", method: :delete) do %>
             <% unless @current_user.comments.size == 0 %>
                 <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>

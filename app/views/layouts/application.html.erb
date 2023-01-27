@@ -29,10 +29,10 @@
         <div>
         <% if @current_user.present? %>
             <% if @current_user.admin? %>
-              <%= link_to "All users", "/users/#{@current_user.id}/profile" %>
+              <%= link_to "All users", "/users/#{@current_user.id}" %>
             <% end %>
             <span>
-            <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{@current_user.id}/profile" %>)</span>
+            <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</span>
         <% else %>
             <%= link_to "Login / Signup", login_path %>
         <% end %>
@@ -44,7 +44,7 @@
     </div>
   </body>
 
-  <footer> <%= link_to "About us", about_path %><div>© 2023 Sancbook</div></footer>
+  <footer> <div><%= link_to "About us", about_path %>© 2023 Sancbook</div></footer>
   
 </html>
 
