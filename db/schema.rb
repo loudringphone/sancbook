@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_25_232047) do
+ActiveRecord::Schema.define(version: 2023_01_28_120423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,23 @@ ActiveRecord::Schema.define(version: 2023_01_25_232047) do
   create_table "favourites_sanctions", force: :cascade do |t|
     t.integer "favourite_id"
     t.integer "sanction_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.text "text"
+    t.datetime "sent"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
+  end
+
+  create_table "messages_users", force: :cascade do |t|
+    t.integer "message_id"
+    t.integer "user_id"
   end
 
   create_table "sanctions", force: :cascade do |t|

@@ -32,6 +32,9 @@ const createSpantag = function(txt) {
                     
 
 const featureWidth = function(){
+    isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
+
+if(!isMobile) {
     featurePlaceholder = document.querySelector(".featurePlaceholder")
     feature = document.querySelector(".feature")
     if (featurePlaceholder != null) {
@@ -41,6 +44,9 @@ const featureWidth = function(){
         else {
         }
     }
+   
+}
+    
 }
 
 

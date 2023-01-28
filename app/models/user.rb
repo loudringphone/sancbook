@@ -7,8 +7,11 @@ class User < ApplicationRecord
     has_many :favourites, dependent: :delete_all
     has_many :sanctions, dependent: :delete_all
     has_many :comments
-    validates_format_of :username, with: /[a-zA-Z]+/, message: "Username must contain at least one letter"
+    validates_format_of :username, with: /[a-zA-Z]+/, message: "must contain at least one letter"
     validate :pasword_must_not_be_blank
+
+    has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+    has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
 
   def pasword_must_not_be_blank
     if password.blank?

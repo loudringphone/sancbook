@@ -1,7 +1,13 @@
 <title><%= @country.name %> | Sancbook</title>
 
 <h1>Update / Delete country</h1>
-<p class='error'><%= $country_error %></p>
+<% if @country.errors.any? %>
+            <ol class="error">
+                <% @country.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ol>
+    <% end %>
 <div class="form_container">
     <div>
         <%= render :partial => 'form' %>

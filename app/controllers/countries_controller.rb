@@ -5,7 +5,8 @@ class CountriesController < ApplicationController
   before_action :original_url, :only => [:index]
 
   def index
-    @countries = Country.order(:name)
+    @countries = Country.includes(:sanctions).select { |c| c.sanctions.size > 0 }
+    @countries = @countries.sort_by { |c| c.name }
   end
 
   def new
@@ -15,19 +16,11 @@ class CountriesController < ApplicationController
   def create
     @country = Country.new country_params
     @country.name = titleize(@country.name)
-    unless Country.find_by(name: @country.name).present?
-      if @country.flag.present?
-        unless @country.flag.include? "cloudinary"
-        req = Cloudinary::Uploader.upload(@country.flag)
-        @country.flag = req["secure_url"]
-        @country.save
-        end
-      end
-      @country.save
+    @country.save
+    if @country.save
       redirect_to @country
     else
-      flash.now[:error] = "Entry with this name already exists!"
-      render new_country_path
+      render :new
     end
   end
 
@@ -44,29 +37,28 @@ class CountriesController < ApplicationController
   end
 
   def update
-    country = Country.find params[:id]
-    previous_name = country.name
-    country.assign_attributes country_params
-    country.name = titleize(country.name)
-    if country.flag.present?
-      unless country.flag.include? "cloudinary"
-      req = Cloudinary::Uploader.upload(country.flag)
-      country.flag = req["secure_url"]
-      country.save
+    @country = Country.find params[:id]
+    previous_name = @country.name
+    @country.assign_attributes country_params
+    @country.name = titleize(@country.name)
+    if @country.flag.present?
+      unless @country.flag.include? "cloudinary"
+      req = Cloudinary::Uploader.upload(@country.flag)
+      @country.flag = req["secure_url"]
+      @country.save
       end
     end
-    unless (country.name != previous_name && Country.find_by(name: country.name).present?)
-      country.save
-      country.sanctions.each do |sanction|
-        sanction.nationality = country.name
+    unless (@country.name != previous_name && Country.find_by(name: @country.name).present?)
+      @country.save
+      @country.sanctions.each do |sanction|
+        sanction.nationality = @country.name
         sanction.save
-      end
-      $country_error = ''
-      redirect_to country
+      end   
+    end
+    if @country.save
+      redirect_to @country
     else
-      $country_error = "Entry with this name already exists!"
-      $country_error_ticker = 2
-      redirect_to edit_country_url
+      render :edit
     end
   end
 
@@ -79,26 +71,20 @@ class CountriesController < ApplicationController
   def show
     unless (params[:id].to_i > 0)
       if Country.find_by(country_code: params[:id].upcase).nil?
-        
-        begin
-          country_url ="https://restcountries.com/v2/alpha/#{params[:id]}"
+        begin 
+          country_url ="https://restcountries.com/v3.1/alpha/#{params[:id]}"
           country_details = HTTParty.get country_url
+          intended_country = country_details[0]["name"]["common"] 
         rescue
-          country_details = [{:status => 404,:message => "Not Found"}]
+          intended_country = "that country"
         end
+        redirect_to countries_path, alert: "Seems that none of our users have put any sanctions on #{intended_country} yet, why not start sanctioning people* from there now?"
+        return
 
+      elsif Country.find_by(country_code: params[:id].upcase).sanctions.size == 0
+        intended_country = Country.find_by(country_code: params[:id].upcase).name
 
-
-
-
-
-
-
-
-
-
-
-        redirect_to countries_path, notice: 'Seems that country is not on the list yet, why not start sanctioning people* from there now?'
+        redirect_to countries_path, alert: "Seems that none of our users have put any sanctions on #{intended_country} yet, why not start sanctioning people* from there now?"
         return
       else
         params[:id] = Country.find_by(country_code: params[:id].upcase).id

@@ -1,7 +1,7 @@
 <title><%= @sanction.name %> | Sancbook</title>
 
 <div class="showContainer">
-    <div>
+    <div class="sanction_info">
         <div class="profile">
             <div class='details'>   
                 <h2><%= @sanction["name"] %></h2>
@@ -101,7 +101,7 @@
                         <div>
                         <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>/profile"><%= User.find_by(id: comment.user_id).username %></a></span> <span class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
                         <% if @current_user.present? %><% if (@current_user.admin? || comment.user_id ==  @current_user.id ) %><a class='removeComment' data-method="delete" href="/comments/<%= comment.id %>">Delete</a><% end %><% end %></div>
-                        <p style="line-height:22px"><%= comment.text %></p>
+                        <p><%= comment.text %></p>
                         </div>
                               
                 <% end%>
@@ -110,9 +110,9 @@
             <% end%>
         
         </div>
-   
+        <div class="comment_box">
         <%= render partial: 'comments/form' %>
-
+        </div>
     </div>
 </div>
 

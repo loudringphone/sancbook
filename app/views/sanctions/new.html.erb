@@ -1,7 +1,15 @@
 <title>New Sanction | Sancbook</title>
 
 <h1>Create sanction</h1>
-<p class='error'><%= @sanction_error %></p>
+
+<% if @sanction.errors.any? %>
+            <ol class="error">
+                <% @sanction.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ol>
+    <% end %>
+
 <div class="form_container">
     <%= render :partial => 'form' %>
     

@@ -1,7 +1,14 @@
 <title><%= @sanction.name %> | Sancbook</title>
 
 <h1>Update / Delete sanction</h1>
-<p class='error'><%= $sanction_error %></p>
+<% if @sanction.errors.any? %>
+            <ol class="error">
+                <% @sanction.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ol>
+    <% end %>
+
 <div class="form_container">
     <div>
         <%= render :partial => 'form' %>
@@ -21,6 +28,8 @@
 
 <script>
 
+
+
     preview = document.querySelector(".preview");
     profile_pic = document.querySelector("#sanction_image");
     featurePlaceholder = document.querySelector(".featurePlaceholder");
@@ -28,6 +37,7 @@
         e = featurePlaceholder.lastElementChild
         if (profile_pic.value != '') {
             p = featurePlaceholder.querySelector("p")
+
             if (typeof(p) != 'undefined' && p != null) {
                 featurePlaceholder.removeChild(p)
             }
@@ -42,4 +52,13 @@
             featurePlaceholder.removeChild(e);
         }
     })
+
+
+        if (profile_pic.value != '') {
+            p = featurePlaceholder.querySelector("p")
+
+            if (typeof(p) != 'undefined' && p != null) {
+                featurePlaceholder.removeChild(p)
+            }
+        }
 </script>

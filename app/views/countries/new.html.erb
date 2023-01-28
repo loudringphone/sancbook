@@ -1,10 +1,17 @@
 <title>New Country | Sancbook</title>
 
 <h1>New country</h1>
-<p class='error'><%= flash.now[:error] %></p>
+<% if @country.errors.any? %>
+            <ol class="error">
+                <% @country.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ol>
+    <% end %>
+
 <div class="form_container">
     <%= render :partial => 'form' %>
-    <div class ='preview'><p>Image from the URL will pop up here as you fill in the flag input box.</p></div>
+<div class ='preview'><p>Image from the URL will pop up here as you fill in the flag input box.</p></div>
 </div>
 
 <script>

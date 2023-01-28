@@ -1,11 +1,14 @@
 <h1>Sign up</h1>
+
+
     <% if @user.errors.any? %>
-            <ol>
+            <ol class="error">
                 <% @user.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
                 <% end %>
             </ol>
     <% end %>
+
 <div class="signup_profile">
     <div>
         <%= form_for @user do |f| %>

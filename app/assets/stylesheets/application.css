@@ -15,6 +15,14 @@
  */
  
 
+
+form .no_comments[disabled] {
+    background-color: transparent !important;
+    cursor: default !important;
+    float:initial;
+
+}
+
 footer {
     display: inline-flex;
     width: auto;
@@ -212,10 +220,20 @@ figure.preview > p {
 
 p.error {
     color: red;
-    font-size: medium;
     font-style: italic;
 }
 
+ol.error > li {
+    color: red;
+    font-style: italic;
+    line-height: 150%;
+}
+
+div.alert {
+    color: red;
+    font-style: italic;
+    line-height: 150%; 
+}
 
 
 header {
@@ -370,15 +388,25 @@ div.commentSection > form {
 div.comment > div > span.time {
     font-size:small;
 }
+
+div.comment > p {
+    line-height:22px;
+}
 form#new_comment {
     align-self: flex-end;
 }
+
+div.comment_box {
+    width: 100%;
+}
+
 #comment_text {
     width:100%;
     height: 10vh;
     font-size: large;
     border-radius: 0.5em;
 }
+
 
 
 
@@ -395,6 +423,7 @@ input[type="submit"] {
     margin-left: auto;
     margin-top: 5px;
     cursor: pointer;
+    float: right;
 }
 
 input[type="submit"]:hover {
@@ -445,27 +474,17 @@ input[type="submit"] {
 }
 
 
-@media (max-width: 1300px) {
-    div.showContainer {
-        gap: 4vw;
-    }
-    .details {
-        width: 300px;
-    }
-}
+
 
 
 @media (max-width: 1110px) {
     .container {
         width: 90vw;
+        height:auto;
     }
 
 
-    div.showContainer {
-        grid-template-columns: 1fr;
-
-        grid-auto-rows: auto;
-    }
+    
 
     .details {
         width: 300px;
@@ -474,56 +493,80 @@ input[type="submit"] {
 }
 
 @media (max-width: 1000px) {
+    div.showContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+  
+
+    div.commentSection {
+        width: 90%;
+        height:fit-content
+    }
+    .commentHeader {
+        font-size: 2.2vh;
+    }
+    div.comment_box {
+        width: 100%;
+        height: 15%;
+    }
+    div.comment_box > form {
+        height: 100%
+    }
+    #new_comment > textarea#comment_text {
+        height: auto;
+        font-size: 2.2vh;
+    }
+    #new_comment > input[type="submit"] {
+        height: 20%;
+    }
+
+    div.comment {
+        font-size: 2vh;
+    }
+
+    div.comment > p {
+        line-height: 2.5vh;
+    }
+
+    div.comment > div > span.time {
+        font-size:1.5vh;
+    }
+
     .details {
         width: 300px;
     }
 
-    div.commentHeader {
-        height:auto;
-        font-size: 2vh;
-        padding-left:5vw;
-        padding-bottom: 1vh;
-        margin-bottom: 2vh;
-    }
-    div.commentArea {
-        height: 70vh;    
-    }
-
-    div.commentArea > p {
-        font-size: 2.3vh;
-        text-align: center;
-        
-    }
-
-
-    div.commentSection {
-        height: 50vh;
-        width: 90vw;
-        margin: auto;
-    }
-
-    div.comment {
-        font-size: 2.2vh;
-    }
-
-    div.comment > div > span.time {
-        font-size:1.2vh;
-    }
-    #comment_text {
-        font-size: 2.2vh;
-    }
+    
     div.profile {
         display: flex;
-        height: 30vh;
+        height: fit-content;
         font-size: 1.5vh;
         justify-content: space-evenly;
+        margin-bottom: 10vh;
     }
 
+    h1.aboutGreeting {
+        font-size: 4vh;
+        padding-top: 3vh;
+        padding-left:0;
+    }
+
+    div.aboutText {
+        height: 90vh;
+        width: 80vw;
+        font-size: 2.2vh;
+        line-height: 180%;
+    }
+
+    span.aboutBrand {
+        font-size:2.4vh;
+    }
+
+   
+
     
-   div.showContainer > div {
-    height: 100vh;
-    
-   }
+  
     div.details {
         width: 45vw;
     }
@@ -531,15 +574,16 @@ input[type="submit"] {
         width: 100%;
     }
     div.featurePlaceholder {
+        margin-top:5vh;
         width: 30vw;
         height: 20vh
     }
    .ofac > h3 {
-        font-size: 1.9vh;
+        font-size: 2.4vh;
     }
 
     .ofac > h4 {
-        font-size: 1.7vh;
+        font-size: 2.2vh;
     }
 
     .ofac > p {
@@ -547,9 +591,7 @@ input[type="submit"] {
         line-height: 150%;
     }
     
-    button.collapsible {
-        font-size: 1.6vh;
-    }
+   
 
     div.content {
         font-size: 1.6vh;
@@ -577,6 +619,194 @@ input[type="submit"] {
         width: 100%;
         justify-content: center;
     }
+
+    div.login_profile {
+        height: 80vh;
+        display:flex;
+        flex-wrap: wrap;
+       
+    }
+
+    div.login_profile > div.existing_user {
+        width: 50vw;
+        height: 30vh;
+        line-height: 2vh;
+        margin-top: 5vh;
+    }
+
+    div.login_profile > div > form input {
+        font-size: 1.8vh;
+        line-height: 150%;
+    }
+
+
+    label {
+        font-size: 2vh;
+    }
+
+    form {
+        height: 10vh;
+    }
+    div.login_profile > div.new_user {
+        width: 50vw;
+        height: 20vh;
+    }
+
+    div.login_profile > div.existing_user > h2 {
+        font-size: 2.3vh;
+    }
+
+    div.existing_user {
+        padding-top:0;
+    }
+    div.login_profile > div.new_user > h2 {
+        font-size: 2.3vh;
+    }
+
+    input.submit {
+        height: 4vh;
+        line-height:6vh;
+    }
+
+    h1 {
+        font-size: 3vh;
+    }
+
+    .mapHeader {
+        line-height: 200%;
+    }
+    .postscript {
+        padding-bottom:9vh;
+    }
+
+    div.sanction_index {
+        font-size: 1.8vh;
+    }
+
+    h3.nation {
+        margin-top: 4vh;
+        margin-bottom: 2vh;
+    }
+
+    div.thumb {
+        font-size: 2vh; 
+        width: 30vw;
+        height: 10vh;
+        margin-bottom: 6vh;
+    }
+
+   
+    div.thumb > a > img {
+        width: 40vw;
+    }
+    div.new_country  {
+        height: 40vh;
+        
+    }
+    
+    input#country_name {
+        font-size: 2.2vh;
+    }input#country_official_name {
+        font-size: 2.2vh;
+    }input#country_native_name {
+        font-size: 2.2vh;
+    }input#country_country_code {
+        font-size: 2.2vh;
+    }
+    input#country_flag{
+        font-size: 2.2vh;
+        margin-bottom: 4vh;
+    }
+
+    input[type="submit"] {
+        width: 30vw;
+        height: 10vh;
+        font-size: 2.2vh;
+        flex-wrap:wrap;
+        white-space: normal;
+    }
+
+    div.preview > p {
+        font-size: 2.2vh;
+    }
+
+    div.personal_index > a {
+        font-size: 2vh;
+        margin-top: 8vh;
+        line-height: 200%;
+    }
+
+    div.adminView form > input[type="submit"] {
+        font-size: 1.7vh;
+    }
+
+    button.collapsible {
+        font-size: 2vh;
+        padding-bottom: 1.5vh;
+        text-align: left;
+    }
+
+    div.control {
+        font-size: 2vh;
+        margin-bottom:5vh;
+    }
+
+    div.details > h2 {
+        font-size: 2.8vh;
+    }
+
+    div.details > h2 > span {
+        font-size: 2vh;
+    }
+
+    div.details > p {
+        font-size: 2vh;
+    }
+
+    div.country_number {
+        font-size: 2.2vh
+    }
+
+    input#sanction_name {
+        font-size: 2.2vh
+    }
+    input#sanction_nationality {
+        font-size: 2.2vh
+    }
+    input#sanction_risk {
+        font-size: 2.2vh
+    }
+    input#sanction_image {
+        font-size: 2.2vh
+    }
+
+    div.form_container {
+        gap:1vw;
+    }
+
+    
+
+    .form_container {
+        height: auto;
+    }
+
+   
+ 
+
+   
+    div.container {
+        height: 100vh;
+    }
+
+    figure.preview > div.featurePlaceholder {
+        margin-top: 10vh;
+        height: 520px;
+        width: 400px;
+    }
+    figure.preview > div.featurePlaceholder >   img {
+            height: 500px;
+            width: auto;
+        }
 
 }
 

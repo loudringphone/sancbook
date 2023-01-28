@@ -73,6 +73,10 @@ class SanctionsController < ApplicationController
       end
 
       @sanction.save
+
+      if @sanction.save
+        
+      
       if Country.find_by(name: @sanction.nationality).nil?
         country = Country.new
         country.name = @sanction.nationality
@@ -84,8 +88,9 @@ class SanctionsController < ApplicationController
       @sanction_error = ''
       redirect_to @sanction
     else
-      @sanction_error = "Entry with this name already exists!"
-      render new_sanction_path
+    
+      render :new
+    end
     end
   end
 
@@ -100,31 +105,32 @@ class SanctionsController < ApplicationController
   end
 
   def update
-    sanction = Sanction.find params[:id]
-    previous_name = sanction.name
-    previous_nationality = sanction.nationality
-    sanction.assign_attributes sanction_params
-    sanction.name = titleize(sanction.name)
-    sanction.nationality = titleize(sanction.nationality)
-    sanction.nationality = 'Unknown' if sanction.nationality.empty?
-    unless (sanction.name != previous_name && Sanction.find_by(name: sanction.name).present?)
+    @sanction = Sanction.find params[:id]
+    previous_name = @sanction.name
+    previous_nationality = @sanction.nationality
+    @sanction.assign_attributes sanction_params
+    @sanction.name = titleize(@sanction.name)
+    @sanction.nationality = titleize(@sanction.nationality)
+    @sanction.nationality = 'Unknown' if @sanction.nationality.empty?
+    unless (@sanction.name != previous_name && Sanction.find_by(name: @sanction.name).present?)
 
-      if sanction.image.present?
-        unless sanction.image.include? "cloudinary"
-        req = Cloudinary::Uploader.upload(sanction.image)
-        sanction.image = req["secure_url"]
+      if @sanction.image.present?
+        unless @sanction.image.include? "cloudinary"
+        req = Cloudinary::Uploader.upload(@sanction.image)
+        @sanction.image = req["secure_url"]
         end
       end
 
-      sanction.save
-      unless sanction.nationality == previous_nationality
-        if Country.find_by(name: sanction.nationality).nil?
+      @sanction.save
+      if @sanction.save
+      unless @sanction.nationality == previous_nationality
+        if Country.find_by(name: @sanction.nationality).nil?
           country = Country.new
-          country.name = sanction.nationality
+          country.name = @sanction.nationality
           country.save
         end
-        unless sanction.nationality.empty?
-          Country.find_by(name: sanction.nationality).sanctions << sanction
+        unless @sanction.nationality.empty?
+          Country.find_by(name: @sanction.nationality).sanctions << @sanction
         end
         unless previous_nationality.empty?
           country = Country.find_by(name: previous_nationality)
@@ -132,13 +138,12 @@ class SanctionsController < ApplicationController
         end
         
       end
-      $sanction_error = ''
-      redirect_to sanction
+      redirect_to @sanction
     else
-      $sanction_error = "Entry with this name already exists!"
-      $sanction_error_ticker = 2
-      redirect_to edit_sanction_url
+      render :edit
     end
+
+  end
   end
 
   def destroy

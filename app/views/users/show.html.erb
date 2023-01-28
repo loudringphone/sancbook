@@ -17,9 +17,9 @@
         <%= link_to 'View comment history', "#{User.find_by(id: params[:id]).username}/history", :class => "userOptions" %>
          <%= form_tag("#{params[:id]}/comments", method: :delete) do %>
             <% unless User.find_by(id: params[:id]).comments.size == 0 %>
-                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
+                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?", class: "delete_all_comments" }%><%= token_tag %>
             <% else %>
-                <%= submit_tag "No comments from this user", class: "no_comments", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
+                <%= submit_tag "No comments from this user", class: "no_comments" %><%= token_tag %>
             <% end %>
             <% end %>
         
