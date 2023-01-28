@@ -1,3 +1,15 @@
-<h1>Messages</h1>
+<h1>All Messages</h1>
+
+<h3>You have <%= @total_unread_size %> unread messages.</h3>
+
+<div class="message_index">
+<% @unique_usernames.each do |username| %>
+            <p>
+                <a href="/users/<%= username %>/messages">
+                    <%= username %>
+                </a>
+             </p>
+      <% end %>
+</div>
 
 

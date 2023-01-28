@@ -31,7 +31,7 @@
         
         <div>
         <% if @current_user.present? %>
-        <%= link_to "Messages", "/users/#{User.find_by(id: @current_user.id).username}/messages" %>
+        <%= link_to "Messages #{"(#{@total_unread_size})"if @total_unread_size > 0}", "/users/#{User.find_by(id: @current_user.id).username}/message_index" %>
               <span>
             <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</span>
               

@@ -5,7 +5,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :receiver_id
       t.text :text
       t.datetime :sent
-      t.boolean :read
+      t.integer :unread, :default => 0
       t.timestamps null: false
     end
     add_index :messages, :sender_id

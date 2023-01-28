@@ -30,7 +30,7 @@
                         <% count += 1 %>
                     <% end %>
                 <% else %>
-                    <a href="/users/<%= User.find_by(id: @favoured_by_id[0]).username %>"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>/profile"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
+                    <a href="/users/<%= User.find_by(id: @favoured_by_id[0]).username %>"><%= User.find_by(id: @favoured_by_id[0]).username %></a>, <a href="/users/<%= @favoured_by_id[1] %>"><%= User.find_by(id: @favoured_by_id[1]).username%></a> and <%= link_to "#{@favoured_by_id.size - 2}", "#{params[:id]}/favourites" %> others
                 <% end %>
                 </p>
                 
@@ -99,7 +99,7 @@
                 
                         <div class="comment">
                         <div>
-                        <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>/profile"><%= User.find_by(id: comment.user_id).username %></a></span> <span class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                        <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>"><%= User.find_by(id: comment.user_id).username %></a></span> <span class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
                         <% if @current_user.present? %><% if (@current_user.admin? || comment.user_id ==  @current_user.id ) %><a class='removeComment' data-method="delete" href="/comments/<%= comment.id %>">Delete</a><% end %><% end %></div>
                         <p><%= comment.text %></p>
                         </div>
@@ -259,7 +259,7 @@
                 }
                 else {
                     for (let i=0;i<newidArray.length;i++) {
-                        createAtag(newusernameArray[i],`/users/${newusernameArray[i]}/profile`)
+                        createAtag(newusernameArray[i],`/users/${newusernameArray[i]}`)
                         if (i == newidArray.length - 2) {
                             createSpantag(" and ")
                             continue

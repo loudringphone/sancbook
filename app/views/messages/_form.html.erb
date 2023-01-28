@@ -1,0 +1,6 @@
+<%= form_for Message.new do |f| %>
+   
+    <%= f.text_area :text, placeholder: 'Enter message...', :required => true %>
+    <%= f.submit "Post", class: 'message_button' %>
+
+<% end %>

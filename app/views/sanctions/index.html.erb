@@ -1,7 +1,7 @@
 <title>Sanction Index | Sancbook</title>
 
 <h1>Sanctions Index</h1>
-<p>Currently <%= @sanctions.size %> sanctions on the list.</p>
+<p style='sanction number'>Currently <%= @sanctions.size %> sanctions on the list.</p>
 
 
 
@@ -9,7 +9,7 @@
         <h3 class="nation"><% unless Country.find_by(name: nation).nil?%>
     <a href="countries/<%= Country.find_by(name: nation).id %>"><img src="<%= Country.find_by(name: nation).flag %>" alt=""><%= nation %></a>
     <% else %><%= nation %><% end %></h3>
-      <% sanctions = Sanction.where(nationality: nation) %>
+      <% sanctions = @sanctions.where(nationality: nation) %>
       <div class="sanction_index">
       <% sanctions.each do |sanction| %>
             <p>

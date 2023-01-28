@@ -44,7 +44,6 @@ class UsersController < ApplicationController
     user = User.find_by(id: params[:id])
     @user_sanctions = user.sanctions.order(:name)
     @user_sanction_nations = @user_sanctions.select(:nationality).map(&:nationality).uniq.sort!
-    # raise 's'
     user_favourites_by_id = user.favourites
     @user_favourites = []
     user_favourites_by_id.each do |id|

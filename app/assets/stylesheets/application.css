@@ -349,6 +349,8 @@ div.showContainer {
     gap: 8vw;
 }
 
+
+
 div.commentSection {
     display: flex;
     align-items: flex-start;
@@ -401,33 +403,10 @@ div.comment_box {
 }
 
 #comment_text {
-    width:100%;
+    width:98%;
     height: 10vh;
     font-size: large;
     border-radius: 0.5em;
-}
-
-
-
-
-input[type="submit"] {
-    width:auto;
-    font-size: medium;
-    border-style: solid;
-    box-shadow: none;
-    padding: 3px 3px 3px 3px;
-    border-radius: 0.5em;
-    border-width: thin;
-    height: 30px;
-    margin: initial;
-    margin-left: auto;
-    margin-top: 5px;
-    cursor: pointer;
-    float: right;
-}
-
-input[type="submit"]:hover {
-    background-color: lightgray;
 }
 
 div.commentArea {
@@ -467,6 +446,222 @@ div.comment > div {
     color:white;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.messageSection {
+    display: flex;
+    align-items: flex-start;
+    height: 85vh;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 5px;
+    border-color: skyblue;
+    width: 325px;
+    margin-top: -20px;
+    padding: 0 5px 5px 5px;
+    flex-wrap: wrap;
+    justify-content: left;
+    border-radius: 0.5em;
+    overflow:hidden;
+    
+}
+
+div.messageHeader {
+    weight: 10vh;
+    border-bottom:solid;
+    border-color: skyblue;
+    margin-bottom: 10px;
+    width:100%;
+}
+
+div.messageHeader > h3 {
+    line-height: 5%;
+}
+
+div.message_box {
+    align-self: flex-end;
+}
+
+div.messageSection > form {
+    width:100%;
+    display: inline-flex;
+    align-self: flex-end;
+    flex-wrap: wrap;
+}
+
+div.sender > div > span.time {
+    font-size:small;
+}
+
+
+div.sender {
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 3px 5px 1px 5px;
+    border-radius: 0.5em;
+}
+
+div.receiver > div > span.time {
+    font-size:small;
+}
+
+
+div.receiver {
+    text-align: left;
+    margin-bottom: 10px;
+    padding: 5px 5px 2px 5px;
+    border-radius: 0.5em;
+}
+
+
+
+div.sender > p {
+    line-height:12px;
+}
+
+div.receiver > p {
+    line-height:12px;
+}
+
+form#new_message {
+    align-self: flex-end;
+}
+
+div.message_box {
+    width: 100%;
+}
+
+#message_text {
+    width:100%;
+    height: 10vh;
+    font-size: large;
+    border-radius: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+input[type="submit"] {
+    width:auto;
+    font-size: medium;
+    border-style: solid;
+    box-shadow: none;
+    padding: 3px 3px 3px 3px;
+    border-radius: 0.5em;
+    border-width: thin;
+    height: 30px;
+    margin: initial;
+    margin-left: auto;
+    margin-top: 5px;
+    cursor: pointer;
+    float: left;
+}
+
+input.message_button {
+    float: right;
+}
+
+input[type="submit"]:hover {
+    background-color: lightgray;
+}
+
+
+div.messageMain {
+    text-align: -webkit-center;
+}
+
+div.messageArea {
+    overflow-y: auto;
+    overflow-x:hidden;
+    height: 60vh;
+    width: 100%;
+    word-wrap: break-word;
+    position : relative; bottom:0;
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+div.message {
+    padding-top:5px;
+    padding-left:10px;
+    padding-bottom:1px;
+    border-radius: 10px;
+}
+
+
+
+div.sender {
+    background-color: lightsalmon;
+    width: 80%;
+    float: right;
+    align-self: flex-end;
+}
+
+div.sender:hover {
+    background-color: rgb(203, 203, 203);
+    width: 100%;
+}
+
+div.receiver:hover {
+    background-color: rgb(203, 203, 203);
+    width: 100%;
+}
+
+div.unread {
+    width: 100%;
+    font-style: italic;
+    display: inline-block;
+
+}
+div.sender > div {
+    margin-bottom:-10px;
+}
+
+div.receiver {
+    background-color: rgb(128, 221, 240);
+    width: 80%;
+    float: left;
+}
+
+
+div.receiver > div {
+    margin-bottom:-10px;
+}
+
+.removeMessage{
+    margin-left:10px;
+    text-decoration: none;
+    text-align: left;
+    display: none;
+    font-size:small;
+    color:white;
+}
+
+
+
 input[type="submit"] {
     font-size: large;
     border-radius: 0.3em;
@@ -474,7 +669,19 @@ input[type="submit"] {
 }
 
 
+.message_index {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
 
+div.message_index > p {
+ 
+    margin-right: 50px;
+}
+
+div.unread {
+    font-style: italic;
+}
 
 
 @media (max-width: 1110px) {
@@ -530,6 +737,46 @@ input[type="submit"] {
     }
 
     div.comment > div > span.time {
+        font-size:1.5vh;
+    }
+
+
+
+
+
+
+    div.messageSection {
+        width: 90%;
+        height:fit-content;
+        margin-top: 20px;
+    }
+    .messageHeader {
+        font-size: 2.2vh;
+    }
+    div.message_box {
+        width: 100%;
+        height: 15%;
+    }
+    div.message_box > form {
+        height: 100%
+    }
+    #new_message > textarea#message_text {
+        height: auto;
+        font-size: 2.2vh;
+    }
+    #new_message > input[type="submit"] {
+        height: 20%;
+    }
+
+    div.message {
+        font-size: 2vh;
+    }
+
+    div.message > p {
+        line-height: 2.5vh;
+    }
+
+    div.message > div > span.time {
         font-size:1.5vh;
     }
 
@@ -606,6 +853,10 @@ input[type="submit"] {
         font-size: 1.5vh;
         flex-wrap: wrap;
     }
+
+    p {
+        font-size: 2.2vh;
+    }
     nav.left {
         width: 100%;
         justify-content: center;
@@ -673,19 +924,25 @@ input[type="submit"] {
     }
 
     .mapHeader {
-        line-height: 200%;
+        line-height: 130%;
+        font-size: 2vh;
     }
+
     .postscript {
         padding-bottom:9vh;
+        font-size: 1.5vh !important;
     }
 
     div.sanction_index {
         font-size: 1.8vh;
     }
 
+
+
     h3.nation {
         margin-top: 4vh;
         margin-bottom: 2vh;
+        font-size: 2.3vh;
     }
 
     div.thumb {
@@ -719,9 +976,10 @@ input[type="submit"] {
     }
 
     input[type="submit"] {
-        width: 30vw;
-        height: 10vh;
-        font-size: 2.2vh;
+        width: auto;
+        height: auto;
+        padding: 0.4vh 0.8vh 0.4vh 0.8vh !important;
+        font-size: 1.2vh !important;
         flex-wrap:wrap;
         white-space: normal;
     }
@@ -731,6 +989,12 @@ input[type="submit"] {
     }
 
     div.personal_index > a {
+        font-size: 2vh;
+        margin-top: 8vh;
+        line-height: 200%;
+    }
+
+    div.message_index > a {
         font-size: 2vh;
         margin-top: 8vh;
         line-height: 200%;
@@ -807,6 +1071,14 @@ input[type="submit"] {
             height: 500px;
             width: auto;
         }
+    div.personal_index > h2 {
+        font-size: 2.4vh;
+    }
+
+    a.userOptions {
+        font-size: 1.2vh;
+    }
+
 
 }
 

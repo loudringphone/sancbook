@@ -1,0 +1,64 @@
+<div class="messageMain">
+
+
+<div class="messageSection">
+        <div class="messageHeader"><h3>💬 <%= link_to @user.username , "/users/#{@user.username}" %></h3></div>
+        <div class="messageArea">
+                <% count = 0 %>
+                <% @messages.each do |message| %>
+                    <% if count == @unread_messages.size && @unread_messages.size != 0 %>
+                    <div class="unread"><p> === <%= @unread_messages.size %> unread messages below ===</p></div>
+                    <% end %>
+                    <% if ( message.sender_id ==  @current_user.id ) %>
+                        <div class="sender">
+                        <div>
+                         <span class='time'><%= message.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                        <a class='removeMessage' data-method="delete" href="/messages/<%= message.id %>">Delete</a></div>
+                        <p><%= message.text %></p>
+                        </div>
+                          <% end %>
+                    <% if ( message.receiver_id ==  @current_user.id ) %>
+                        <div class="receiver">
+                        <div>
+                         <span class='time'><%= message.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                        <a class='removeMessage' data-method="delete" href="/messages/<%= message.id %>">Delete</a></div>
+                        <p><%= message.text %></p>
+                        </div>
+                          <% end %>
+                          <% if count != @unread_messages.size + 1 %>
+                          <% count += 1 %>
+                          <% end %>
+                <% end%>
+            
+        
+        </div>
+        <div class="message_box">
+        <%= render partial: 'form' %>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+
+    senders = document.querySelectorAll('.sender')
+    senders.forEach(target =>
+   
+        target.addEventListener("mouseleave", function() {
+            removeMessage = target.querySelector('.removeMessage')
+            removeMessage.style.display = "none"
+        })
+    )
+    senders.forEach(target =>
+        target.addEventListener("mouseenter", function() {
+            removeMessage = target.querySelector('.removeMessage')
+            removeMessage.style.display = "initial"
+        })
+    )
+
+
+
+
+
+</script>

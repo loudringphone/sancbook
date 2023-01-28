@@ -7,13 +7,14 @@ class CommentsController < ApplicationController
         comment = Comment.new
         comment.text = params[:comment]["text"]
         comment.user_id = @current_user.id
-
         location = request.headers["HTTP_REFERER"]
-        sanction_id = location[location.index('sanctions/')+10..].to_i
+        sanction_id = location[location.index('sanctions/')+10..]
+        if !Sanction.find_by(id: sanction_id).present?
+            sanction_id = Sanction.find_by(name: sanction_id).id
+        end
         comment.sanction_id = sanction_id
         comment.sent = Time.now.strftime("%d/%m/%Y %H:%M")
         comment.save
-        location = request.headers["HTTP_REFERER"]
         redirect_to location
     end
 

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :fetch_user
+    before_action :check_for_unread
 
     private
 
@@ -49,5 +50,13 @@ class ApplicationController < ActionController::Base
         last_controller = url[:controller]
     end
 
+    def check_for_unread
+        if @current_user.present?
+            total_unread_messages = Message.where("receiver_id = ? AND unread > ?", @current_user.id, 0)
+            @total_unread_size = total_unread_messages.size
+        end
+    end
+
 end
 
+    

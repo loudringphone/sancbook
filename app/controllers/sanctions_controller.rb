@@ -39,6 +39,7 @@ class SanctionsController < ApplicationController
   def index
     @nations = Sanction.distinct.pluck(:nationality).sort!
     @sanctions = Sanction.order(:name)
+    
 
 
     

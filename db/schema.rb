@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2023_01_28_120423) do
     t.integer "receiver_id"
     t.text "text"
     t.datetime "sent"
-    t.boolean "read"
+    t.integer "unread", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"

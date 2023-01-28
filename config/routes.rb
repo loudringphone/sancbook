@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   post 'sanctions/:id/comment' => 'comments#create'
   delete 'users/:id/comments' => 'comments#remove_all_comments'
   get 'users/:id/history' => 'comments#index'
-  get 'users/:id/messages' => 'messages#index'
+  get 'users/:id/message_index' => 'messages#index'
+  get 'users/:id/messages' => 'messages#message'
 
 
 end
