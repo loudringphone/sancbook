@@ -12,8 +12,9 @@
   <body>
     <div class="container">
       <header>
-        <nav>
-            <a href="/" data-turbolinks="false" style="font-weight:bold;font-size:x-large;text-decoration:none">Sancbook</a>
+        <nav class='left'><div class="logo">
+            <a href="/" data-turbolinks="false" style="font-weight:bold;text-decoration:none">Sancbook</a></div>
+            <div class="link">
             <%= link_to "All countries", countries_path %>
             <% if @current_user.present? %>
               <% if @current_user.admin? %>
@@ -24,15 +25,17 @@
             <% if @current_user.present? %>
               <%= link_to "New sanction", new_sanction_path %>
             <% end %>
+            </div>
         </nav>
-        <nav>
+        <nav class='right'>
+        
         <div>
         <% if @current_user.present? %>
-            <% if @current_user.admin? %>
-              <%= link_to "Messages", "/users/#{@current_user.id}" %>
-            <% end %>
-            <span>
+        <%= link_to "Messages", "/countries" %>
+              <span>
             <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</span>
+              
+            
         <% else %>
             <%= link_to "Login / Signup", login_path %>
         <% end %>

@@ -12,6 +12,7 @@
  
         <figure class ='preview'>
             <div class="featurePlaceholder">
+            <p>Image from the URL will pop up here as you fill in the flag input box.</p>
             <img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>">  
             </div>
         </figure>
@@ -26,6 +27,10 @@
     profile_pic.addEventListener("input", function(){
         e = featurePlaceholder.lastElementChild
         if (profile_pic.value != '') {
+            p = featurePlaceholder.querySelector("p")
+            if (typeof(p) != 'undefined' && p != null) {
+                featurePlaceholder.removeChild(p)
+            }
             img = document.createElement('img')
             img.src = profile_pic.value
             featurePlaceholder.appendChild(img)

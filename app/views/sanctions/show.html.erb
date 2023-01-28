@@ -58,7 +58,7 @@
             </div>
         </div>
 
-
+    <div class="ofac">
         <h3>The below information is published and provided by OFAC. <br> <span style="font-weight:normal; font-size:medium">(Please note that it may not be up-to-date.)</span></h3>
 
         <h4 class='summary'>Summary</h4>
@@ -68,7 +68,7 @@
         <p><%= @address %></p>
 
         <br>
-
+    </div>
         <button type="button" class="collapsible">▼ Wikipedia - <%= @sanction["name"] %></button>
         <div class="content">
             <p>
@@ -99,7 +99,7 @@
                 
                         <div class="comment">
                         <div>
-                        <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>/profile"><%= User.find_by(id: comment.user_id).username %></a></span> <span style="font-size:small"><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                        <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>/profile"><%= User.find_by(id: comment.user_id).username %></a></span> <span class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
                         <% if @current_user.present? %><% if (@current_user.admin? || comment.user_id ==  @current_user.id ) %><a class='removeComment' data-method="delete" href="/comments/<%= comment.id %>">Delete</a><% end %><% end %></div>
                         <p style="line-height:22px"><%= comment.text %></p>
                         </div>

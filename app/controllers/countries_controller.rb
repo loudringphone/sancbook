@@ -2,6 +2,8 @@ class CountriesController < ApplicationController
   before_action :check_for_admin, :only => [:edit]
   before_action :check_for_admin, :only => [:new]
   before_action :check_for_admin, :only => [:destroy]
+  before_action :original_url, :only => [:index]
+
   def index
     @countries = Country.order(:name)
   end
@@ -77,6 +79,25 @@ class CountriesController < ApplicationController
   def show
     unless (params[:id].to_i > 0)
       if Country.find_by(country_code: params[:id].upcase).nil?
+        
+        begin
+          country_url ="https://restcountries.com/v2/alpha/#{params[:id]}"
+          country_details = HTTParty.get country_url
+        rescue
+          country_details = [{:status => 404,:message => "Not Found"}]
+        end
+
+
+
+
+
+
+
+
+
+
+
+
         redirect_to countries_path, notice: 'Seems that country is not on the list yet, why not start sanctioning people* from there now?'
         return
       else
@@ -175,6 +196,9 @@ class CountriesController < ApplicationController
 
   private
 
+  def original_url
+    @referer = request.path
+  end
 
 
   def titleize(str)
@@ -193,7 +217,7 @@ class CountriesController < ApplicationController
         country_details = [{:status => 404,:message => "Not Found"}]
     end
     country_info = {:official_name => "", :native_name => "", :country_code => "", :flag => ""}
-    if !country_details[0].nil?
+    unless country_details[0].nil?
         if country_details[0].key?("name")
             if country_details[0]["name"].key?("official")
                 country_info[:official_name] = country_details[0]["name"]["official"]
