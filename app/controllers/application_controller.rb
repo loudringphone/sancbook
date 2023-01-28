@@ -56,7 +56,6 @@ class ApplicationController < ActionController::Base
             @total_unread_size = total_unread_messages.size
         end
     end
-
 end
 
     
