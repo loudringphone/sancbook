@@ -77,9 +77,10 @@
         let p = senders[i].querySelector('p')
         if (p) {
           
-
+            isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
             senderHeight = senders[i].getBoundingClientRect().height;
-            if(!featureWidth) {
+            if(!isMobile) {
+                
                 if (senderHeight > 85) {
                         p.classList.add("senderFloatingLeft")
                         p.style.display = "inline-block";
