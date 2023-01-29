@@ -6,8 +6,8 @@
         <div class="messageArea">
                 <% count = 0 %>
                 <% @messages.each do |message| %>
-                    <% if count == @unread_messages.size && @unread_messages.size != 0 %>
-                    <div class="unread"><p> === <%= @unread_messages.size %> unread messages below ===</p></div>
+                    <% if count == @total_unread_messages && @total_unread_messages != 0 %>
+                    <div class="unread"><p> === <%= @total_unread_messages %> unread messages below ===</p></div>
                     <% end %>
                     <% if ( message.sender_id ==  @current_user.id ) %>
                         <div class="sender">
@@ -25,7 +25,7 @@
                         <p><%= message.text %></p>
                         </div>
                           <% end %>
-                          <% if count != @unread_messages.size + 1 %>
+                          <% if count != @total_unread_messages + 1 %>
                           <% count += 1 %>
                           <% end %>
                 <% end%>

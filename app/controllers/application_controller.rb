@@ -52,8 +52,7 @@ class ApplicationController < ActionController::Base
 
     def check_for_unread
         if @current_user.present?
-            total_unread_messages = Message.where("receiver_id = ? AND unread > ?", @current_user.id, 0)
-            @total_unread_size = total_unread_messages.size
+            @total_unread_messages = @current_user.unread_messages.length
         end
     end
 end

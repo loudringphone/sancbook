@@ -23,6 +23,11 @@ form .no_comments[disabled] {
 
 }
 
+nav.right {
+    width: 400px;
+    justify-content:right !important;
+}
+
 footer {
     display: inline-flex;
     width: auto;
@@ -868,7 +873,7 @@ div.unread {
     }
     nav.right {
         width: 100%;
-        justify-content: center;
+        justify-content: center !important;
     }
 
     div.login_profile {

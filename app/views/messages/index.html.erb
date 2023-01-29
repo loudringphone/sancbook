@@ -1,12 +1,24 @@
 <h1>All Messages</h1>
 
-<h3>You have <%= @total_unread_size %> unread messages.</h3>
-
+<% if @total_unread_messages > 0%>
+<h3>You have <%= @total_unread_messages %> unread messages.</h3>
+<% else %>
+<h3>You have no new messages.</h3>
+<% end %>
 <div class="message_index">
 <% @unique_usernames.each do |username| %>
             <p>
                 <a href="/users/<%= username %>/messages">
                     <%= username %>
+                    <% if @unread_messages.where(sender_id: User.find_by(username: username).id).size > 0%>
+                    (<%= @unread_messages.where(sender_id: User.find_by(username: username).id).size %>)
+                    <% end %>
+
+
+
+
+
+
                 </a>
              </p>
       <% end %>
