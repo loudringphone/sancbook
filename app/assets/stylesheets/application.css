@@ -1140,6 +1140,14 @@ div.unread {
         border-bottom: inset;
     }
 
+    div.receiver {
+        padding-top: 0.5vh;
+        padding-left: 0.5vw;
+    }
+    div.sender {
+        padding-top: 0.5vh;
+        padding-right: 0.5vw;
+    }
 
 }
 
