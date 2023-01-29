@@ -6,15 +6,20 @@ class MessagesController < ApplicationController
     receivers = @current_user.sent_messages.distinct.pluck(:receiver_id).sort!
     senders = @current_user.received_messages.distinct.pluck(:sender_id).sort!
     unique_user_ids = (receivers + senders).uniq
-    @unique_usernames = []
+    unique_usernames = []
     unique_user_ids.each do |user_id|
-        @unique_usernames.push User.find_by(id: user_id).username
+        unique_usernames.push User.find_by(id: user_id).username
     end
-    @unique_usernames.sort!
+    unique_usernames.sort!
 
- 
+    user_unread_messages = @current_user.unread_messages.where(read: false)
+    unread_messages = []
+    unique_usernames.each do |username|
+      unread_messages.push user_unread_messages.where(sender_id: User.find_by(username: username).id).size
+    end
 
-    @unread_messages = @current_user.unread_messages.where(read: false)
+    @unread_messages_hash = unique_usernames.zip(unread_messages).to_h
+    @sorted_unique_usernames = unique_usernames.sort_by { |k| @unread_messages_hash[k] }.reverse
     
 
   end
@@ -25,11 +30,11 @@ class MessagesController < ApplicationController
     if @user.nil?
       @user = User.find_by(username: params[:id])
     end
-    @unread_messages = @current_user.unread_messages.where("sender_id =? AND read > ?", @user.id, false)
-    # @unread_messages.each do |message|
-    #     message.read = true
-    #     message.save
-    # end
+    @unread_messages = @current_user.unread_messages.where(sender_id: @user.id, read: false)
+        @unread_messages.each do |message|
+            message.read = true
+            message.save
+        end
 
     messages = @current_user.received_messages.where(sender_id: @user.id).or(@current_user.sent_messages.where(receiver_id: @user.id))
     @messages = messages.order(:id).reverse_order
