@@ -82,7 +82,6 @@ div.adminView {
 
 
 
-delete_all_comments
 
 
 .commentHistory {
@@ -98,9 +97,36 @@ td.remove {
     }
 }
 
+td.number {
+    padding-right: 2vw;
+}
+
+td.sanction {
+    width: 12vw;
+    padding-right: 2vw;
+}
+
+td.comment {
+    width: 60vw;
+    word-break: break-all;
+    padding-right: 2vw;
+}
+
+td.time {
+    width: 8vw;
+}
+
+tr.comments {
+    border-bottom: inset;
+}
+
+
+
 .commentHistory tr.comments:hover {
       background-color: lightgray;
 }
+
+
 
 p.notice {
     color:green;

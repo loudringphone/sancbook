@@ -22,10 +22,10 @@
     <% count = 0 %>
 <% @comments.each do |comment| %>
 <tr class='comments'>
-<td><%= count += 1 %></td>
-<td><%= link_to "#{Sanction.find_by(id: comment.sanction_id).name}", "/sanctions/#{comment.sanction_id}" %></td>
-<td><%= comment.text %></td>
-<td><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></td>
+<td class='number'><%= count += 1 %></td>
+<td class='sanction'><%= link_to "#{Sanction.find_by(id: comment.sanction_id).name}", "/sanctions/#{comment.sanction_id}" %></td>
+<td class='comment'><%= comment.text %></td>
+<td class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></td>
 <td class='remove'><a class='\' data-method="delete" href="/comments/<%= comment.id %>">Delete</a></td>
 </tr>
 

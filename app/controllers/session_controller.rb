@@ -4,6 +4,9 @@ class SessionController < ApplicationController
   def new
     unless @current_user.present?
       $location = request.headers["HTTP_REFERER"]
+      if $location  == root_url
+        flash[:error] = nil
+      end
       if last_controller == "session"
         $location = root_path
       end

@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
     before_action :check_for_login
     before_action :check_for_comment_creator, :only => [:destroy]
     before_action :check_for_profile_owner, :only => [:index]
+    before_action :check_for_admin, :only => [:remove_all_comments]
     
     def create
         comment = Comment.new
