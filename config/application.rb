@@ -30,6 +30,9 @@ module Primaverii
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.time_zone = 'Sydney'
+
+
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
   end
 end
 

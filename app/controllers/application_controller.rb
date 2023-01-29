@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     end
 
     def check_for_login
+        flash[:error] = "Please login to continue"
         redirect_to login_path unless @current_user.present?
     end
 
@@ -55,6 +56,21 @@ class ApplicationController < ActionController::Base
             @total_unread_messages = @current_user.unread_messages.length
         end
     end
+
+    def check_for_receiver
+        if @current_user.present?
+            unless @current_user.admin?
+                if (@current_user.id === params[:id] || @current_user.id == User.find_by(username: params[:id]).id)
+                    redirect_to :messages_path
+                end
+            end
+        end
+    end
+
+
+
+
+
 end
 
     

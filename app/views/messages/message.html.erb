@@ -66,17 +66,32 @@
         unread = document.querySelector('.unread');
         if (unread) {
             unread.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            setTimeout(scrollToUnread, 100);
         }
     });
 
 
 
 
+    senders = document.querySelectorAll('.sender')
+    for (let i = 0; i < senders.length; i++) {
+        let p = senders[i].querySelector('p')
+        if (p) {
+          
 
-
-
+            senderHeight = senders[i].getBoundingClientRect().height;
+            if(!featureWidth) {
+                if (senderHeight > 85) {
+                        p.classList.add("senderFloatingLeft")
+                        p.style.display = "inline-block";
+                }
+            } else {
+                if (senderHeight > 220) {
+                        p.classList.add("senderFloatingLeft")
+                        p.style.display = "inline-block";
+                }
+            }
+        }
+    }
 
 
 </script>

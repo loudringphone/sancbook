@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
     before_action :check_for_login
+    before_action :check_for_receiver, :only => [:message]
 
   def index
   

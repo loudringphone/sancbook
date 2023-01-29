@@ -259,7 +259,7 @@ nav.right {
     align-items: flex-end;
     }
 
-nav.right > div > a {
+nav.right > div > span {
     padding-right: 20px;
 }
 
@@ -509,36 +509,45 @@ div.messageSection > form {
 
 div.sender > div > span.time {
     font-size:small;
+    margin-right: 3%;
 }
 
 
 div.sender {
     text-align: right;
     margin-bottom: 10px;
-    padding: 3px 5px 1px 5px;
+    padding: 1.5px 0 0.5px 0;
     border-radius: 0.5em;
 }
 
+
+
 div.receiver > div > span.time {
     font-size:small;
+    margin-left: 3%;
 }
 
 
 div.receiver {
     text-align: left;
     margin-bottom: 10px;
-    padding: 5px 5px 2px 5px;
+    padding: 1.5px 0 0.5px 0;
     border-radius: 0.5em;
 }
 
 
 
 div.sender > p {
-    line-height:12px;
+    line-height:130%;
+    /* text-align: left; */
+    margin-left: 3%;
+    margin-right: 5%;
 }
 
 div.receiver > p {
-    line-height:12px;
+    /* line-height:130; */
+    margin-right: 3%;
+    margin-left: 5%;
 }
 
 form#new_message {
@@ -641,6 +650,14 @@ div.unread {
     display: inline-block;
 
 }
+
+.senderFloatingLeft {
+    float: left;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
+
+
 div.sender > div {
     margin-bottom:-10px;
 }
@@ -657,7 +674,7 @@ div.receiver > div {
 }
 
 .removeMessage{
-    margin-left:10px;
+    margin-right:10px;
     text-decoration: none;
     text-align: left;
     display: none;
@@ -1084,7 +1101,24 @@ div.unread {
         font-size: 1.2vh;
     }
 
+    h3.unreadMessages {
+        font-size: 2.3vh;
+    }
+    input.message_button {
+        font-size: 2.3vh !important;
+    }
 
+    div.messageArea {
+        height: 70vh;
+    }
+
+    div.receiver {
+        padding: 1.5px 0px 0.5px 30px;
+    }
+
+    div.sender {
+        padding: 1.5px 30px 0.5px 0px;
+    }
 }
 
 
