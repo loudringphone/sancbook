@@ -1133,6 +1133,7 @@ div.unread {
     
     td.time {
         width: 8vw;
+        font-size:initial;
     }
     
     tr.comments {

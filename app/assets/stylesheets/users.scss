@@ -92,6 +92,7 @@ div.adminView {
 td.remove {
     font-size: small;
     visibility: hidden;
+    vertical-align: text-bottom;
     a {
     color:white;
     }
@@ -99,21 +100,29 @@ td.remove {
 
 td.number {
     padding-right: 2vw;
+    vertical-align: text-bottom;
 }
 
 td.sanction {
     width: 12vw;
     padding-right: 2vw;
+    vertical-align: text-bottom;
+    padding-bottom: 0.7vh;
 }
 
 td.comment {
     width: 60vw;
     word-break: break-all;
     padding-right: 2vw;
+    vertical-align: text-bottom;
+    padding-bottom: 0.7vh;
+    padding-top: 0.7vh;
 }
 
 td.time {
     width: 8vw;
+    vertical-align: text-bottom;
+    font-size:smaller;
 }
 
 tr.comments {
