@@ -42,6 +42,7 @@ class MessagesController < ApplicationController
     messages = @current_user.received_messages.where(sender_id: @user.id).or(@current_user.sent_messages.where(receiver_id: @user.id))
     @messages = messages.order(:id).reverse_order
     @read_messages_size = @messages.size - @unread_messages.size
+    
   end
 
   def create
