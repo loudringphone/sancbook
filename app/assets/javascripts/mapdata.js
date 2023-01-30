@@ -1,18 +1,3 @@
-sanctionedCountryCodes = ["AF", "CN", "DJ", "EG", "ET", "FI", "FR", "GR", "HK", "IN", "ID", "IR", "IQ", "JO", "KE", "LV", "LB", "NG", "KP", "PK", "PS", "RU", "KN", "SO", "ZA", "SE", "CH", "TW", "TR", "UA", "YE"]
-
-countrySanctionsLengths = [2, 16, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 3, 64, 1, 1, 124, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-
-
-
-// countryCodes = document.querySelector('.countryCodes')
-// countryIds = document.querySelector('.countryIds')
-// countrySanctions = document.querySelector('.countrySanctions')
-
-
-
-
-
-
 var simplemaps_worldmap_mapdata={
   main_settings: {
    //General settings
@@ -92,7 +77,7 @@ var simplemaps_worldmap_mapdata={
     AE: {
       name: "United Arab Emirates",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AE",
@@ -101,7 +86,7 @@ var simplemaps_worldmap_mapdata={
     AF: {
       name: "Afghanistan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AF",
@@ -110,7 +95,7 @@ var simplemaps_worldmap_mapdata={
     AL: {
       name: "Albania",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AL",
@@ -119,7 +104,7 @@ var simplemaps_worldmap_mapdata={
     AM: {
       name: "Armenia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AM",
@@ -128,7 +113,7 @@ var simplemaps_worldmap_mapdata={
     AO: {
       name: "Angola",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AO",
@@ -137,7 +122,7 @@ var simplemaps_worldmap_mapdata={
     AR: {
       name: "Argentina",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AR",
@@ -146,7 +131,7 @@ var simplemaps_worldmap_mapdata={
     AT: {
       name: "Austria",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AT",
@@ -155,7 +140,7 @@ var simplemaps_worldmap_mapdata={
     AU: {
       name: "Australia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AU",
@@ -164,7 +149,7 @@ var simplemaps_worldmap_mapdata={
     AZ: {
       name: "Azerbaidjan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/AZ",
@@ -173,7 +158,7 @@ var simplemaps_worldmap_mapdata={
     BA: {
       name: "Bosnia-Herzegovina",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BA",
@@ -182,7 +167,7 @@ var simplemaps_worldmap_mapdata={
     BD: {
       name: "Bangladesh",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BD",
@@ -191,7 +176,7 @@ var simplemaps_worldmap_mapdata={
     BE: {
       name: "Belgium",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BE",
@@ -200,7 +185,7 @@ var simplemaps_worldmap_mapdata={
     BF: {
       name: "Burkina Faso",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BF",
@@ -209,7 +194,7 @@ var simplemaps_worldmap_mapdata={
     BG: {
       name: "Bulgaria",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BG",
@@ -218,7 +203,7 @@ var simplemaps_worldmap_mapdata={
     BH: {
       name: "Bahrain",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BH",
@@ -227,7 +212,7 @@ var simplemaps_worldmap_mapdata={
     BI: {
       name: "Burundi",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BI",
@@ -236,7 +221,7 @@ var simplemaps_worldmap_mapdata={
     BJ: {
       name: "Benin",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BJ",
@@ -245,7 +230,7 @@ var simplemaps_worldmap_mapdata={
     BN: {
       name: "Brunei Darussalam",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BN",
@@ -254,7 +239,7 @@ var simplemaps_worldmap_mapdata={
     BO: {
       name: "Bolivia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BO",
@@ -263,7 +248,7 @@ var simplemaps_worldmap_mapdata={
     BR: {
       name: "Brazil",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BR",
@@ -272,7 +257,7 @@ var simplemaps_worldmap_mapdata={
     BS: {
       name: "Bahamas",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BS",
@@ -281,7 +266,7 @@ var simplemaps_worldmap_mapdata={
     BT: {
       name: "Bhutan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BT",
@@ -290,7 +275,7 @@ var simplemaps_worldmap_mapdata={
     BW: {
       name: "Botswana",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BW",
@@ -299,7 +284,7 @@ var simplemaps_worldmap_mapdata={
     BY: {
       name: "Belarus",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BY",
@@ -308,7 +293,7 @@ var simplemaps_worldmap_mapdata={
     BZ: {
       name: "Belize",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/BZ",
@@ -317,7 +302,7 @@ var simplemaps_worldmap_mapdata={
     CA: {
       name: "Canada",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CA",
@@ -326,7 +311,7 @@ var simplemaps_worldmap_mapdata={
     CD: {
       name: "Congo",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CD",
@@ -335,7 +320,7 @@ var simplemaps_worldmap_mapdata={
     CF: {
       name: "Central African Republic",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CF",
@@ -344,7 +329,7 @@ var simplemaps_worldmap_mapdata={
     CG: {
       name: "Congo",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CG",
@@ -353,7 +338,7 @@ var simplemaps_worldmap_mapdata={
     CH: {
       name: "Switzerland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CH",
@@ -362,7 +347,7 @@ var simplemaps_worldmap_mapdata={
     CI: {
       name: "Ivory Coast",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CI",
@@ -371,7 +356,7 @@ var simplemaps_worldmap_mapdata={
     CL: {
       name: "Chile",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CL",
@@ -380,7 +365,7 @@ var simplemaps_worldmap_mapdata={
     CM: {
       name: "Cameroon",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CM",
@@ -389,7 +374,7 @@ var simplemaps_worldmap_mapdata={
     CN: {
       name: "China",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CN",
@@ -398,7 +383,7 @@ var simplemaps_worldmap_mapdata={
     CO: {
       name: "Colombia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CO",
@@ -407,7 +392,7 @@ var simplemaps_worldmap_mapdata={
     CR: {
       name: "Costa Rica",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CR",
@@ -416,7 +401,7 @@ var simplemaps_worldmap_mapdata={
     CU: {
       name: "Cuba",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CU",
@@ -425,7 +410,7 @@ var simplemaps_worldmap_mapdata={
     CV: {
       name: "Cape Verde",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CV",
@@ -434,7 +419,7 @@ var simplemaps_worldmap_mapdata={
     CY: {
       name: "Cyprus",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CY",
@@ -443,7 +428,7 @@ var simplemaps_worldmap_mapdata={
     CZ: {
       name: "Czech Republic",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/CZ",
@@ -452,7 +437,7 @@ var simplemaps_worldmap_mapdata={
     DE: {
       name: "Germany",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/DE",
@@ -461,7 +446,7 @@ var simplemaps_worldmap_mapdata={
     DJ: {
       name: "Djibouti",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/DJ",
@@ -470,7 +455,7 @@ var simplemaps_worldmap_mapdata={
     DK: {
       name: "Denmark",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/DK",
@@ -479,7 +464,7 @@ var simplemaps_worldmap_mapdata={
     DO: {
       name: "Dominican Republic",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/DO",
@@ -488,7 +473,7 @@ var simplemaps_worldmap_mapdata={
     DZ: {
       name: "Algeria",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/DZ",
@@ -497,7 +482,7 @@ var simplemaps_worldmap_mapdata={
     EC: {
       name: "Ecuador",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/EC",
@@ -506,7 +491,7 @@ var simplemaps_worldmap_mapdata={
     EE: {
       name: "Estonia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/EE",
@@ -515,7 +500,7 @@ var simplemaps_worldmap_mapdata={
     EG: {
       name: "Egypt",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/EG",
@@ -524,7 +509,7 @@ var simplemaps_worldmap_mapdata={
     EH: {
       name: "Western Sahara",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/EH",
@@ -533,7 +518,7 @@ var simplemaps_worldmap_mapdata={
     ER: {
       name: "Eritrea",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ER",
@@ -542,7 +527,7 @@ var simplemaps_worldmap_mapdata={
     ES: {
       name: "Spain",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ES",
@@ -551,7 +536,7 @@ var simplemaps_worldmap_mapdata={
     ET: {
       name: "Ethiopia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ET",
@@ -560,7 +545,7 @@ var simplemaps_worldmap_mapdata={
     FI: {
       name: "Finland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/FI",
@@ -569,7 +554,7 @@ var simplemaps_worldmap_mapdata={
     FJ: {
       name: "Fiji",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/FJ",
@@ -578,7 +563,7 @@ var simplemaps_worldmap_mapdata={
     FK: {
       name: "Falkland Islands",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/FK",
@@ -587,7 +572,7 @@ var simplemaps_worldmap_mapdata={
     FR: {
       name: "France",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/FR",
@@ -596,7 +581,7 @@ var simplemaps_worldmap_mapdata={
     GA: {
       name: "Gabon",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GA",
@@ -605,7 +590,7 @@ var simplemaps_worldmap_mapdata={
     GB: {
       name: "Great Britain",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GB",
@@ -614,7 +599,7 @@ var simplemaps_worldmap_mapdata={
     GE: {
       name: "Georgia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GE",
@@ -623,7 +608,7 @@ var simplemaps_worldmap_mapdata={
     GF: {
       name: "French Guyana",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GF",
@@ -632,7 +617,7 @@ var simplemaps_worldmap_mapdata={
     GH: {
       name: "Ghana",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GH",
@@ -641,7 +626,7 @@ var simplemaps_worldmap_mapdata={
     GL: {
       name: "Greenland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GL",
@@ -650,7 +635,7 @@ var simplemaps_worldmap_mapdata={
     GM: {
       name: "Gambia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GM",
@@ -659,7 +644,7 @@ var simplemaps_worldmap_mapdata={
     GN: {
       name: "Guinea",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GN",
@@ -668,7 +653,7 @@ var simplemaps_worldmap_mapdata={
     GQ: {
       name: "Equatorial Guinea",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GQ",
@@ -677,7 +662,7 @@ var simplemaps_worldmap_mapdata={
     GR: {
       name: "Greece",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GR",
@@ -686,7 +671,7 @@ var simplemaps_worldmap_mapdata={
     GS: {
       name: "S. Georgia & S. Sandwich Isls.",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GS",
@@ -695,7 +680,7 @@ var simplemaps_worldmap_mapdata={
     GT: {
       name: "Guatemala",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GT",
@@ -704,7 +689,7 @@ var simplemaps_worldmap_mapdata={
     GW: {
       name: "Guinea Bissau",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GW",
@@ -713,7 +698,7 @@ var simplemaps_worldmap_mapdata={
     GY: {
       name: "Guyana",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/GY",
@@ -722,7 +707,7 @@ var simplemaps_worldmap_mapdata={
     HN: {
       name: "Honduras",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/HN",
@@ -731,7 +716,7 @@ var simplemaps_worldmap_mapdata={
     HR: {
       name: "Croatia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/HR",
@@ -740,7 +725,7 @@ var simplemaps_worldmap_mapdata={
     HT: {
       name: "Haiti",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/HT",
@@ -749,7 +734,7 @@ var simplemaps_worldmap_mapdata={
     HU: {
       name: "Hungary",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/HU",
@@ -758,7 +743,7 @@ var simplemaps_worldmap_mapdata={
     IC: {
       name: "Canary Islands",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IC",
@@ -767,7 +752,7 @@ var simplemaps_worldmap_mapdata={
     ID: {
       name: "Indonesia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ID",
@@ -776,7 +761,7 @@ var simplemaps_worldmap_mapdata={
     IE: {
       name: "Ireland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IE",
@@ -785,7 +770,7 @@ var simplemaps_worldmap_mapdata={
     IL: {
       name: "Israel",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IL",
@@ -794,7 +779,7 @@ var simplemaps_worldmap_mapdata={
     IN: {
       name: "India",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IN",
@@ -803,7 +788,7 @@ var simplemaps_worldmap_mapdata={
     IQ: {
       name: "Iraq",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IQ",
@@ -812,7 +797,7 @@ var simplemaps_worldmap_mapdata={
     IR: {
       name: "Iran",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IR",
@@ -821,7 +806,7 @@ var simplemaps_worldmap_mapdata={
     IS: {
       name: "Iceland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IS",
@@ -830,7 +815,7 @@ var simplemaps_worldmap_mapdata={
     IT: {
       name: "Italy",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/IT",
@@ -839,7 +824,7 @@ var simplemaps_worldmap_mapdata={
     JM: {
       name: "Jamaica",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/JM",
@@ -848,7 +833,7 @@ var simplemaps_worldmap_mapdata={
     JO: {
       name: "Jordan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/JO",
@@ -857,7 +842,7 @@ var simplemaps_worldmap_mapdata={
     JP: {
       name: "Japan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/JP",
@@ -866,7 +851,7 @@ var simplemaps_worldmap_mapdata={
     KE: {
       name: "Kenya",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KE",
@@ -875,7 +860,7 @@ var simplemaps_worldmap_mapdata={
     KG: {
       name: "Kyrgyzstan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KG",
@@ -884,7 +869,7 @@ var simplemaps_worldmap_mapdata={
     KH: {
       name: "Cambodia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KH",
@@ -893,7 +878,7 @@ var simplemaps_worldmap_mapdata={
     KP: {
       name: "North Korea",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KP",
@@ -902,7 +887,7 @@ var simplemaps_worldmap_mapdata={
     KR: {
       name: "South Korea",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KR",
@@ -911,7 +896,7 @@ var simplemaps_worldmap_mapdata={
     KW: {
       name: "Kuwait",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KW",
@@ -920,7 +905,7 @@ var simplemaps_worldmap_mapdata={
     KZ: {
       name: "Kazakhstan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/KZ",
@@ -929,7 +914,7 @@ var simplemaps_worldmap_mapdata={
     LA: {
       name: "Laos",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LA",
@@ -938,7 +923,7 @@ var simplemaps_worldmap_mapdata={
     LK: {
       name: "Sri Lanka",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LK",
@@ -947,7 +932,7 @@ var simplemaps_worldmap_mapdata={
     LR: {
       name: "Liberia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LR",
@@ -956,7 +941,7 @@ var simplemaps_worldmap_mapdata={
     LS: {
       name: "Lesotho",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LS",
@@ -965,7 +950,7 @@ var simplemaps_worldmap_mapdata={
     LT: {
       name: "Lithuania",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LT",
@@ -974,7 +959,7 @@ var simplemaps_worldmap_mapdata={
     LU: {
       name: "Luxembourg",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LU",
@@ -983,7 +968,7 @@ var simplemaps_worldmap_mapdata={
     LV: {
       name: "Latvia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LV",
@@ -992,7 +977,7 @@ var simplemaps_worldmap_mapdata={
     LY: {
       name: "Libya",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/LY",
@@ -1001,7 +986,7 @@ var simplemaps_worldmap_mapdata={
     MA: {
       name: "Morocco",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MA",
@@ -1010,7 +995,7 @@ var simplemaps_worldmap_mapdata={
     MD: {
       name: "Moldavia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MD",
@@ -1019,7 +1004,7 @@ var simplemaps_worldmap_mapdata={
     ME: {
       name: "Montenegro",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ME",
@@ -1028,7 +1013,7 @@ var simplemaps_worldmap_mapdata={
     MG: {
       name: "Madagascar",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MG",
@@ -1037,7 +1022,7 @@ var simplemaps_worldmap_mapdata={
     MK: {
       name: "Macedonia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MK",
@@ -1046,7 +1031,7 @@ var simplemaps_worldmap_mapdata={
     ML: {
       name: "Mali",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ML",
@@ -1055,7 +1040,7 @@ var simplemaps_worldmap_mapdata={
     MM: {
       name: "Myanmar",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MM",
@@ -1064,7 +1049,7 @@ var simplemaps_worldmap_mapdata={
     MN: {
       name: "Mongolia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MN",
@@ -1073,7 +1058,7 @@ var simplemaps_worldmap_mapdata={
     MR: {
       name: "Mauritania",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MR",
@@ -1082,7 +1067,7 @@ var simplemaps_worldmap_mapdata={
     MW: {
       name: "Malawi",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MW",
@@ -1091,7 +1076,7 @@ var simplemaps_worldmap_mapdata={
     MX: {
       name: "Mexico",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MX",
@@ -1100,7 +1085,7 @@ var simplemaps_worldmap_mapdata={
     MY: {
       name: "Malaysia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MY",
@@ -1109,7 +1094,7 @@ var simplemaps_worldmap_mapdata={
     MZ: {
       name: "Mozambique",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/MZ",
@@ -1118,7 +1103,7 @@ var simplemaps_worldmap_mapdata={
     NA: {
       name: "Namibia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NA",
@@ -1127,7 +1112,7 @@ var simplemaps_worldmap_mapdata={
     NC: {
       name: "New Caledonia (French)",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NC",
@@ -1136,7 +1121,7 @@ var simplemaps_worldmap_mapdata={
     NE: {
       name: "Niger",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NE",
@@ -1145,7 +1130,7 @@ var simplemaps_worldmap_mapdata={
     NG: {
       name: "Nigeria",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NG",
@@ -1154,7 +1139,7 @@ var simplemaps_worldmap_mapdata={
     NI: {
       name: "Nicaragua",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NI",
@@ -1163,7 +1148,7 @@ var simplemaps_worldmap_mapdata={
     NL: {
       name: "Netherlands",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NL",
@@ -1172,7 +1157,7 @@ var simplemaps_worldmap_mapdata={
     NO: {
       name: "Norway",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NO",
@@ -1181,7 +1166,7 @@ var simplemaps_worldmap_mapdata={
     NP: {
       name: "Nepal",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NP",
@@ -1190,7 +1175,7 @@ var simplemaps_worldmap_mapdata={
     NZ: {
       name: "New Zealand",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/NZ",
@@ -1199,7 +1184,7 @@ var simplemaps_worldmap_mapdata={
     OM: {
       name: "Oman",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/OM",
@@ -1208,7 +1193,7 @@ var simplemaps_worldmap_mapdata={
     PA: {
       name: "Panama",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PA",
@@ -1217,7 +1202,7 @@ var simplemaps_worldmap_mapdata={
     PE: {
       name: "Peru",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PE",
@@ -1226,7 +1211,7 @@ var simplemaps_worldmap_mapdata={
     PG: {
       name: "Papua New Guinea",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PG",
@@ -1235,7 +1220,7 @@ var simplemaps_worldmap_mapdata={
     PH: {
       name: "Philippines",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PH",
@@ -1244,7 +1229,7 @@ var simplemaps_worldmap_mapdata={
     PK: {
       name: "Pakistan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PK",
@@ -1253,7 +1238,7 @@ var simplemaps_worldmap_mapdata={
     PL: {
       name: "Poland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PL",
@@ -1262,7 +1247,7 @@ var simplemaps_worldmap_mapdata={
     PR: {
       name: "Puerto Rico",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PR",
@@ -1271,7 +1256,7 @@ var simplemaps_worldmap_mapdata={
     PS: {
       name: "Palestine",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PS",
@@ -1280,7 +1265,7 @@ var simplemaps_worldmap_mapdata={
     PT: {
       name: "Portugal",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PT",
@@ -1289,7 +1274,7 @@ var simplemaps_worldmap_mapdata={
     PY: {
       name: "Paraguay",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/PY",
@@ -1298,7 +1283,7 @@ var simplemaps_worldmap_mapdata={
     QA: {
       name: "Qatar",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/QA",
@@ -1307,7 +1292,7 @@ var simplemaps_worldmap_mapdata={
     RO: {
       name: "Romania",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/RO",
@@ -1316,7 +1301,7 @@ var simplemaps_worldmap_mapdata={
     RS: {
       name: "Serbia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/RS",
@@ -1325,7 +1310,7 @@ var simplemaps_worldmap_mapdata={
     RU: {
       name: "Russia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/RU",
@@ -1334,7 +1319,7 @@ var simplemaps_worldmap_mapdata={
     RW: {
       name: "Rwanda",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/RW",
@@ -1343,7 +1328,7 @@ var simplemaps_worldmap_mapdata={
     SA: {
       name: "Saudi Arabia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SA",
@@ -1352,7 +1337,7 @@ var simplemaps_worldmap_mapdata={
     SB: {
       name: "Solomon Islands",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SB",
@@ -1361,7 +1346,7 @@ var simplemaps_worldmap_mapdata={
     SD: {
       name: "Sudan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SD",
@@ -1370,7 +1355,7 @@ var simplemaps_worldmap_mapdata={
     SE: {
       name: "Sweden",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SE",
@@ -1379,7 +1364,7 @@ var simplemaps_worldmap_mapdata={
     SI: {
       name: "Slovenia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SI",
@@ -1388,7 +1373,7 @@ var simplemaps_worldmap_mapdata={
     SK: {
       name: "Slovak Republic",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SK",
@@ -1397,7 +1382,7 @@ var simplemaps_worldmap_mapdata={
     SL: {
       name: "Sierra Leone",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SL",
@@ -1406,7 +1391,7 @@ var simplemaps_worldmap_mapdata={
     SN: {
       name: "Senegal",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SN",
@@ -1415,7 +1400,7 @@ var simplemaps_worldmap_mapdata={
     SO: {
       name: "Somalia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SO",
@@ -1424,7 +1409,7 @@ var simplemaps_worldmap_mapdata={
     SR: {
       name: "Suriname",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SR",
@@ -1433,7 +1418,7 @@ var simplemaps_worldmap_mapdata={
     SS: {
       name: "South Sudan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SS",
@@ -1442,7 +1427,7 @@ var simplemaps_worldmap_mapdata={
     SV: {
       name: "El Salvador",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SV",
@@ -1451,7 +1436,7 @@ var simplemaps_worldmap_mapdata={
     SY: {
       name: "Syria",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SY",
@@ -1460,7 +1445,7 @@ var simplemaps_worldmap_mapdata={
     SZ: {
       name: "Swaziland",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/SZ",
@@ -1469,7 +1454,7 @@ var simplemaps_worldmap_mapdata={
     TD: {
       name: "Chad",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TD",
@@ -1478,7 +1463,7 @@ var simplemaps_worldmap_mapdata={
     TG: {
       name: "Togo",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TG",
@@ -1487,7 +1472,7 @@ var simplemaps_worldmap_mapdata={
     TH: {
       name: "Thailand",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TH",
@@ -1496,7 +1481,7 @@ var simplemaps_worldmap_mapdata={
     TJ: {
       name: "Tadjikistan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TJ",
@@ -1505,7 +1490,7 @@ var simplemaps_worldmap_mapdata={
     TL: {
       name: "East Timor",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TL",
@@ -1514,7 +1499,7 @@ var simplemaps_worldmap_mapdata={
     TM: {
       name: "Turkmenistan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TM",
@@ -1523,7 +1508,7 @@ var simplemaps_worldmap_mapdata={
     TN: {
       name: "Tunisia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TN",
@@ -1532,7 +1517,7 @@ var simplemaps_worldmap_mapdata={
     TR: {
       name: "Turkey",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TR",
@@ -1541,7 +1526,7 @@ var simplemaps_worldmap_mapdata={
     TT: {
       name: "Trinidad and Tobago",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TT",
@@ -1550,7 +1535,7 @@ var simplemaps_worldmap_mapdata={
     TW: {
       name: "Taiwan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TW",
@@ -1559,7 +1544,7 @@ var simplemaps_worldmap_mapdata={
     TZ: {
       name: "Tanzania",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/TZ",
@@ -1568,7 +1553,7 @@ var simplemaps_worldmap_mapdata={
     UA: {
       name: "Ukraine",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/UA",
@@ -1577,7 +1562,7 @@ var simplemaps_worldmap_mapdata={
     UG: {
       name: "Uganda",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/UG",
@@ -1585,7 +1570,7 @@ var simplemaps_worldmap_mapdata={
     },
     US: {
       name: "United States",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/US",
@@ -1595,7 +1580,7 @@ var simplemaps_worldmap_mapdata={
     UY: {
       name: "Uruguay",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/UY",
@@ -1604,7 +1589,7 @@ var simplemaps_worldmap_mapdata={
     UZ: {
       name: "Uzbekistan",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/UZ",
@@ -1613,7 +1598,7 @@ var simplemaps_worldmap_mapdata={
     VE: {
       name: "Venezuela",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/VE",
@@ -1622,7 +1607,7 @@ var simplemaps_worldmap_mapdata={
     VN: {
       name: "Vietnam",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/VN",
@@ -1631,7 +1616,7 @@ var simplemaps_worldmap_mapdata={
     VU: {
       name: "Vanuatu",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/VU",
@@ -1640,7 +1625,7 @@ var simplemaps_worldmap_mapdata={
     YE: {
       name: "Yemen",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/YE",
@@ -1649,7 +1634,7 @@ var simplemaps_worldmap_mapdata={
     ZA: {
       name: "South Africa",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ZA",
@@ -1658,7 +1643,7 @@ var simplemaps_worldmap_mapdata={
     ZM: {
       name: "Zambia",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ZM",
@@ -1667,7 +1652,7 @@ var simplemaps_worldmap_mapdata={
     ZW: {
       name: "Zimbabwe",
       hide: "no",
-      inactive: "no",
+      inactive: "yes",
       color: "#88A4BC",
       hover_color: "#3B729F",
       url: "countries/ZW",
@@ -1687,12 +1672,14 @@ var simplemaps_worldmap_mapdata={
 mapObj = simplemaps_worldmap_mapdata["state_specific"]
 keys = Object.keys(mapObj)
 
+sanctionedCountryCodes = gon.sanctionedCountryCodes
+countrySanctionsLengths = gon.countrySanctionsLengths
 
 for (let i = 0; i < keys.length; i++) {
   key = keys[i]
   for (let j = 0; j < sanctionedCountryCodes.length; j++) {
     if (key == sanctionedCountryCodes[j] && countrySanctionsLengths[j] > 0) {
-      // simplemaps_worldmap_mapdata["state_specific"][key].inactive = 'no'
+      simplemaps_worldmap_mapdata["state_specific"][key].inactive = 'no'
       simplemaps_worldmap_mapdata["state_specific"][key].color = '#bc8888'
       simplemaps_worldmap_mapdata["state_specific"][key].hover_color = '#a30f0f'
       // simplemaps_worldmap_mapdata["state_specific"][key].description   = `Sanctions: ${countrySanctionsLengths[j]}`
@@ -1706,23 +1693,7 @@ for (let i = 0; i < keys.length; i++) {
 
 
 
-
-
-// function mapColor(code) {
-//   if (countryCodes == null || countryIds == null || countrySanctions == null){
-//   }
-//   else {
-//     countryCodes = countryCodes.textContent.split(',')
-//     countryIds = countryIds.textContent.split(',')
-//     countrySanctions = countrySanctions.textContent.split(',')
-//     for (let i = 0; i < countryCodes.length; i++){
-//       if (code == countryCodes[i]) {
-//         // alert(code)
-//         return '#bc8888'
-//       }
-//     }
-//   }
-// }
+  
 
 
 

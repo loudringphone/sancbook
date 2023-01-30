@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'cloudinary'
 
 gem "countries", "~> 5.3"
+
+gem 'gon'
