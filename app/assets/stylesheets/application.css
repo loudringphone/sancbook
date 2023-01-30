@@ -642,6 +642,8 @@ div.sender:hover {
 div.receiver:hover {
     background-color: rgb(203, 203, 203);
     width: 100%;
+    text-align: center;
+    margin: 0 auto;
 }
 
 div.unread {
@@ -701,9 +703,7 @@ div.message_index > p {
     margin-right: 50px;
 }
 
-div.unread {
-    font-style: italic;
-}
+
 
 
 @media (max-width: 1110px) {
@@ -1151,6 +1151,10 @@ div.unread {
     div.sender {
         padding-top: 0.5vh;
         padding-right: 0.5vw;
+    }
+
+    div.unread > p {
+        font-size: 4.6vw !important;
     }
 
     p.notice {

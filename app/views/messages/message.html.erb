@@ -7,7 +7,18 @@
                 <% count = 0 %>
                 <% @messages.each do |message| %>
                     <% if count == @unread_messages.size && @unread_messages.size != 0 %>
-                    <div class="unread"><p> === <%= @unread_messages.size %> unread messages below ===</p></div>
+                    <div class="unread"><p>
+
+                    <% case @unread_messages.size %>
+                    <% when 1..9 %>
+                    === <%= @unread_messages.size %> unread messages below ===
+                    <% when 10..99 %>
+                    == <%= @unread_messages.size %> unread messages below ==
+                    <% else %>
+                    == 99+ unread messages below ==
+                    <% end %>           
+                     
+                     </p></div>
                     <% end %>
                     <% if ( message.sender_id ==  @current_user.id ) %>
                         <div class="sender">
