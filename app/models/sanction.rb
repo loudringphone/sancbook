@@ -1,5 +1,5 @@
 class Sanction < ApplicationRecord
-    validates :name, :uniqueness => true, :presence => true
+    validates :name, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
     validates_format_of :name, with: /[a-zA-Z]+/, message: "must contain at least one letter"
 
     belongs_to :country, :optional => true

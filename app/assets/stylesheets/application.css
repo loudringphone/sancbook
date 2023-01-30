@@ -63,6 +63,7 @@ body {
 .container {
     position: relative;
     width: 65vw;
+    justify-content: center;
     margin:0 auto;
 }
 
@@ -950,6 +951,11 @@ div.message_index > p {
         font-size: 2vh;
     }
 
+    .mapFooter {
+        line-height: 130%;
+        font-size: 1.8vh;
+    }
+
     .postscript {
         padding-bottom:9vh;
         font-size: 1.5vh !important;
@@ -1161,6 +1167,10 @@ div.message_index > p {
  
         font-size: 1.5vh;
         top: 10%
+    }
+
+    div#map {
+        margin-bottom: 5vh;
     }
 }
 

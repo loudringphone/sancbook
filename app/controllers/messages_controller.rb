@@ -18,12 +18,21 @@ class MessagesController < ApplicationController
     unique_usernames.each do |username|
     each_sender_unread_messages.push @unread_messages.where(sender_id: User.find_by(username: username).id).size
     end
-    
-
-
     @unread_messages_hash = unique_usernames.zip(each_sender_unread_messages).to_h
     @sorted_unique_usernames = unique_usernames.sort_by { |k| @unread_messages_hash[k] }.reverse
     
+    admin_record = User.where(admin: true)
+    admins = []
+    admin_record.each do |admin|
+      admins.push admin.username
+    end
+    admins.sort!
+    each_admin_unread_messages = []
+    admins.each do |admin|
+      each_admin_unread_messages.push @unread_messages.where(sender_id: User.find_by(username: admin).id).size
+    end
+    @admin_unread_messages_hash = admins.zip(each_admin_unread_messages).to_h
+    @sorted_admins = admins.sort_by { |k| @admin_unread_messages_hash[k] }.reverse
 
   end
 
@@ -34,10 +43,10 @@ class MessagesController < ApplicationController
       @user = User.find_by(username: params[:id])
     end
     @unread_messages = @current_user.unread_messages.where(sender_id: @user.id, read: false)
-        @unread_messages.each do |message|
-            message.read = true
-            message.save
-        end
+    @unread_messages.each do |message|
+        message.read = true
+        message.save
+    end
 
     messages = @current_user.received_messages.where(sender_id: @user.id).or(@current_user.sent_messages.where(receiver_id: @user.id))
     @messages = messages.order(:id).reverse_order

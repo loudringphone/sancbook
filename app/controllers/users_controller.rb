@@ -27,6 +27,12 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     else
+      password_errors = @user.errors.messages[:password]
+      if password_errors.present?
+        if password_errors.include? "must not be blank"
+          password_errors.delete_at(password_errors.index("must not be blank"))
+        end
+      end
       render :new
     end
   end
@@ -82,6 +88,15 @@ class UsersController < ApplicationController
       flash[:notice] = "Your password has been successfully changed."
       redirect_to "/users/#{@user.username}"
     else
+      username_errors = @user.errors.messages[:username]
+      if username_errors.present?
+        if username_errors.include? "has already been taken"
+          username_errors.delete_at(username_errors.index("has already been taken"))
+        end
+      end
+
+
+
       render :edit
     end
   end

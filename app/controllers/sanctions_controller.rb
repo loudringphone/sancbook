@@ -91,7 +91,7 @@ class SanctionsController < ApplicationController
         render :new
       end
     else
-      flash[:error] = "Name already exist"
+      flash[:error] = "Name already exists"
       render :new
     end
   end

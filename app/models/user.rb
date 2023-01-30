@@ -9,8 +9,8 @@ class User < ApplicationRecord
 
     validates_confirmation_of :password
     has_secure_password
-    validates :email, :uniqueness => true, :presence => true
-    validates :username, :uniqueness => true, :presence => true
+    validates :email, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
+    validates :username, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
     validates_format_of :username, with: /[a-zA-Z]+/, message: "must contain at least one letter"
     validate :pasword_must_not_be_blank
     validates :username, length: { in: 3..15 }

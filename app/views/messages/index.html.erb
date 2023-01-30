@@ -6,14 +6,26 @@
 <h3>You have no new messages.</h3>
 <% end %>
 <div class="message_index">
-<% @sorted_unique_usernames.each do |username| %>
+<% @sorted_admins.each do |admin| %>
             <p>
-                <a href="/users/<%= username %>/messages" data-turbolinks="false">
-                    <%= username %>
-                    <% if @unread_messages_hash[username] > 0%>
-                    (<%= @unread_messages_hash[username] %>)
+                <a href="/users/<%= admin %>/messages" data-turbolinks="false">
+                    <%= admin %>
+                    <% if @admin_unread_messages_hash[admin] > 0%>
+                    (<%= @admin_unread_messages_hash[admin] %>)
                     <% end %>
                 </a>
              </p>
+      <% end %>
+<% @sorted_unique_usernames.each do |username| %>
+            <% unless User.find_by(username: username).admin? %>
+                <p>
+                    <a href="/users/<%= username %>/messages" data-turbolinks="false">
+                        <%= username %>
+                        <% if @unread_messages_hash[username] > 0%>
+                        (<%= @unread_messages_hash[username] %>)
+                        <% end %>
+                    </a>
+                </p>
+            <% end %>
       <% end %>
 </div>
