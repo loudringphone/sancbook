@@ -21,22 +21,22 @@
                     </a>
                 </div>
             <% end %>
-        <% end %>
-    <% else %>
+        <% else %>
 
-        <% @countries.each do |country| %>
-            <div class='thumb'>
-            <% if country.country_code.present? %>
-                <a href="/countries/<%= country.country_code %>">
-            <% else %>
-                <a href="/countries/<%= country.id %>">
-            <% end %>
-                <img src="<%= country.flag %>" alt="<%= country["name"] %>">
-                <figcaption><%= country["name"] %></figcaption>
-                </a>
-            
-            </div>
-        <% end%>
+            <% @countries.each do |country| %>
+                <div class='thumb'>
+                <% if country.country_code.present? %>
+                    <a href="/countries/<%= country.country_code %>">
+                <% else %>
+                    <a href="/countries/<%= country.id %>">
+                <% end %>
+                    <img src="<%= country.flag %>" alt="<%= country["name"] %>">
+                    <figcaption><%= country["name"] %></figcaption>
+                    </a>
+                
+                </div>
+            <% end%>
+        <% end %>
     <% end %>
 </div>
 <br>

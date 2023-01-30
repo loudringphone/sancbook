@@ -1,5 +1,5 @@
 <title><%= User.find_by(id: params[:id]).username %> | Sancbook</title>
-<p class='notice'>
+<p class='notice'> test
             <%= flash[:notice] %>  
 </p>
 <% unless @current_user.admin? && @current_user.id == params[:id].to_i%>

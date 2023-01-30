@@ -1153,6 +1153,11 @@ div.unread {
         padding-right: 0.5vw;
     }
 
+    p.notice {
+ 
+        font-size: 1.5vh;
+        top: 10%
+    }
 }
 
 

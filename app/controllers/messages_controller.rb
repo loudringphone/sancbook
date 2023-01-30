@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
     unique_usernames.each do |username|
     each_sender_unread_messages.push @unread_messages.where(sender_id: User.find_by(username: username).id).size
     end
-
+    
 
 
     @unread_messages_hash = unique_usernames.zip(each_sender_unread_messages).to_h
