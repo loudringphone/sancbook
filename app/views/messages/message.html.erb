@@ -15,8 +15,13 @@
                     <% when 10..99 %>
                     == <%= @unread_messages.size %> unread messages below ==
                     <% else %>
-                    == 99+ unread messages below ==
-                    <% end %>           
+                    == <%= @unread_messages.size %> unread messages below ==
+                    <% end %>
+                     
+                     
+                     
+                     
+                     
                      
                      </p></div>
                     <% end %>

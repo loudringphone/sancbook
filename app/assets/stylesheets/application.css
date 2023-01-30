@@ -642,14 +642,14 @@ div.sender:hover {
 div.receiver:hover {
     background-color: rgb(203, 203, 203);
     width: 100%;
-    text-align: center;
-    margin: 0 auto;
 }
 
 div.unread {
     width: 100%;
     font-style: italic;
     display: inline-block;
+    text-align: center;
+    margin: 0 auto;
 
 }
 
