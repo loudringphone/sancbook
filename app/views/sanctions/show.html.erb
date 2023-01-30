@@ -41,7 +41,7 @@
                 <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
                 <img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
                 <% else %>
-                <p class="featureText">Image coming soon..</p>
+                <p class="featureText">Image coming soon</p>
                 <% end%>
             </div>
                 <% if @current_user.present? %>
