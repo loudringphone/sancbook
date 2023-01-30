@@ -7,14 +7,16 @@
 <% end %>
 <div class="message_index">
 <% @sorted_admins.each do |admin| %>
-            <p>
-                <a href="/users/<%= admin %>/messages" data-turbolinks="false">
-                    <%= admin %>
-                    <% if @admin_unread_messages_hash[admin] > 0%>
-                    (<%= @admin_unread_messages_hash[admin] %>)
-                    <% end %>
-                </a>
-             </p>
+            <% unless @current_user.username == admin %>
+                <p>
+                    <a href="/users/<%= admin %>/messages" data-turbolinks="false">
+                        <%= admin %>
+                        <% if @admin_unread_messages_hash[admin] > 0%>
+                        (<%= @admin_unread_messages_hash[admin] %>)
+                        <% end %>
+                    </a>
+                </p>
+            <% end %>
       <% end %>
 <% @sorted_unique_usernames.each do |username| %>
             <% unless User.find_by(username: username).admin? %>

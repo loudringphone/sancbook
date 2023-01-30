@@ -454,7 +454,16 @@ div.comment > div {
 
 
 
+div.personal_index > a {
+    font-size: large;
+    margin-top: 8vh;
+    line-height: 200%;
+}
 
+h2.allUser {
+    padding-top: 5vh;
+
+}
 
 
 
@@ -565,16 +574,6 @@ div.message_box {
     font-size: large;
     border-radius: 0.5em;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -961,16 +960,20 @@ div.message_index > p {
         font-size: 1.5vh !important;
     }
 
-    div.sanction_index {
-        font-size: 1.8vh;
+  
+    div.sanction_index > p > a {
+        font-size: 2vh;
     }
-
 
 
     h3.nation {
         margin-top: 4vh;
         margin-bottom: 2vh;
-        font-size: 2.3vh;
+        font-size: 2.5vh;
+    }
+
+    h3.nation > a > img {
+        width: 8vw;
     }
 
     div.thumb {
@@ -1101,6 +1104,11 @@ div.message_index > p {
         }
     div.personal_index > h2 {
         font-size: 2.4vh;
+    }
+    
+    h2.allUser {
+        padding-top: 0;
+    
     }
 
     a.userOptions {

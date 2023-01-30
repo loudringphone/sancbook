@@ -1682,7 +1682,7 @@ for (let i = 0; i < keys.length; i++) {
       simplemaps_worldmap_mapdata["state_specific"][key].inactive = 'no'
       simplemaps_worldmap_mapdata["state_specific"][key].color = '#bc8888'
       simplemaps_worldmap_mapdata["state_specific"][key].hover_color = '#a30f0f'
-      // simplemaps_worldmap_mapdata["state_specific"][key].description   = `Sanctions: ${countrySanctionsLengths[j]}`
+      simplemaps_worldmap_mapdata["state_specific"][key].description   = `Sanctions: ${countrySanctionsLengths[j]}`
       continue
     }   
   }
