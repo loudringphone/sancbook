@@ -7,19 +7,37 @@
 
 <br><br>
 <div class="country_index">
-    <% @countries.each do |country| %>
-        <div class='thumb'>
-        <% if country.country_code.present? %>
-            <a href="/countries/<%= country.country_code %>">
-        <% else %>
-            <a href="/countries/<%= country.id %>">
+    <% if @current_user.present? %>
+        <% if @current_user.admin? %>
+             <% @all_countries.each do |country| %>
+                <div class='thumb'>
+                <% if country.country_code.present? %>
+                    <a href="/countries/<%= country.country_code %>">
+                <% else %>
+                    <a href="/countries/<%= country.id %>">
+                <% end %>
+                    <img src="<%= country.flag %>" alt="<%= country["name"] %>">
+                    <figcaption><%= country["name"] %></figcaption>
+                    </a>
+                </div>
+            <% end %>
         <% end %>
+    <% else %>
+
+        <% @countries.each do |country| %>
+            <div class='thumb'>
+            <% if country.country_code.present? %>
+                <a href="/countries/<%= country.country_code %>">
+            <% else %>
+                <a href="/countries/<%= country.id %>">
+            <% end %>
                 <img src="<%= country.flag %>" alt="<%= country["name"] %>">
                 <figcaption><%= country["name"] %></figcaption>
-            </a>
-        
-        </div>
-    <% end%>
+                </a>
+            
+            </div>
+        <% end%>
+    <% end %>
 </div>
 <br>
 

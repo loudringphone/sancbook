@@ -1,7 +1,7 @@
 <h1>All Messages</h1>
 
-<% if @total_unread_messages > 0%>
-<h3 class='unreadMessages'>You have <%= @total_unread_messages %> unread messages.</h3>
+<% if @total_unread_messages.size > 0%>
+<h3 class='unreadMessages'>You have <%= @total_unread_messages.size %> unread messages.</h3>
 <% else %>
 <h3>You have no new messages.</h3>
 <% end %>
@@ -17,5 +17,3 @@
              </p>
       <% end %>
 </div>
-
-

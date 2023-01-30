@@ -4,22 +4,47 @@ class MessagesController < ApplicationController
 
   def index
   
-    receivers = @current_user.sent_messages.distinct.pluck(:receiver_id).sort!
-    senders = @current_user.received_messages.distinct.pluck(:sender_id).sort!
-    unique_user_ids = (receivers + senders).uniq
-    unique_usernames = []
-    unique_user_ids.each do |user_id|
-        unique_usernames.push User.find_by(id: user_id).username
-    end
-    unique_usernames.sort!
+    # receivers = @current_user.sent_messages.distinct.pluck(:receiver_id).sort!
+    # senders = @current_user.received_messages.distinct.pluck(:sender_id).sort!
+    # unique_user_ids = (receivers + senders).uniq
+    # unique_usernames = []
+    # unique_user_ids.each do |user_id|
+    #     unique_usernames.push User.find_by(id: user_id).username
+    # end
+    # unique_usernames.sort!
 
-    user_unread_messages = @current_user.unread_messages.where(read: false)
-    unread_messages = []
-    unique_usernames.each do |username|
-      unread_messages.push user_unread_messages.where(sender_id: User.find_by(username: username).id).size
-    end
+    # unread_messages = @current_user.unread_messages.where(read: false)
+    # each_sender_unread_messages = []
+    # unique_usernames.each do |username|
+    # each_sender_unread_messages.push unread_messages.where(sender_id: User.find_by(username: username).id).size
+    # end
 
-    @unread_messages_hash = unique_usernames.zip(unread_messages).to_h
+# TESTING
+
+
+      received_messages = Message.all.where(receiver_id: @current_user.id)
+      sent_messages = Message.all.where(sender_id: @current_user.id)
+      receivers = sent_messages.distinct.pluck(:receiver_id)
+      senders = received_messages.distinct.pluck(:sender_id)
+      unique_user_ids = (receivers + senders).uniq
+      unique_usernames = []
+      unique_user_ids.each do |user_id|
+          unique_usernames.push User.find_by(id: user_id).username
+      end
+      unique_usernames.sort!
+      unread_messages = received_messages.where(read: false)
+      each_sender_unread_messages = []
+      unique_usernames.each do |username|
+        each_sender_unread_messages.push unread_messages.where(sender_id: User.find_by(username: username).id).size
+      end
+
+
+
+
+# TESTING
+
+
+    @unread_messages_hash = unique_usernames.zip(each_sender_unread_messages).to_h
     @sorted_unique_usernames = unique_usernames.sort_by { |k| @unread_messages_hash[k] }.reverse
     
 

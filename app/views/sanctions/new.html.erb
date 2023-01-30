@@ -8,8 +8,12 @@
                     <li><%= msg %></li>
                 <% end %>
             </ol>
-    <% end %>
-
+<% end %>
+<% if flash[:error] %>
+  <p class="error">
+    <%= flash[:error] %>
+  </p>
+<% end %>
 <div class="form_container">
     <%= render :partial => 'form' %>
     

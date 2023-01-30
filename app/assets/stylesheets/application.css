@@ -1109,15 +1109,19 @@ div.unread {
     }
 
     div.messageArea {
-        height: 70vh;
+        height: 65vh;
     }
 
     div.receiver {
         padding: 1.5px 0px 0.5px 30px;
+        border-top-right-radius: 3.5em;
+        border-bottom-right-radius: 3.5em;
     }
 
     div.sender {
         padding: 1.5px 30px 0.5px 0px;
+        border-top-left-radius: 3.5em;
+        border-bottom-left-radius: 3.5em;
     }
 
     td.sanction {

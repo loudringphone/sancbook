@@ -14,12 +14,12 @@ class User < ApplicationRecord
     validates_format_of :username, with: /[a-zA-Z]+/, message: "must contain at least one letter"
     validate :pasword_must_not_be_blank
     validates :username, length: { in: 3..15 }
-    
-  def pasword_must_not_be_blank
-    if password.blank?
-      errors.add(:password, "must not be blank")
+
+    def pasword_must_not_be_blank
+      if password.blank?
+        errors.add(:password, "must not be blank")
+      end
     end
-  end
 
     
 end

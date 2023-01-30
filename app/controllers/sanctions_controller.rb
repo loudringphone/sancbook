@@ -39,7 +39,8 @@ class SanctionsController < ApplicationController
   def index
     @nations = Sanction.distinct.pluck(:nationality).sort!
     @sanctions = Sanction.order(:name)
-    
+
+
 
 
     
@@ -72,26 +73,26 @@ class SanctionsController < ApplicationController
         @sanction.image = req["secure_url"]
         end
       end
-
       @sanction.save
-
       if @sanction.save
         
       
-      if Country.find_by(name: @sanction.nationality).nil?
-        country = Country.new
-        country.name = @sanction.nationality
-        country.save
+        if Country.find_by(name: @sanction.nationality).nil?
+          country = Country.new
+          country.name = @sanction.nationality
+          country.save
+        end
+        unless @sanction.nationality.empty?
+          Country.find_by(name: @sanction.nationality).sanctions << @sanction
+        end
+        redirect_to @sanction
+      else
+      
+        render :new
       end
-      unless @sanction.nationality.empty?
-        Country.find_by(name: @sanction.nationality).sanctions << @sanction
-      end
-      @sanction_error = ''
-      redirect_to @sanction
     else
-    
+      flash[:error] = "Name already exist"
       render :new
-    end
     end
   end
 

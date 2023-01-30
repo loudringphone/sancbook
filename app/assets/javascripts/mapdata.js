@@ -1588,7 +1588,7 @@ var simplemaps_worldmap_mapdata={
       inactive: "no",
       color: "#88A4BC",
       hover_color: "#3B729F",
-      url: "countries/},",
+      url: "countries/US",
       description: "",
       hide: "no"
     },
