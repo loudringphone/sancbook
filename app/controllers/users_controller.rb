@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_for_admin, :only => [:index]
   before_action :check_for_login, :only => [:show]
-  before_action :last_controller, :only => [:new]
 
   def index
     @users = User.all
@@ -9,12 +8,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    unless Rails.application.routes.recognize_path($location)[:controller] == "users"
-      $location = request.headers["HTTP_REFERER"]
-      if last_controller == "session"
-        $location = root_path
-      end
-    end
   end
 
   def create

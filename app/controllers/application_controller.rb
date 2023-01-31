@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     end
 
 
+    def clear_logout
+        $location = root_url
+        flash[:error] = nil
+    end
 
     def check_for_session
         redirect_back fallback_location: root_path if @current_user.present?

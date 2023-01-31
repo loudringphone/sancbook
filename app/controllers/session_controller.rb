@@ -1,11 +1,14 @@
 class SessionController < ApplicationController
   before_action :check_for_session, :only => [:new]
   before_action :last_controller, :only => [:new]
+  after_action :clear_logout, :only => [:destroy]
+
   def new
     unless @current_user.present?
       unless Rails.application.routes.recognize_path($location)[:controller] == "users"
+        unless request.headers["HTTP_REFERER"].nil?
           $location = request.headers["HTTP_REFERER"]
-        
+        end
         if $location  == root_url
           flash[:error] = nil
         end

@@ -1,0 +1,59 @@
+<title>Country index | Sancbook</title>
+
+<h1>Countries index</h1>
+<div class="country_number"><p>Currently there are <%= @countries.size %> countries where people have been sanctioned by our users.</p></div>
+
+<div class="alert"><%= alert %></div>
+
+<br><br>
+<div class="country_index">
+    <% if @current_user.present? %>
+        <% if @current_user.admin? %>
+             <% @all_countries.each do |country| %>
+                <div class='thumb'>
+                <% if country.country_code.present? %>
+                    <a href="/countries/<%= country.country_code %>">
+                <% else %>
+                    <a href="/countries/<%= country.id %>">
+                <% end %>
+                    <img src="<%= country.flag %>" alt="<%= country["name"] %>">
+                    <figcaption><%= country["name"] %></figcaption>
+                    </a>
+                </div>
+            <% end %>
+        <% else %>
+
+            <% @countries.each do |country| %>
+                <div class='thumb'>
+                <% if country.country_code.present? %>
+                    <a href="/countries/<%= country.country_code %>">
+                <% else %>
+                    <a href="/countries/<%= country.id %>">
+                <% end %>
+                    <img src="<%= country.flag %>" alt="<%= country["name"] %>">
+                    <figcaption><%= country["name"] %></figcaption>
+                    </a>
+                
+                </div>
+            <% end%>
+        <% end %>
+    <% end %>
+</div>
+<br>
+
+<p class='notice2' style="font-size:small;inline-height:50%;font-style:italic;">*who have commited serious violations or serious abuses of human rights</p>
+
+
+
+<script>
+
+    notice1 = document.querySelector('.notice1')
+    notice2 = document.querySelector('.notice2')
+    if (notice1.textContent.length == 6) {
+        notice2.remove(notice2)
+    }
+
+
+
+</script>
+
