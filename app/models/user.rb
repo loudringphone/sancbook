@@ -11,9 +11,12 @@ class User < ApplicationRecord
     has_secure_password
     validates :email, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
     validates :username, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
+    validates :username, length: { in: 3..15 }
+    validates :username, format: { without: /\s/, message: "can't contain space" }
     validates_format_of :username, with: /[a-zA-Z]+/, message: "must contain at least one letter"
     validate :pasword_must_not_be_blank
-    validates :username, length: { in: 3..15 }
+    
+
 
     def pasword_must_not_be_blank
       if password.blank?
