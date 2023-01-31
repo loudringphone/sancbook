@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
     private
 
     def your_api_key
-        # return 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'    
+        return 'AIzaSyB78d32yWEekzTclS_gZO9CqWVCMNptHgY'    
         # return 'AIzaSyAwxpAsaXqY3uxRpLsZADAwzjvQFC7WK9Q' # No custom search
         # return 'AIzaSyCa51-DKIz0PUFsud5BV-3ZZvrPuFr28Gc'
         # return 'AIzaSyBV1ZXF-FGbS8LNptoGgo6jsjRqDwIf0bU'
-        return ''
+        # return ''
       end
 
     def fetch_user

@@ -58,3 +58,7 @@ gem 'cloudinary'
 gem "countries", "~> 5.3"
 
 gem 'gon'
+
+gem 'nokogiri'
+
+gem 'open-uri'

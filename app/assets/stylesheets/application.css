@@ -15,6 +15,9 @@
  */
  
 
+h3.mapHeader {
+    width: auto;
+}
 
 form .no_comments[disabled] {
     background-color: transparent !important;

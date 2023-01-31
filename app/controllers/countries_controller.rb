@@ -114,32 +114,26 @@ class CountriesController < ApplicationController
 
 
     unless @country.name == 'Unknown'
-      your_cse_id = 'e3218dc0a18944649' # www.google.com
-      # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
-      wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
-      wiki_results = HTTParty.get wiki_search
-      unless wiki_results["items"].nil?
-        unless wiki_results["items"][0]["link"].include? 'wikipedia.org/wiki/'
-          @sanction_info = "Not Available"
-        else
-          wiki_url = wiki_results["items"][0]["link"]
-          wiki = wiki_url[wiki_url.index("/wiki/")+6..]
-          dbpedia_url = "https://dbpedia.org/page/#{wiki}"
-          result = HTTParty.get dbpedia_url
-          result = result.to_s
-          
-          if result.include? "<span property=\"dbo:abstract\" lang=\"en\" >"
-            span_en1 = result.index("<span property=\"dbo:abstract\" lang=\"en\" >") + 41
-            span_en2 = result[span_en1..].index("</span>") - 1
-            @country_info = result[span_en1..span_en1+span_en2].gsub('&#39','').gsub('&quot;','')
-          else
-            @country_info = "Not Available"
-          end
-        end
+      unless @country.description.nil?
+        @country_info = @country.description
       else
-        @country_info = wiki_results
+        your_cse_id = 'e3218dc0a18944649' # www.google.com
+        # your_cse_id = '57c3cb0530b3d4750' # www.google.com/imghp?hl=EN*
+        wiki_search = "https://www.googleapis.com/customsearch/v1?key=#{your_api_key}&cx=#{your_cse_id}&q=#{@country.name.gsub(' ', '%20').gsub(',', '%20')}%20wikipedia"
+        wiki_results = HTTParty.get wiki_search
+        begin
+        wiki_url = wiki_results["items"][0]["link"]
+        wiki = wiki_url[wiki_url.index("/wiki/")+6..]
+        dbpedia_url = "https://dbpedia.org/page/#{wiki}"
+        dbpedia_doc = Nokogiri::HTML(URI.open(dbpedia_url))
+        result = dbpedia_doc.search('span[property="dbo:abstract"][lang="en"]')
+        @country_info = result.first.text
+        @country.description = @country_info
+        @country.save
+        rescue
+        @country_info = "Not Available"
+        end   
       end
-      
       @cia_factbook = {}
       filename = File.dirname(File.expand_path('../..', __FILE__)) + '/data/cia_factbook.csv'
       CSV.foreach(filename, :headers => true, :header_converters => :symbol, :converters => :all) do |row|
@@ -186,7 +180,7 @@ class CountriesController < ApplicationController
   end
 
   def country_params
-    params.require(:country).permit(:name, :official_name, :native_name, :country_code, :flag)
+    params.require(:country).permit(:name, :official_name, :native_name, :country_code, :flag, :description)
   end
 
   def country_info country_name
