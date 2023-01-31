@@ -18,9 +18,18 @@ class ApplicationController < ActionController::Base
     end
 
     def check_for_login
-        flash[:error] = "Please login to continue"
+        original_url = request.original_url
+        original_controller = Rails.application.routes.recognize_path(original_url)[:controller]
+        if original_controller == 'users'
+            $location = original_url
+            flash[:error] = "Please login to view profile"
+        else
+            flash[:error] = "Please login to continue"
+        end
         redirect_to login_path unless @current_user.present?
     end
+
+
 
     def check_for_session
         redirect_back fallback_location: root_path if @current_user.present?

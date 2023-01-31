@@ -9,11 +9,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    $location = request.headers["HTTP_REFERER"]
-    if last_controller == "session"
-      $location = root_path
+    unless Rails.application.routes.recognize_path($location)[:controller] == "users"
+      $location = request.headers["HTTP_REFERER"]
+      if last_controller == "session"
+        $location = root_path
+      end
     end
-   
   end
 
   def create
