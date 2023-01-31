@@ -300,8 +300,13 @@
         })
     )
     
-
- 
+    newComment = document.querySelector('.new_comment')
+    commentButton = document.querySelector('.comment_button')
+    newComment.addEventListener("keypress", function(event) {
+    if (event.code === "Enter") {
+      commentButton.click();
+    }
+  });
 
 
 

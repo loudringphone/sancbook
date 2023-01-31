@@ -110,5 +110,10 @@
         }
     }
 
+    document.addEventListener("keypress", function(event) {
+    if (event.code === "Enter") {
+      document.querySelector("input[type=submit]").click();
+    }
+  });
 
 </script>
