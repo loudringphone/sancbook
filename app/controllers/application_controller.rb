@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         original_url = request.original_url
         original_controller = Rails.application.routes.recognize_path(original_url)[:controller]
         if original_controller == 'users'
-            $location = original_url
+            session[:previous_url] = original_url
             flash[:error] = "Please login to view profile"
         else
             flash[:error] = "Please login to continue"
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
 
     def clear_logout
-        $location = root_url
+        session[:previous_url] = nil
         flash[:error] = nil
     end
 

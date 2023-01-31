@@ -14,10 +14,10 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      begin
-        redirect_to $location
-        $location = root_path
-      rescue
+      unless session[:previous_url] == nil
+        redirect_to session[:previous_url]
+        session[:previous_url] = nil
+      else
         redirect_to root_path
       end
     else

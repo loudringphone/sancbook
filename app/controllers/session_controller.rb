@@ -5,15 +5,15 @@ class SessionController < ApplicationController
 
   def new
     unless @current_user.present?
-      unless Rails.application.routes.recognize_path($location)[:controller] == "users"
+      unless Rails.application.routes.recognize_path(session[:previous_url])[:controller] == "users"
         unless request.headers["HTTP_REFERER"].nil?
-          $location = request.headers["HTTP_REFERER"]
+          session[:previous_url] = request.headers["HTTP_REFERER"]
         end
-        if $location  == root_url
+        if session[:previous_url]  == nil
           flash[:error] = nil
         end
         if last_controller == "session"
-          $location = root_path
+          session[:previous_url] = nil
         end
       end
     end
@@ -23,13 +23,13 @@ class SessionController < ApplicationController
     user = User.find_by :email => params[:email]
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id   
-      begin
-        redirect_to $location
-        $location = root_path
-      rescue
-        redirect_to root_path
-      end
-    
+ 
+        unless session[:previous_url] == nil
+          redirect_to session[:previous_url]
+          session[:previous_url] = nil
+        else 
+          redirect_to root_path
+        end
     else
       flash[:error] = "Invalid email or password"
       redirect_to login_path
