@@ -21,8 +21,8 @@
                     </a>
                 </div>
             <% end %>
-        <% else %>
-
+        <% end %>
+    <% else %>
             <% @countries.each do |country| %>
                 <div class='thumb'>
                 <% if country.country_code.present? %>
@@ -35,8 +35,7 @@
                     </a>
                 
                 </div>
-            <% end%>
-        <% end %>
+            <% end%>    
     <% end %>
 </div>
 <br>
