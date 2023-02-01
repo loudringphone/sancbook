@@ -10,11 +10,11 @@ Plesae visit the largest social media platform (about sanctions) here: https://s
 This gem allows me to set global variables in the Ruby code that can be accessed by JavaScript code running in the browser, so that the world map on my home page can be more dynamic and interactive. In other words, any changes in the database, such as number of countries or number of sanctions would affect how the world map react.
 
 #### Google Custom Search JSON API
-
+Since every country has their own wikipage and some of the sanctions are high-profile individual. It should be great if I could get an articile for each of them from Wikipedia. I am not using MediaWiki's API here but instead I use Google Search API combining with DBpedia. I use Google Search API and search by country/sanction name plus the keyword 'Wikipedia' and the first result would be their wikipage if they have one. Then I access the information through DBpedia.
 
 
 #### Nokogiri
-
+I use this gem to parse the HTML files of DBpedia's pages so as to get the information I need for every country and those more high-profile sanctions.
 
 #### YouTube Data API
 

@@ -14,6 +14,15 @@
  *= require_self
  */
  
+a.trial {
+    width:100%;
+    float: right;
+    text-align: right;
+    font-size: small;
+    color:black;
+}
+
+
 
 h3.mapHeader {
     width: auto;
@@ -713,22 +722,30 @@ div.message_index > p {
 
 
 
-@media (max-width: 1110px) {
+    
+
+
+    
+
+  
+
+@media (max-width: 1000px) {
+    .details {
+        width: 300px;
+    }
+
+
+
     .container {
         width: 90vw;
         height:auto;
     }
 
-
-    
-
-    .details {
-        width: 300px;
+    a.trial {
+        font-size: medium;
+        margin-bottom: 2vh;
     }
 
-}
-
-@media (max-width: 1000px) {
     div.showContainer {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
@@ -963,7 +980,7 @@ div.message_index > p {
     }
 
     .postscript {
-        padding-bottom:9vh;
+        padding-bottom:3vh;
         font-size: 1.5vh !important;
     }
 
@@ -1182,10 +1199,6 @@ div.message_index > p {
  
         font-size: 1.5vh;
         top: 10%
-    }
-
-    div#map {
-        margin-bottom: 5vh;
     }
 }
 
