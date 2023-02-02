@@ -15,7 +15,7 @@
  */
  
 a.trial {
-    width:100%;
+    width:auto;
     float: right;
     text-align: right;
     font-size: small;
