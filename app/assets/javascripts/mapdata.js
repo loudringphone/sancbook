@@ -1669,9 +1669,9 @@ var simplemaps_worldmap_mapdata={
 
 
 
-isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
+// isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
 
-if (isMobile) {simplemaps_worldmap_mapdata.main_settings.navigation_size = '44'}
+// if (isMobile) {simplemaps_worldmap_mapdata.main_settings.navigation_size = '44'}
 
 
 mapObj = simplemaps_worldmap_mapdata["state_specific"]
