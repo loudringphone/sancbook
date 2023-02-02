@@ -12,7 +12,28 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+const fetchUnread = function () {
+    $.ajax('/api/unread').done(function (u) {
+        if (u === '0') {
+            $('#unread').text('Messenger');
+        }
+        else {
+            $('#unread').text('Messenger (' + u + ')');
+        }
+    });
+};
+fetchUnread()
+setInterval(fetchUnread, 1000);
+
+
+
+
+
+
+
 
 const createAtag = function(text, link) {
     a = document.createElement('a')
