@@ -33,7 +33,7 @@
         <% if @current_user.present? %>
               <span>
             <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</span>
-            <a href=<%= "/users/#{User.find_by(id: @current_user.id).username}/messenger" %>><span id='unread'><%= @unread %></span></a>
+            <a href=<%= "/users/#{User.find_by(id: @current_user.id).username}/messenger" %>><span id='unread'>Messenger</span></a>
 
 
            
