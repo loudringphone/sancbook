@@ -1,9 +1,7 @@
 class DashboardController < ApplicationController
     def unread
-        unread = %w{ 0 1 2 3 4 }.sample
+        unread = @current_user.unread_messages.size
         render :plain => unread
     end
-
-    # @current_user.unread_messages
 
 end

@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require_tree .
 
@@ -26,7 +25,7 @@ const fetchUnread = function () {
     });
 };
 fetchUnread()
-setInterval(fetchUnread, 1000);
+setInterval(fetchUnread, 10000);
 
 
 
