@@ -6,7 +6,7 @@
 <div class="sanction_index">
     <% @sanctions.each do |sanction| %>
         <p>
-            <a href="/sanctions/<%= sanction["id"] %>">
+            <a href="/sanctions/<%= sanction["id"] %>" data-turbolinks="false">
                 <%= sanction["name"] %>
             </a>
         </p>
