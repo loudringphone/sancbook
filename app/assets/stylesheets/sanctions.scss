@@ -52,7 +52,12 @@ div.featurePlaceholder {
     border-width: 2px;
     margin-bottom: 5px;
     border-color: skyblue;
-    width: 200px; 
+    width: 220px; 
+}
+
+div.featurePlaceholder > img.feature {
+    height: 290px;
+    width: auto;
 }
 
 figure.preview > div.featurePlaceholder {
