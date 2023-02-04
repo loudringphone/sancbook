@@ -36,12 +36,16 @@ class CountriesController < ApplicationController
     previous_name = @country.name
     @country.assign_attributes country_params
     @country.name = titleize(@country.name)
-    if @country.flag.present?
-      unless @country.flag.include? "cloudinary"
-      req = Cloudinary::Uploader.upload(@country.flag)
-      @country.flag = req["secure_url"]
-      @country.save
+    begin
+      if @country.flag.present?
+        unless @country.flag.include? "cloudinary"
+        req = Cloudinary::Uploader.upload(@country.flag)
+        @country.flag = req["secure_url"]
+        @country.save
+        end
       end
+    rescue
+      @country.save
     end
     unless (@country.name != previous_name && Country.find_by(name: @country.name).present?)
       @country.save

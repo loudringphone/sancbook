@@ -66,14 +66,17 @@ class SanctionsController < ApplicationController
       @sanction.name = @sanction.name[0..comma_index].upcase + @sanction.name[comma_index+1..]
     end
     unless Sanction.find_by(name: @sanction.name).present?
-
-      if @sanction.image.present?
-        unless @sanction.image.include? "cloudinary"
-        req = Cloudinary::Uploader.upload(@sanction.image)
-        @sanction.image = req["secure_url"]
+      begin
+        if @sanction.image.present?
+          unless @sanction.image.include? "cloudinary"
+          req = Cloudinary::Uploader.upload(@sanction.image)
+          @sanction.image = req["secure_url"]
+          end
+          @sanction.save
         end
+      rescue
+        @sanction.save
       end
-      @sanction.save
       if @sanction.save
         
       
@@ -115,15 +118,17 @@ class SanctionsController < ApplicationController
     @sanction.nationality = titleize(@sanction.nationality)
     @sanction.nationality = 'Unknown' if @sanction.nationality.empty?
     unless (@sanction.name != previous_name && Sanction.find_by(name: @sanction.name).present?)
-
-      if @sanction.image.present?
-        unless @sanction.image.include? "cloudinary"
-        req = Cloudinary::Uploader.upload(@sanction.image)
-        @sanction.image = req["secure_url"]
+      begin
+        if @sanction.image.present?
+          unless @sanction.image.include? "cloudinary"
+          req = Cloudinary::Uploader.upload(@sanction.image)
+          @sanction.image = req["secure_url"]
+          end
+          @sanction.save
         end
+      rescue
+        @sanction.save
       end
-
-      @sanction.save
       if @sanction.save
       unless @sanction.nationality == previous_nationality
         if Country.find_by(name: @sanction.nationality).nil?
