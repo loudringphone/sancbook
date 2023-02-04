@@ -27,6 +27,11 @@ In this project, I didn't plan to let users add countries by themselves to the d
 #### Countries
 As the time of writing this README, the REST Countries is experiencing a down time. As a result, I need a backup solution. This gem is not as good as REST Countries in my opinion as it doesn't have all the information I need, but at least it could give me the alpha-2 code for each country.
 
+<br /> <br /> 
 
+### Features
+---
+
+#### Message noticfication
 
 
