@@ -37,7 +37,7 @@
             </div>
 
             <div class="div_feature">
-            <div class="featurePlaceholder">
+            <div onload="featureWidth()" class="featurePlaceholder">
                 <% unless @sanction["image"].nil? || @sanction["image"].empty? %>
                 <img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>" alt="<%= @sanction["name"] %>">
                 <% else %>
@@ -307,8 +307,6 @@
       commentButton.click();
     }
   });
-
-
 
 
 

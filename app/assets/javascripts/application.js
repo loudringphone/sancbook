@@ -52,6 +52,7 @@ const createSpantag = function(txt) {
 }
                     
 
+
 const featureWidth = function(){
     featurePlaceholder = document.querySelector(".featurePlaceholder")
     feature = document.querySelector(".feature")
