@@ -15,6 +15,7 @@
 //= require jquery
 //= require_tree .
 
+
 const fetchUnread = function () {
     $.ajax('/api/unread').done(function (u) {
         if (u === '0') {
@@ -51,7 +52,6 @@ const createSpantag = function(txt) {
     favored.appendChild(span)
 }
                     
-
 
 const featureWidth = function(){
     featurePlaceholder = document.querySelector(".featurePlaceholder")

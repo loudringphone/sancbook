@@ -12,7 +12,7 @@ class User < ApplicationRecord
     validates :email, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
     validates :username, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
     validates :username, length: { in: 3..15 }
-    validates :username, format: { without: /\s/, message: "can't contain space" }
+    validates :username, format: { with: /\A[a-zA-Z0-9]+\z/, message: "can only contain letters and numbers" }
     validates_format_of :username, with: /[a-zA-Z]+/, message: "must contain at least one letter"
     validate :pasword_must_not_be_blank
     
