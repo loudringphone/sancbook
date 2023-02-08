@@ -71,7 +71,15 @@ class MessagesController < ApplicationController
         redirect_to location
   end
 
-
+  def destroy
+    if @current_user.present?
+        if (@current_user.admin? || Message.find_by(id: params[:id]).user_id == @current_user.id)
+          Message.find_by(id: params[:id]).destroy
+            location = request.headers["HTTP_REFERER"]
+            redirect_to location
+        end
+    end    
+end
   
 
 
