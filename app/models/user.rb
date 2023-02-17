@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
     validates_confirmation_of :password
     has_secure_password
-    validates :email, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
+    validates :email, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\z/, message: "must be in the format of 'user@example.com'" }
     validates :username, :uniqueness => true, :presence => true, uniqueness: { case_sensitive: false }
     validates :username, length: { in: 3..15 }
     validates :username, format: { with: /\A[a-zA-Z0-9]+\z/, message: "can only contain letters and numbers" }
