@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+div.admin-button {
+    display: flex;
+}
+input.delete-user {
+    margin-left: 10% !important;
+    white-space: nowrap !important;
+    background-color: orange;
+}
+
+
 div.personal_index > nav {
     display: inline-flex;
     flex-wrap: wrap;
@@ -31,13 +41,11 @@ div.personal_index > nav {
     text-decoration: none;
     text-decoration-thickness:0;
 }
-
 .personal_index > a:hover {
     text-decoration: underline;
-        text-decoration-thickness:2px;
-        text-underline-offset: 3px
+    text-decoration-thickness:2px;
+    text-underline-offset: 3px
 }
-
 .personal_index > .sanction_index {
     gap: 0px;
     p {
@@ -47,7 +55,6 @@ div.personal_index > nav {
         }
     }
 }
-
 div.adminView {
     width: 100%;
     form > input[type="submit"] {
@@ -56,10 +63,8 @@ div.adminView {
         padding: 5px 10px 25px 10px;
         // display: block;
         // margin: auto;
-    }
-    
+    } 
 }
-
 .userOptions {
     border-bottom: 0.1em solid;
     font-size: medium;
@@ -67,28 +72,20 @@ div.adminView {
     top:-20px;
     margin-right:5px;
 }
-
 .userOptions:hover {
     text-decoration: underline;
     text-decoration-thickness:2px;
     text-underline-offset: 3px
 }
-
 .no_comments[disabled]:hover {
     background-color: initial !important;
     background-color: transparent !important;
     cursor: default !important;
 }
-
-
-
-
-
 .commentHistory {
     width:100%; 
     border-collapse:collapse; 
 }
-
 td.remove {
     font-size: small;
     visibility: hidden;
@@ -97,19 +94,16 @@ td.remove {
     color:white;
     }
 }
-
 td.number {
     padding-right: 2vw;
     vertical-align: text-bottom;
 }
-
 td.sanction {
     width: 12vw;
     padding-right: 2vw;
     vertical-align: text-bottom;
     padding-bottom: 0.7vh;
 }
-
 td.comment {
     width: 60vw;
     word-break: break-all;
@@ -118,25 +112,17 @@ td.comment {
     padding-bottom: 0.7vh;
     padding-top: 0.7vh;
 }
-
 td.time {
     width: 8vw;
     vertical-align: text-bottom;
     font-size:smaller;
 }
-
 tr.comments {
     border-bottom: inset;
 }
-
-
-
 .commentHistory tr.comments:hover {
       background-color: lightgray;
 }
-
-
-
 p.notice {
     color:green;
     font-style: italic;
@@ -144,18 +130,16 @@ p.notice {
     position: absolute;
     top: 12%;
 }
-
 p.alert {
     color:red;
     font-style: italic;
     font-size: medium;
     line-height: 50%;
 }
-
 li {
     list-style-type: none;
     color:red;
     font-style: italic;
     font-size: medium;
     line-height: 50%;
-  }
+}

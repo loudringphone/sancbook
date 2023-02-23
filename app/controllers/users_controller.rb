@@ -36,11 +36,6 @@ class UsersController < ApplicationController
       params[:id] = User.find_by(username: params[:id]).id
     end
 
-
-
-
-
-
     user = User.find_by(id: params[:id])
     @user_sanctions = user.sanctions.order(:name)
     @user_sanction_nations = @user_sanctions.select(:nationality).map(&:nationality).uniq.sort!
@@ -89,13 +84,16 @@ class UsersController < ApplicationController
         end
       end
 
-
-
       render :edit
     end
   end
 
-
+  def destroy
+    user = User.find params[:id]
+    user.destroy
+    admin_profile = '/users/' + @current_user.id.to_s
+    redirect_to admin_profile
+  end
 
 
   

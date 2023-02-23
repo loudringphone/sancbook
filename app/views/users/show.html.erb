@@ -13,16 +13,20 @@
     <h2>My sanctions</h2>
 <% else %>
     <% if @current_user.admin? %>
-        <div class='adminView'><h1><%= User.find_by(id: params[:id]).username %>'s profile <a href="<%= User.find_by(id: params[:id]).username %>/messages" class="mail">✉️</a>  <br><span style="font-size:large; font-weight: normal">(<%= User.find_by(id: params[:id]).email %>)</span></h1>
+        <div class='adminView'><h1><%= User.find_by(id: params[:id]).username %>'s profile <a href="<%= User.find_by(id: params[:id]).username %>/messages" class="mail">✉️</a> <span style="font-size:large; font-weight: normal"><%= User.find_by(id: params[:id]).email %></span></h1>
         <%= link_to 'View comment history', "#{User.find_by(id: params[:id]).username}/history", :class => "userOptions" %>
-         <%= form_tag("#{params[:id]}/comments", method: :delete) do %>
-            <% unless User.find_by(id: params[:id]).comments.size == 0 %>
-                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?", class: "delete_all_comments" }%><%= token_tag %>
-            <% else %>
-                <%= submit_tag "No comments from this user", class: "no_comments" %><%= token_tag %>
+        <div class='admin-button'>
+            <%= form_tag("#{params[:id]}/comments", method: :delete) do %>
+                <% unless User.find_by(id: params[:id]).comments.size == 0 %>
+                    <%= submit_tag "Delete all comments from this user", class: "delete-all-comments", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
+                <% else %>
+                    <%= submit_tag "No comments from this user", class: "no_comments" %><%= token_tag %>
+                <% end %>
             <% end %>
+            <%= form_tag("#{params[:id]}", method: :delete) do %>
+                <%= submit_tag "Delete this user", class: "delete-user", data: { confirm: "Are you sure to delete this user?\nAll the sanctions this user created will also be deleted." }%><%= token_tag %>
             <% end %>
-        
+        </div>
         </div>
     <% else %>
         <h1><%= User.find_by(id: params[:id]).username %>'s profile <a href="<%= User.find_by(id: params[:id]).username %>/messages" class="mail">✉️</a></h1>
@@ -117,7 +121,7 @@
 <%= link_to 'Update password', edit_user_path, :class => "userOptions" %>
         <%= form_tag("comments", method: :delete) do %>
             <% unless @current_user.comments.size == 0 %>
-                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?", class: "delete_all_comments" }%><%= token_tag %>
+                <%= submit_tag "Delete all comments from this user", data: { confirm: "Are you sure to delete all this user's comments?", class: "delete-all-comments" }%><%= token_tag %>
             <% else %>
                 <%= submit_tag "No comments from this user", class: "no_comments", data: { confirm: "Are you sure to delete all this user's comments?" }%><%= token_tag %>
             <% end %>
