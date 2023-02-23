@@ -734,7 +734,9 @@ div.message_index > p {
     .details {
         width: 300px;
     }
-
+    footer {
+        font-size: x-small;
+    }
 
 
     .container {
