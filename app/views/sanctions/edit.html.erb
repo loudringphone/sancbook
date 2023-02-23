@@ -28,7 +28,16 @@
 
 <script>
 
-
+    function featureWidth(){
+        featurePlaceholder = document.querySelector(".featurePlaceholder")
+        feature = document.querySelector(".feature")
+        if (featurePlaceholder != null) {
+            if (feature != null) {
+                featurePlaceholder.style.width = parseInt(feature.width)+10 + "px"
+                featurePlaceholder.style.height = parseInt(feature.height)+10 + "px"
+            }
+        }
+    }
 
     preview = document.querySelector(".preview");
     profile_pic = document.querySelector("#sanction_image");

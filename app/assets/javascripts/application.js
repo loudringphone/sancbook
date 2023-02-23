@@ -53,15 +53,15 @@ const createSpantag = function(txt) {
 }
                     
 
-const featureWidth = function(){
-    featurePlaceholder = document.querySelector(".featurePlaceholder")
-    feature = document.querySelector(".feature")
-    if (featurePlaceholder != null) {
-        if (feature != null) {
-            featurePlaceholder.style.width = parseInt(feature.width)+10 + "px"
-            featurePlaceholder.style.height = parseInt(feature.height)+10 + "px"
-        }
-    }
-}
+// const featureWidth = function(){
+//     featurePlaceholder = document.querySelector(".featurePlaceholder")
+//     feature = document.querySelector(".feature")
+//     if (featurePlaceholder != null) {
+//         if (feature != null) {
+//             featurePlaceholder.style.width = parseInt(feature.width)+10 + "px"
+//             featurePlaceholder.style.height = parseInt(feature.height)+10 + "px"
+//         }
+//     }
+// }
 
 
