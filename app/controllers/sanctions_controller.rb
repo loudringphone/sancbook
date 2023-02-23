@@ -138,12 +138,7 @@ class SanctionsController < ApplicationController
         end
         unless @sanction.nationality.empty?
           Country.find_by(name: @sanction.nationality).sanctions << @sanction
-        end
-        unless previous_nationality.empty?
-          country = Country.find_by(name: previous_nationality)
-          country.sanctions.delete(sanction) # if use destroy, the sanction would be destroyed.
-        end
-        
+        end 
       end
       redirect_to @sanction
     else
