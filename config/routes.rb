@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
   post 'sanctions/:id/comment' => 'comments#create'
   delete 'users/:id/comments' => 'comments#remove_all_comments'
+  delete '/messages' => 'messages#delete_all_messages'
   get 'users/:id/history' => 'comments#index'
   get 'users/:id/messenger' => 'messages#index', :as => :messages_path
   get 'users/:id/messages' => 'messages#message'

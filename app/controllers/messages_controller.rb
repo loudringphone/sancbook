@@ -79,7 +79,18 @@ class MessagesController < ApplicationController
             redirect_to location
         end
     end    
-end
+  end
+
+  def delete_all_messages
+    if @current_user.present?
+      if @current_user.admin?
+        messages = Message.all
+        messages.each do |message|
+          message.destroy
+        end
+      end
+    end
+  end
   
 
 

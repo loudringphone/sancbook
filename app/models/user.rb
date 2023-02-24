@@ -2,10 +2,10 @@ class User < ApplicationRecord
     has_many :dictators, dependent: :delete_all
     has_many :favourites, dependent: :delete_all
     has_many :sanctions, dependent: :delete_all
-    has_many :comments
-    has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
-    has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
-    has_many :unread_messages, -> { where(read: false) }, class_name: 'Message', foreign_key: 'receiver_id'
+    has_many :comments, dependent: :delete_all
+    has_many :sent_messages, dependent: :delete_all, class_name: "Message", foreign_key: "sender_id"
+    has_many :received_messages, dependent: :delete_all, class_name: "Message", foreign_key: "receiver_id"
+    has_many :unread_messages, -> { where(read: false) }, class_name: 'Message', foreign_key: 'receiver_id', dependent: :delete_all
 
     validates_confirmation_of :password
     has_secure_password
