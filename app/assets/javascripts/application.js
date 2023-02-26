@@ -45,8 +45,9 @@ const fetchMessages = function() {
     if (pathMatch) {
         const user = String(pathMatch).split('/')[2]
         $.ajax(`/api/${user}/messages`).done(function (messages) {
-            console.log(messages)
-            $( "#messageArea" ).load( `/users/${user}/messages #messageArea` ); 
+            if (!messages[0]["read"]) {
+                $( "#messageArea" ).load( `/users/${user}/messages #messageArea` ); 
+            }
         })
       }
 }
