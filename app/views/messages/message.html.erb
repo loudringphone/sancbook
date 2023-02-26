@@ -3,50 +3,43 @@
 
 <div class="messageSection">
         <div class="messageHeader"><h3>💬 <%= link_to @user.username , "/users/#{@user.username}" %></h3></div>
-        <div class="messageArea">
-                <% count = 0 %>
-                <% @messages.each do |message| %>
-                    <% if count == @unread_messages.size && @unread_messages.size != 0 %>
+        <div class="messageArea" id='messageArea'>
+            <% count = 0 %>
+            <% @messages.each do |message| %>
+                <% if count == @unread_messages.size && @unread_messages.size != 0 %>
                     <div class="unread"><p>
-
-                    <% case @unread_messages.size %>
-                    <% when 1..9 %>
-                    === <%= @unread_messages.size %> unread messages below ===
-                    <% when 10..99 %>
-                    == <%= @unread_messages.size %> unread messages below ==
-                    <% else %>
-                    == 99+ unread messages below ==
-                    <% end %>
-                     
-                     
-                     
-                     
-                     
-                     
-                     </p></div>
-                    <% end %>
-                    <% if ( message.sender_id ==  @current_user.id ) %>
-                        <div class="sender">
-                        <div>
-                         <span class='time'><%= message.sent.strftime("%Y-%m-%d %k:%M") %></span>
-                        <a class='removeMessage' data-method="delete" href="/messages/<%= message.id %>">Delete</a></div>
-                        <p><%= message.text %></p>
-                        </div>
-                          <% end %>
-                    <% if ( message.receiver_id ==  @current_user.id ) %>
-                        <div class="receiver">
-                        <div>
-                         <span class='time'><%= message.sent.strftime("%Y-%m-%d %k:%M") %></span>
-                        <a class='removeMessage' data-method="delete" href="/messages/<%= message.id %>">Delete</a></div>
-                        <p><%= message.text %></p>
-                        </div>
-                          <% end %>
-                          <% if count != @unread_messages.size + 1 %>
-                          <% count += 1 %>
-                          <% end %>
-                <% end%>
-            
-        
+                        <% case @unread_messages.size %>
+                            <% when 1 %>
+                            === 1 unread message below ===
+                            <% when 2..9 %>
+                            === <%= @unread_messages.size %> unread messages below ===
+                            <% when 10..99 %>
+                            == <%= @unread_messages.size %> unread messages below ==
+                            <% else %>
+                            == 99+ unread messages below ==
+                        <% end %>
+                    </p></div>
+                <% end %>
+                <% if ( message.sender_id ==  @current_user.id ) %>
+                    <div class="sender">
+                    <div>
+                        <span class='time'><%= message.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                    <a class='removeMessage' data-method="delete" href="/messages/<%= message.id %>">Delete</a></div>
+                    <p><%= message.text %></p>
+                    </div>
+                <% end %>
+                <% if ( message.receiver_id ==  @current_user.id ) %>
+                    <div class="receiver">
+                    <div>
+                        <span class='time'><%= message.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                    <a class='removeMessage' data-method="delete" href="/messages/<%= message.id %>">Delete</a></div>
+                    <p><%= message.text %></p>
+                    </div>
+                <% end %>
+                <% if count != @unread_messages.size + 1 %>
+                    <% count += 1 %>
+                <% end %>
+            <% end%>
         </div>
         <div class="message_box">
         <%= render partial: 'form' %>

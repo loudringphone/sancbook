@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
     before_action :check_for_receiver, :only => [:message]
 
   def index
-  
     receivers = @current_user.sent_messages.distinct.pluck(:receiver_id).sort!
     senders = @current_user.received_messages.distinct.pluck(:sender_id).sort!
     unique_user_ids = (receivers + senders).uniq

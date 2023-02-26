@@ -1,33 +1,34 @@
 <h1>All Messages</h1>
-
-<% if @total_unread_messages.size > 0%>
-<h3 class='unreadMessages'>You have <%= @total_unread_messages.size %> unread messages.</h3>
-<% else %>
-<h3>You have no new messages.</h3>
-<% end %>
-<div class="message_index">
-<% @sorted_admins.each do |admin| %>
-            <% unless @current_user.username == admin %>
-                <p>
-                    <a href="/users/<%= admin %>/messages" data-turbolinks="false">
-                        <%= admin %>
-                        <% if @admin_unread_messages_hash[admin] > 0%>
-                        (<%= @admin_unread_messages_hash[admin] %>)
-                        <% end %>
-                    </a>
-                </p>
-            <% end %>
-      <% end %>
-<% @sorted_unique_usernames.each do |username| %>
-            <% unless User.find_by(username: username).admin? %>
-                <p>
-                    <a href="/users/<%= username %>/messages" data-turbolinks="false">
-                        <%= username %>
-                        <% if @unread_messages_hash[username] > 0%>
-                        (<%= @unread_messages_hash[username] %>)
-                        <% end %>
-                    </a>
-                </p>
-            <% end %>
-      <% end %>
+<div id='messages'>
+    <% if @total_unread_messages.size > 0%>
+    <h3 class='unreadMessages'>You have <%= @total_unread_messages.size %> unread messages.</h3>
+    <% else %>
+    <h3>You have no new messages.</h3>
+    <% end %>
+    <div class="message_index">
+    <% @sorted_admins.each do |admin| %>
+                <% unless @current_user.username == admin %>
+                    <p>
+                        <a href="/users/<%= admin %>/messages" data-turbolinks="false">
+                            <%= admin %>
+                            <% if @admin_unread_messages_hash[admin] > 0%>
+                            (<%= @admin_unread_messages_hash[admin] %>)
+                            <% end %>
+                        </a>
+                    </p>
+                <% end %>
+        <% end %>
+    <% @sorted_unique_usernames.each do |username| %>
+                <% unless User.find_by(username: username).admin? %>
+                    <p>
+                        <a href="/users/<%= username %>/messages" data-turbolinks="false">
+                            <%= username %>
+                            <% if @unread_messages_hash[username] > 0%>
+                            (<%= @unread_messages_hash[username] %>)
+                            <% end %>
+                        </a>
+                    </p>
+                <% end %>
+        <% end %>
+    </div>
 </div>

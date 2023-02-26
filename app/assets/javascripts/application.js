@@ -15,19 +15,56 @@
 //= require jquery
 //= require_tree .
 
-
 const fetchUnread = function () {
     $.ajax('/api/unread').done(function (u) {
-        if (u === '0') {
+        if (parseInt(u) === 0) {
             $('#unread').text('Messenger');
         }
-        else {
+        else if (parseInt(u) > 0) {
             $('#unread').text('Messenger (' + u + ')');
+            const currentUsername = gon.current_username;
+            const currentUserId = gon.current_userId;
+            if ((window.location.pathname === `/users/${currentUsername}/messenger` || 
+            window.location.pathname === `/users/${currentUserId}/messenger`)) {
+                    // setTimeout(() => {  
+                    //     location.reload()
+                    // }, 10000);
+                    $( "#messages").load( `/users/${currentUserId}/messenger #messages` );
+            }
         }
     });
 };
 fetchUnread()
 setInterval(fetchUnread, 10000);
+
+
+
+const fetchMessages = function() {
+    const pathRegex = /^\/users\/.+\/messages$/;
+    const pathMatch = window.location.pathname.match(pathRegex);
+    if (pathMatch) {
+        const user = String(pathMatch).split('/')[2]
+        $.ajax(`/api/${user}/messages`).done(function (messages) {
+            console.log(messages)
+            $( "#messageArea" ).load( `/users/${user}/messages #messageArea` ); 
+        })
+      }
+}
+fetchMessages()
+setInterval(fetchMessages, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

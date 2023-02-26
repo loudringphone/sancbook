@@ -1680,16 +1680,18 @@ keys = Object.keys(mapObj)
 sanctionedCountryCodes = gon.sanctionedCountryCodes
 countrySanctionsLengths = gon.countrySanctionsLengths
 
-for (let i = 0; i < keys.length; i++) {
-  key = keys[i]
-  for (let j = 0; j < sanctionedCountryCodes.length; j++) {
-    if (key == sanctionedCountryCodes[j] && countrySanctionsLengths[j] > 0) {
-      simplemaps_worldmap_mapdata["state_specific"][key].inactive = 'no'
-      simplemaps_worldmap_mapdata["state_specific"][key].color = '#bc8888'
-      simplemaps_worldmap_mapdata["state_specific"][key].hover_color = '#a30f0f'
-      simplemaps_worldmap_mapdata["state_specific"][key].description   = `Sanctions: ${countrySanctionsLengths[j]}`
-      continue
-    }   
+if (window.location.pathname === '/' || window.location.pathname === '/home') {
+  for (let i = 0; i < keys.length; i++) {
+    key = keys[i]
+    for (let j = 0; j < sanctionedCountryCodes.length; j++) {
+      if (key == sanctionedCountryCodes[j] && countrySanctionsLengths[j] > 0) {
+        simplemaps_worldmap_mapdata["state_specific"][key].inactive = 'no'
+        simplemaps_worldmap_mapdata["state_specific"][key].color = '#bc8888'
+        simplemaps_worldmap_mapdata["state_specific"][key].hover_color = '#a30f0f'
+        simplemaps_worldmap_mapdata["state_specific"][key].description   = `Sanctions: ${countrySanctionsLengths[j]}`
+        continue
+      }   
+    }
   }
 }
 

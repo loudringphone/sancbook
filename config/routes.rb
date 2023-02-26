@@ -29,5 +29,6 @@ Rails.application.routes.draw do
 
   # Our AJAX requests will be sent to this path:
   get '/api/unread' => 'dashboard#unread'
+  get '/api/:id/messages' => 'dashboard#messages'
 
 end

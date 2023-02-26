@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     def fetch_user
         @current_user = User.find_by :id => session[:user_id] if session[:user_id].present?
         session[:user_id] = nil unless @current_user.present? # Log out non-existent users.
+        if @current_user.present?
+            gon.current_username = @current_user.username
+            gon.current_userId = @current_user.id
+        end
     end
 
     def check_for_login
