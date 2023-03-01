@@ -52,7 +52,7 @@ const fetchMessages = function() {
       }
 }
 fetchMessages()
-setInterval(fetchMessages, 1000);
+setInterval(fetchMessages, 2000);
 
 
 

@@ -320,7 +320,7 @@ div.edit_profile{
 div.signup_profile > div, 
 div.edit_profile > div {
     width: 100%;
-    height: max-content;
+    height: 450px;
     text-align: left;
     background-color: white;
     padding: 30px 30px 40px 30px;
@@ -337,6 +337,14 @@ div.edit_profile > div > form > input {
     font-size: large;
     line-height: 150%;
     margin-bottom: 5%;
+}
+
+div.signup_profile > div > form > input.submit {
+    font-size: large;
+
+        padding: 0.4vh 0.8vh 0.4vh 0.8vh !important;
+        flex-wrap:wrap;
+        white-space: normal;
 }
 
 div.signup_profile > div > form > div.field_with_errors > label,
