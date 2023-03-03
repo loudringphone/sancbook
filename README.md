@@ -17,6 +17,7 @@ Since every country has their own wikipage and some of the sanctions are high-pr
 I use this gem to parse the HTML files of DBpedia's pages so as to get the information I need for every country and those more high-profile sanctions.
 
 #### YouTube Data API
+This API is using to scrape national anthems from Youtube.
 
 #### Cloudinary
 Since I worry the urls of image may expire one day, I use Cloudinary to upload them to my own account.
@@ -26,6 +27,9 @@ In this project, I didn't plan to let users add countries by themselves to the d
 
 #### Countries
 As the time of writing this README, the REST Countries is experiencing a down time. As a result, I need a backup solution. This gem is not as good as REST Countries in my opinion as it doesn't have all the information I need, but at least it could give me the alpha-2 code for each country.
+
+#### Ajax
+Instant messaging using Ajax. This is achieved by refreshing only a particular div instead of the whole page when there are new messages.
 
 <br /> <br /> 
 
