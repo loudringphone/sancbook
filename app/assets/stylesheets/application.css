@@ -74,7 +74,7 @@ body {
 
 .container {
     position: relative;
-    width: 65vw;
+    width: 80vw;
     justify-content: center;
     margin:0 auto;
 }
@@ -185,6 +185,7 @@ button.collapsible {
 .content {
     display: none;
     overflow: hidden;
+    width: 80vw;
 }
 
 .content > p {
@@ -371,9 +372,10 @@ ol > li {
 }
 
 div.showContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8vw;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 4vw;
 }
 
 
@@ -594,7 +596,7 @@ div.message_box {
 }
 
 #message_text {
-    width:100%;
+    width: 98%;
     height: 10vh;
     font-size: large;
     border-radius: 0.5em;
@@ -758,8 +760,13 @@ div.message_index > p {
     }
 
     div.showContainer {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        flex-direction: column;
+    }
+    .content {
+       width: auto;
+    }
+    .sanction_info {
+        width: 100%;
     }
   
 
@@ -846,8 +853,9 @@ div.message_index > p {
         display: flex;
         height: fit-content;
         font-size: 1.5vh;
-        justify-content: space-evenly;
+        justify-content: space-between;
         margin-bottom: 10vh;
+        
     }
 
     h1.aboutGreeting {

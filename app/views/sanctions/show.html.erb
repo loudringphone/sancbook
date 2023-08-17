@@ -99,7 +99,16 @@
                 
                         <div class="comment">
                         <div>
-                        <span style="font-weight:bold"><a class="user" href="/users/<%= comment.user_id %>"><%= User.find_by(id: comment.user_id).username %></a></span> <span class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
+                        <span style="font-weight:bold">
+                            <a class="user" href="/users/<%= comment.user_id %>">
+                                <% if user = User.find_by(id: comment.user_id) %>
+                                <%= user.username %>
+                                <% else %>
+                                Deleted user
+                                <% end %>
+                            </a>
+                        </span>
+                        <span class='time'><%= comment.sent.strftime("%Y-%m-%d %k:%M") %></span>
                         <% if @current_user.present? %><% if (@current_user.admin? || comment.user_id ==  @current_user.id ) %><a class='removeComment' data-method="delete" href="/comments/<%= comment.id %>">Delete</a><% end %><% end %></div>
                         <p><%= comment.text %></p>
                         </div>
