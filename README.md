@@ -1,7 +1,8 @@
 # Sancbook
 This is my 2nd project at General Assembly Software Engineering Immersive Course. Although the development time is only about a week, I believe I have created the largest online social media and social networking platform about sanctions in the world. On the platform, users can suggest who to sanction, participate in discussion and send direct messages to other users. Hopefuly one day some government would notice their requests and sanctions strategies can be deployed accordingly.
 Plesae visit the largest social media platform (about sanctions) here: https://sancbook.herokuapp.com/
-Unfortunately, it has been taken down because I don't want to pay the monthly fee. 
+Unfortunately, it has been taken down because I don't want to pay the monthly fee, but you can watch the video about this project below.
+https://youtu.be/7fH1DrjlxoU/
 <br /> <br /> 
 
 ### Gems and APIs used
