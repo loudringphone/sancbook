@@ -12,9 +12,11 @@
   <body>
     <div class="container">
       <header>
-        <nav class='left'><div class="logo">
+        <div class="logo">
             <a href="/" data-turbolinks="false" style="font-weight:bold;text-decoration:none">Sancbook</a></div>
             <div class="link">
+
+          <nav class='left'>
             <%= link_to "All countries", countries_path %>
             <% if @current_user.present? %>
               <% if @current_user.admin? %>
@@ -26,14 +28,11 @@
               <%= link_to "New sanction", new_sanction_path %>
             <% end %>
             <%= link_to "About Us", about_path %>
-            </div>
         </nav>
         <nav class='right'>
-        
-        <div>
         <% if @current_user.present? %>
-              <span>
-            <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</span>
+              <div>
+            <%= link_to "Logout", login_path, :method => 'delete' %>&nbsp(<%= link_to "#{@current_user.username}", "/users/#{User.find_by(id: @current_user.id).username}" %>)</div>
             <a href=<%= "/users/#{User.find_by(id: @current_user.id).username}/messenger" %>><span id='unread'>Messenger</span></a>
 
 
@@ -42,8 +41,9 @@
         <% else %>
             <%= link_to "Login / Signup", login_path %>
         <% end %>
-        </div>
         </nav>
+            </div>
+
       </header>
     <br>
         <%= yield %>

@@ -46,31 +46,6 @@ h3.nation {
 .sanction_info {
     width: 65%;
 }
-div.featurePlaceholder {
-    display: flex;
-    align-items: center; justify-content:center;
-    height: 300px;
-    border-style: solid;
-    border-width: 2px;
-    margin-bottom: 5px;
-    border-color: skyblue;
-    width: 220px; 
-}
-
-div.featurePlaceholder > img.feature {
-    height: 290px;
-    width: auto;
-}
-
-figure.preview > div.featurePlaceholder {
-
-
-    p {
-      padding-left: 20px;
-    }
-
-}
-
 
 p.featureText {
     color:lightgray;

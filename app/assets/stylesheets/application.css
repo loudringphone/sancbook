@@ -14,6 +14,11 @@
  *= require_self
  */
  
+
+header {
+    display: flex;
+    flex-direction: column;
+}
 a.trial {
     width:auto;
     float: right;
@@ -33,11 +38,6 @@ form .no_comments[disabled] {
     cursor: default !important;
     float:initial;
 
-}
-
-nav.right {
-    width: 400px;
-    justify-content:right !important;
 }
 
 footer {
@@ -97,25 +97,6 @@ body {
 
 img {
     max-width: 250px;
-}
-
-div.div_feature {
-    width: 250px;
-    height: 300px;
-    display: block;
-    padding-left: 30px;
-    text-align: center;
-    
-}
-
-
-div.div_feature > a {
-    padding-top: 1px;
-    text-align: centre;
-}
-
-div.div_feature > p {
-    margin-top: -2px
 }
 
 .details {
@@ -214,28 +195,22 @@ figcaption {
     text-align: center;
 }
 
-div.preview {
-    width: 420px;
-    height: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-div.preview > p {
+div.featurePlaceholder > p {
     line-height: 150%;
+    font-size: small;
+    margin: 0 5px;
 }
 
-figure.preview {
-    width: 350px;
-    height: 350px;
+div.featurePlaceholder {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-figure.preview > p {
-    line-height: 150%;
+    align-items: center; justify-content:center;
+    height: 300px;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    border-color: skyblue;
+    width: 220px; 
 }
 
 p.error {
@@ -258,7 +233,6 @@ div.alert {
 
 header {
     display: flex;
-   
     width: 100%;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -266,28 +240,10 @@ header {
     padding-bottom: 5px;
     border-bottom: 2px solid lightskyblue;
 }
-nav.right {
-    display: flex;
-    flex-direction: row-reverse;
 
-    justify-content: center;
-    align-items: flex-end;
-    }
-
-nav.right > div > span {
-    padding-right: 20px;
-}
-
-nav.left {
-    width: 70%
-}
-
-nav.left > div > a {
-    padding-right: 20px;
-}
-
-div.logo > a{
-    font-size: 5vh;
+div.logo {
+    font-size: xx-large;
+    margin-bottom: 7.5px;
 }
 
 
@@ -373,7 +329,6 @@ ol > li {
 
 div.showContainer {
     display: flex;
-    align-items: center;
     width: 100%;
     gap: 4vw;
 }
@@ -652,7 +607,9 @@ div.message {
     border-radius: 10px;
 }
 
-
+div.details > h2 {
+    margin-top: 0px;
+}
 
 div.sender {
     background-color: lightsalmon;
@@ -732,7 +689,33 @@ div.message_index > p {
 
 
 
-
+div.link {
+    display: flex;
+    justify-content: space-between;
+    text-wrap: nowrap;
+    font-size: small;
+}
+nav.left {
+    display: flex;
+    gap: 7.5%;
+}
+nav.left > a {
+    width: min-content;
+    align-self: flex-end;
+}
+nav.right {
+    display: flex;
+    gap: 7.5%;
+    flex-direction: row-reverse;
+}
+nav.right > a {
+    width: min-content;
+    align-self: flex-end;
+}
+nav.right > div {
+    width: min-content;
+    align-self: flex-end;
+}
     
 
 
@@ -885,11 +868,6 @@ div.message_index > p {
     img.feature {
         width: 100%;
     }
-    div.featurePlaceholder {
-        margin-top:5vh;
-        width: 30vw;
-        height: 20vh
-    }
    .ofac > h3 {
         font-size: 2.4vh;
     }
@@ -921,19 +899,6 @@ div.message_index > p {
 
     p {
         font-size: 2.2vh;
-    }
-    nav.left {
-        width: 100%;
-        justify-content: center;
-    }
-
-    nav.left > div.link {
-        text-align: center;
-        margin-bottom: 6px;
-    }
-    nav.right {
-        width: 100%;
-        justify-content: center !important;
     }
 
     div.login_profile {
@@ -990,7 +955,7 @@ div.message_index > p {
 
     .mapHeader {
         line-height: 130%;
-        font-size: 2vh;
+        font-size: medium;
     }
 
     .mapFooter {
@@ -1026,10 +991,6 @@ div.message_index > p {
         margin-bottom: 6vh;
     }
 
-   
-    div.thumb > a > img {
-        width: 40vw;
-    }
     div.new_country  {
         height: 40vh;
         
@@ -1136,15 +1097,6 @@ div.message_index > p {
         height: 100vh;
     }
 
-    figure.preview > div.featurePlaceholder {
-        margin-top: 10vh;
-        height: 520px;
-        width: 400px;
-    }
-    figure.preview > div.featurePlaceholder >   img {
-            height: 500px;
-            width: auto;
-        }
     div.personal_index > h2 {
         font-size: 2.4vh;
     }
@@ -1218,6 +1170,28 @@ div.message_index > p {
  
         font-size: 1.5vh;
         top: 10%
+    }
+}
+
+@media (max-width: 750px) {
+    div.logo {
+        font-size: x-large;
+        margin-bottom: 5px;
+    }
+    div.link {
+        display: flex;
+        justify-content: space-between;
+        text-wrap: wrap;
+        font-size: x-small;
+    }
+    nav.left {
+        display: flex;
+        gap: 7.5%;
+    }
+    nav.right {
+        display: flex;
+        gap: 7.5%;
+        flex-direction: row-reverse;
     }
 }
 

@@ -9,16 +9,19 @@
     width: 90%
 }
 
-p.postscript {
+div.postscript {
     font-size:small;
-    line-height:30%;
     font-style:italic;
+    margin-bottom: 2%;
 }
 
-.pScreen {
-    font-size:small;
-    font-style:italic;
+div.postscript > p {
+    margin: 0;
+    margin-bottom: 3px;
+
 }
+
+
 
 footer {
     width: 20px;
@@ -45,4 +48,10 @@ div.aboutText {
 
 span.aboutBrand {
     font-size:x-large;
+}
+
+@media (max-width: 1000px) {
+    div.postscript > p {
+        font-size: xx-small;
+    }
 }
