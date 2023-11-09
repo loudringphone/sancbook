@@ -458,7 +458,6 @@ section.view {
 div.messageSection {
     display: flex;
     align-items: flex-start;
-    height: 85vh;
     border-style: solid;
     border-width: 2px;
     margin-bottom: 5px;
@@ -817,7 +816,6 @@ div.profile > figure {
 
 
     div.messageSection {
-        width: 90%;
         height:fit-content;
         margin-top: 20px;
     }
@@ -861,9 +859,6 @@ div.profile > figure {
         font-size:2.4vh;
     }
 
-   
-
-    
   
     div.details {
         width: 45vw;
@@ -1160,4 +1155,9 @@ div.profile > figure {
     }
 }
 
+@media (max-width: 630px) {
+    div.messageSection {
+        width: 100%
+    }
+}
     
