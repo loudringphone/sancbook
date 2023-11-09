@@ -93,7 +93,7 @@ puts "#{ User.count } users"
 
 
 
-
+Sanction.destroy_all
 
 s = Sanction.create :name => "ANTONOV, Boris Alekseyevic", :nationality => "Russia", :risk => "Ukraine-Russia-Related Sanctions Regulations, 31 CFR 589.201 (individual) [CAATSA - RUSSIA] (Linked To: MAIN INTELLIGENCE DIRECTORATE)", :image => ''
 

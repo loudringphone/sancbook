@@ -5,13 +5,13 @@
 <div class="form_container">
     <%= render :partial => 'form' %>
     
-    <figure class ='preview'><div class="featurePlaceholder"><p>Image from the URL will pop up here as you fill in the flag input box.</p><img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>"></div>
+    <div class="featurePlaceholder"><p>Image from the URL will pop up here as you fill in the flag input box.</p><img onload="featureWidth()" class="feature" src="<%= @sanction["image"] %>"></div>
 </div>
     
 
 <script>
 
-    preview = document.querySelector(".preview");
+    
     profile_pic = document.querySelector("#sanction_image");
     featurePlaceholder = document.querySelector(".featurePlaceholder");
     profile_pic.addEventListener("input", function(){
@@ -26,6 +26,14 @@
             img.src = profile_pic.value
             featurePlaceholder.appendChild(img)
             featurePlaceholder.removeChild(e);
+            img.addEventListener("load", function() {
+                img.style.width = '100%'
+            });
+
+            img.addEventListener("error", function() {
+                console.log("Image failed to load");
+            });
+
         } else {
             p = document.createElement('p')
             p.textContent = "Image from the URL will pop up here as you fill in the image input box."

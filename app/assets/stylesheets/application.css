@@ -74,9 +74,12 @@ body {
 
 .container {
     position: relative;
-    width: 80vw;
+    display: flex;
+    width: 85vw;
     justify-content: center;
-    margin:0 auto;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
 }
 
 .OFAC {
@@ -183,14 +186,6 @@ button.collapsible {
     padding: 0 10px 20px 10px;
 }
 
-
-
-.country_feature, div.profile > figure > figcaption {
-    max-width: 250px;
-    padding-right: 25px;
-    margin-left: -15%;
-}
-
 figcaption {
     text-align: center;
 }
@@ -207,11 +202,11 @@ div.featurePlaceholder {
     height: 300px;
     border-style: solid;
     border-width: 2px;
-    margin-bottom: 25px;
-    margin-left: 25px;
     border-color: skyblue;
     width: 220px; 
 }
+
+
 
 p.error {
     color: red;
@@ -450,7 +445,9 @@ h2.allUser {
 
 
 
-
+section.view {
+    min-width: 900px;
+}
 
 
 
@@ -717,13 +714,37 @@ nav.right > div {
     align-self: flex-end;
 }
     
+div.preview {
+    width: 300px;
+}
+
+div.preview > img {
+    max-width: 300px;
+}
+
+div.preview > p {
+    font-size: small;
+}
+
+div.profile {
+    display: flex;
+    height: fit-content;
+    gap: 30px;
+} 
 
 
-    
-
+div.profile > figure {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+}
   
 
 @media (max-width: 1000px) {
+    section.view {
+        min-width: 100%;
+    }
     .details {
         width: 300px;
     }
@@ -731,6 +752,9 @@ nav.right > div {
         font-size: x-small;
     }
 
+    div.profile {
+        font-size: large;
+    } 
 
     .container {
         width: 90vw;
@@ -831,16 +855,6 @@ nav.right > div {
         width: 300px;
     }
 
-    
-    div.profile {
-        display: flex;
-        height: fit-content;
-        font-size: 1.5vh;
-        justify-content: space-between;
-        margin-bottom: 10vh;
-        
-    }
-
     h1.aboutGreeting {
         font-size: 4vh;
         padding-top: 3vh;
@@ -901,24 +915,7 @@ nav.right > div {
         font-size: 2.2vh;
     }
 
-    div.login_profile {
-        height: 80vh;
-        display:flex;
-        flex-wrap: wrap;
-       
-    }
-
-    div.login_profile > div.existing_user {
-        width: 50vw;
-        height: 30vh;
-        line-height: 2vh;
-        margin-top: 5vh;
-    }
-
-    div.login_profile > div > form input {
-        font-size: 1.8vh;
-        line-height: 150%;
-    }
+    
 
 
     label {
@@ -927,21 +924,6 @@ nav.right > div {
 
     form {
         height: 10vh;
-    }
-    div.login_profile > div.new_user {
-        width: 50vw;
-        height: 20vh;
-    }
-
-    div.login_profile > div.existing_user > h2 {
-        font-size: 2.3vh;
-    }
-
-    div.existing_user {
-        padding-top:0;
-    }
-    div.login_profile > div.new_user > h2 {
-        font-size: 2.3vh;
     }
 
     input.submit {
@@ -1014,13 +996,8 @@ nav.right > div {
         width: auto;
         height: auto;
         padding: 0.4vh 0.8vh 0.4vh 0.8vh !important;
-        font-size: 1.2vh !important;
         flex-wrap:wrap;
         white-space: normal;
-    }
-
-    div.preview > p {
-        font-size: 2.2vh;
     }
 
     div.personal_index > a {
@@ -1087,14 +1064,6 @@ nav.right > div {
 
     .form_container {
         height: auto;
-    }
-
-   
- 
-
-   
-    div.container {
-        height: 100vh;
     }
 
     div.personal_index > h2 {
@@ -1195,5 +1164,11 @@ nav.right > div {
     }
 }
 
+@media (max-width: 630px) {
+    div.profile {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
     

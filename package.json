@@ -1,7 +1,7 @@
 {
   "name": "primaverii",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "stimulus_reflex": "3.4.1"
+  }
 }
-
-
