@@ -339,7 +339,7 @@ div.commentSection {
     margin-bottom: 5px;
     border-color: skyblue;
     width: 325px;
-    padding: 0 5px 5px 5px;
+    padding: 0 5px 10px 5px;
     flex-wrap: wrap;
     justify-content: left;
     border-radius: 0.5em;
@@ -855,18 +855,7 @@ div.profile > figure {
         width: 300px;
     }
 
-    h1.aboutGreeting {
-        font-size: 4vh;
-        padding-top: 3vh;
-        padding-left:0;
-    }
-
-    div.aboutText {
-        height: 90vh;
-        width: 80vw;
-        font-size: 2.2vh;
-        line-height: 180%;
-    }
+   
 
     span.aboutBrand {
         font-size:2.4vh;
